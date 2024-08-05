@@ -1,0 +1,659 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from www.udan.world/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Jul 2024 19:53:25 GMT -->
+
+<head>
+  <title>Casumi | Consulting Finance HTML Template</title>
+
+  <meta charset="utf-8">
+  <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="">
+
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Merriweather:300,400,700%7CBarlow:400,400i,600,700'
+    rel='stylesheet'>
+
+  <!-- Css -->
+  <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'font-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'cookieconsent.min.css' %}">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+  <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.html' %}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/apple-touch-icon-72x72.png' %}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/apple-touch-icon-114x114.png' %}">
+  <body>
+
+</head>
+
+<body>
+
+  <!-- Preloader -->
+  <div class="loader-mask">
+    <div class="loader">
+      "Loading..."
+    </div>
+  </div>
+
+  <main class="main-wrapper">
+
+    <!-- Navigation -->
+    <header class="nav">
+      <div class="nav__holder nav--sticky">
+        <div class="container-fluid container-semi-fluid nav__container">
+          <div class="flex-parent">
+
+            <!-- Search form -->
+            <form role="search" method="get" class="nav__search-form">
+              <input type="search" class="nav__search-input" id="nav__search-input" placeholder="Type &amp; Hit Enter">
+              <i class="ui-close nav__search-close" id="nav__search-close"></i>
+            </form>
+
+            <div class="nav__header">
+              <div class="navbar_left_black">
+                <a href="index.html" class="logo-container">
+                  <h3>Casumi</h3>
+                  <h6>Consultancy_</h6>
+                </a>
+              </div>
+
+              <!-- Mobile toggle -->
+              <button type="button" class="nav__icon-toggle" id="nav__icon-toggle" data-toggle="collapse"
+                data-target="#navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="nav__icon-toggle-bar"></span>
+                <span class="nav__icon-toggle-bar"></span>
+                <span class="nav__icon-toggle-bar"></span>
+              </button>
+            </div>
+
+            <!-- Navbar -->
+            <nav id="navbar-collapse" class="nav__wrap collapse navbar-collapse nav--align-right">
+              <ul class="nav__menu">
+                <li class="nav__dropdown active">
+                  <a href="index.html" aria-haspopup="true">Home</a>
+                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
+                    aria-expanded="false"></i>
+                  <ul class="nav__dropdown-menu">
+                    <li><a href="index.html">Home 1</a></li>
+                    <li><a href="index-2.html">Home 2</a></li>
+                  </ul>
+                </li>
+                <li class="nav__dropdown">
+                  <a href="#" aria-haspopup="true">Pages</a>
+                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
+                    aria-expanded="false"></i>
+                  <ul class="nav__dropdown-menu">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="404.html">404</a></li>
+                  </ul>
+                </li>
+                <li class="nav__dropdown">
+                  <a href="blog.html" aria-haspopup="true">Features</a>
+                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
+                    aria-expanded="false"></i>
+                  <ul class="nav__dropdown-menu">
+                    <li><a href="icons.html">Icons</a></li>
+                    <li><a href="elements.html">Elements</a></li>
+                  </ul>
+                </li>
+                <li class="nav__dropdown">
+                  <a href="blog.html" aria-haspopup="true">Blog</a>
+                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
+                    aria-expanded="false"></i>
+                  <ul class="nav__dropdown-menu">
+                    <li><a href="blog.html">Blog Standard</a></li>
+                    <li><a href="blog-masonry.html">Blog Masonry</a></li>
+                    <li class="nav__dropdown">
+                      <a href="single-post-1.html" aria-haspopup="true">Single Post</a>
+                      <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
+                        aria-expanded="false"></i>
+                      <ul class="nav__dropdown-menu">
+                        <li><a href="single-post-1.html">Fullwidth</a></li>
+                        <li><a href="single-post-2.html">With Sidebar</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Purchase</a>
+                </li>
+              </ul> <!-- end menu -->
+
+              <!-- Mobile Phone -->
+              <div class="nav__phone-mobile d-lg-none">
+                <a href="https://wa.me/+63-995-3959" target="_blank" class="nav__phone-number">+63-995-3959</a>
+              </div>
+
+
+              <!-- Mobile Search -->
+              <div class="nav__search-mobile d-lg-none">
+                <form role="search" method="get" class="search-form relative">
+                  <input type="search" class="search-input" placeholder="Search" />
+                  <button type="submit" class="search-button" aria-label="search button"><i
+                      class="ui-search search-icon"></i></button>
+                </form>
+              </div>
+
+            </nav> <!-- end nav-wrap -->
+
+
+            <!-- Nav Right -->
+            <div class="nav__right d-none d-lg-flex">
+              <div class="nav__right-item">
+                <a href="https://wa.me/+63-995-3959" target="_blank" class="nav__phone-number">+63-995-3959</a>
+              </div>
+
+              <!-- Search -->
+              <div class="nav__right-item nav__search">
+                <a href="#" class="nav__search-trigger" id="nav__search-trigger">
+                  <i class="ui-search"></i>
+                </a>
+              </div>
+
+            </div> <!-- end nav right -->
+
+          </div> <!-- end flex-parent -->
+        </div> <!-- end container -->
+
+      </div>
+    </header> <!-- end navigation -->
+
+    <div class="content-wrapper oh">
+
+      <!-- Hero -->
+      <section class="hero">
+        <div class="slick-custom-arrows">
+
+          <div class="hero__item slick-slide">
+            <div class="row no-gutters">
+              <div class="col-lg-4 order-lg-1 order-2">
+                <div class="hero__img" style="background-image: url(static/img/hero/hero_slide_1.png)">
+                  <img src="static/img/hero/hero_slide_1.png" alt="" class="d-none">
+                </div>
+
+                <!-- Slider nav -->
+                <div class="slick-custom-nav">
+                  <button class="slick-custom-nav__prev slick-prev slick-arrow" type="button" aria-label="prev">Prev
+                    ></button>
+                  <button class="slick-custom-nav__next slick-next slick-arrow" type="button" aria-label="next">Next
+                    ></button>
+                </div>
+
+              </div>
+              <div class="col-lg-8 order-1 order-lg-2">
+                <div class="hero__text-holder">
+                  <h3 class="hero__subtitle">Advanced Consulting Services</h3>
+                  <h1 class="hero__title hero__title--boxed">Business Solution Experts<span class="hero__dot">.</h1>
+                  <a href="https://wa.me/+919168100866" target="_blank" class="btn btn--lg btn--color">
+                    <span>Contact Us</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div> <!-- .hero__item -->
+
+          <div class="hero__item slick-slide">
+            <div class="row no-gutters">
+              <div class="col-lg-4 order-lg-1 order-2">
+                <div class="hero__img" style="background-image: url(static/img/hero/hero_slide_2.jpg)">
+                  <img src="static/img/hero/hero_slide_2.jpg" alt="" class="d-none">
+                </div>
+
+                <!-- Slider nav -->
+                <div class="slick-custom-nav">
+                  <button class="slick-custom-nav__prev slick-prev slick-arrow" type="button" aria-label="prev">Prev
+                    ></button>
+                  <button class="slick-custom-nav__next slick-next slick-arrow" type="button" aria-label="next">Next
+                    ></button>
+                </div>
+
+              </div>
+              <div class="col-lg-8 order-1 order-lg-2">
+                <div class="hero__text-holder">
+                  <h3 class="hero__subtitle">Visa & Education Consulting</h3>
+                  <h1 class="hero__title hero__title--boxed">Visa Training & Education<span class="hero__dot">.</span>
+                  </h1>
+                  <a href="https://wa.me/+919168100866" target="_blank" class="btn btn--lg btn--color">
+                    <span>Contact Us</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div> <!-- .hero__item -->
+
+          <div class="hero__item slick-slide">
+            <div class="row no-gutters">
+              <div class="col-lg-4 order-lg-1 order-2">
+                <div class="hero__img" style="background-image: url(static/img/hero/hero_slide_3.jpg)">
+                  <img src="static/img/hero/hero_slide_3.jpg" alt="" class="d-none">
+                </div>
+
+                <!-- Slider nav -->
+                <div class="slick-custom-nav">
+                  <button class="slick-custom-nav__prev slick-prev slick-arrow" type="button" aria-label="prev">Prev
+                    ></button>
+                  <button class="slick-custom-nav__next slick-next slick-arrow" type="button" aria-label="next">Next
+                    ></button>
+                </div>
+
+              </div>
+              <div class="col-lg-8 order-1 order-lg-2">
+                <div class="hero__text-holder">
+                  <h3 class="hero__subtitle">Visa & Education Consulting</h3>
+                  <h1 class="hero__title hero__title--boxed">Business Visa B1<span class="hero__dot"> . </span>H1<span
+                      class="hero__dot"> . </span>L1<span class="hero__dot"> . </span>E</h1>
+                  <a href="https://wa.me/+919168100866" target="_blank" class="btn btn--lg btn--color">
+                    <span>Contact Us</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div> <!-- .hero__item -->
+
+        </div> <!-- .owl -->
+      </section> <!-- end hero -->
+
+      <!-- Services Title -->
+      <section class="section-wrap bg-dark">
+        <div class="container">
+          <div class="title-row mb-56">
+            <h2 class="section-title text-center">Competency and Quality Services</h2>
+          </div>
+        </div>
+      </section> <!-- end services title -->
+
+      <!-- Service Boxes -->
+      <div class="offset-top-100">
+        <div class="container">
+          <div class="slick-service-boxes slick-slider-row">
+
+            <div class="slick-slide slick-slider-col slick-service-boxes__item">
+              <a href="#" class="service box-shadow hover-line hover-down">
+                <i class="service__icon o-business-report-1"></i>
+                <h4 class="service__title">Strategy & Planning</h4>
+                <p class="service__text">The practice of helping organizations to improve their performance.</p>
+              </a>
+            </div>
+
+            <div class="slick-slide slick-slider-col slick-service-boxes__item">
+              <a href="#" class="service box-shadow hover-line hover-down">
+                <i class="service__icon o-sales-performance-up-1"></i>
+                <h4 class="service__title">Finance Services</h4>
+                <p class="service__text">The practice of helping organizations to improve their performance.</p>
+              </a>
+            </div>
+
+            <div class="slick-slide slick-slider-col slick-service-boxes__item">
+              <a href="#" class="service box-shadow hover-line hover-down">
+                <i class="service__icon o-social-1"></i>
+                <h4 class="service__title">Management</h4>
+                <p class="service__text">The practice of helping organizations to improve their performance.</p>
+              </a>
+            </div>
+
+            <div class="slick-slide slick-slider-col slick-service-boxes__item">
+              <a href="#" class="service box-shadow hover-line hover-down">
+                <i class="service__icon o-strategy-1"></i>
+                <h4 class="service__title">Data & Analytics</h4>
+                <p class="service__text">The practice of helping organizations to improve their performance..</p>
+              </a>
+            </div>
+
+            <div class="slick-slide slick-slider-col slick-service-boxes__item">
+              <a href="#" class="service box-shadow hover-line hover-down">
+                <i class="service__icon o-strategy-1"></i>
+                <h4 class="service__title">Stock information</h4>
+                <p class="service__text">The practice of helping organizations to improve their performance.</p>
+              </a>
+            </div>
+
+          </div> <!-- end slick-service-boxes -->
+        </div>
+      </div>
+
+      <!-- Promo Section -->
+      <section class="section-wrap promo section-wrap--pt-180">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 mb-md-72">
+              <h2 class="promo__title">We bring the right people together</h2>
+              <p class="promo__text lead">As you may already know, there are an infinite number of things you can test
+                on your site to help you increase sales.
+                From layout to copy to design, there are limitless combinations of changes that may improve your
+                visitor-to-sale conversion rate.</p>
+              <a href="#" class="btn btn--lg btn--color">
+                <span>Contact Us</span>
+              </a>
+            </div>
+            <div class="col-lg-7 offset-lg-1 mt-md-72">
+              <img src="static/img/promo/home_promo_img.png" alt="">
+            </div>
+          </div>
+        </div>
+      </section> <!-- end promo section -->
+      <!-- LAW -->
+
+
+      <!-- Testimonials -->
+      <section class="section-wrap pt-48">
+        <div class="slick-custom-arrows">
+
+          <div class="slick-slide ">
+            <div class="testimonial">
+              <div class="testimonial__img-holder"
+                style="background-image: url(static/img/testimonials/home_testimonial_1.png)">
+                <img src="static/img/testimonials/home_testimonial_1.png" class="testimonial__img d-none" alt="">
+                <!-- Slider nav -->
+                <div class="slick-custom-nav">
+                  <button class="slick-custom-nav__prev slick-prev slick-arrow" type="button" aria-label="prev">Prev
+                    ></button>
+                  <button class="slick-custom-nav__next slick-next slick-arrow" type="button" aria-label="next">Next
+                    ></button>
+                </div>
+              </div>
+              <div class="testimonial__info">
+                <div class="testimonial__info-container">
+                  <h2 class="section-title">Service Is Top-notch</h2>
+                  <p class="testimonial__text">Every detail has been taken care these team are realy amazing and
+                    talented! They can help me with fast and accurate
+                    solutions to all kinds of issues. Love it! Five stars for them.</p>
+                  <span class="testimonial__author">Joeby Ragpa</span>
+                  <span class="testimonial__company">DeoThemes</span>
+                </div>
+              </div>
+            </div>
+          </div> <!-- end slide -->
+
+          <div class="slick-slide ">
+            <div class="testimonial">
+              <div class="testimonial__img-holder"
+                style="background-image: url(static/img/testimonials/testimonial_img_2.png)">
+                <img src="static/img/testimonials/testimonial_img_2.png" class="testimonial__img d-none" alt="">
+                <!-- Slider nav -->
+                <div class="slick-custom-nav">
+                  <button class="slick-custom-nav__prev slick-prev slick-arrow" type="button" aria-label="prev">Prev
+                    ></button>
+                  <button class="slick-custom-nav__next slick-next slick-arrow" type="button" aria-label="next">Next
+                    ></button>
+                </div>
+              </div>
+              <div class="testimonial__info">
+                <div class="testimonial__info-container">
+                  <h2 class="section-title">They Are The Best</h2>
+                  <p class="testimonial__text">Every detail has been taken care these team are realy amazing and
+                    talented! They can help me with fast and accurate
+                    solutions to all kinds of issues. Love it! Five stars for them.</p>
+                  <span class="testimonial__author">Mick Jagger</span>
+                  <span class="testimonial__company">Google</span>
+                </div>
+              </div>
+            </div>
+          </div> <!-- end slide -->
+
+          <div class="slick-slide ">
+            <div class="testimonial">
+              <div class="testimonial__img-holder"
+                style="background-image: url(static/img/testimonials/testimonial_img_3.png)">
+                <img src="static/img/testimonials/testimonial_img_3.png" class="testimonial__img d-none" alt="">
+                <!-- Slider nav -->
+                <div class="slick-custom-nav">
+                  <button class="slick-custom-nav__prev slick-prev slick-arrow" type="button" aria-label="prev">Prev
+                    ></button>
+                  <button class="slick-custom-nav__next slick-next slick-arrow" type="button" aria-label="next">Next
+                    ></button>
+                </div>
+              </div>
+              <div class="testimonial__info">
+                <div class="testimonial__info-container">
+                  <h2 class="section-title">100% Satisfied</h2>
+                  <p class="testimonial__text">Every detail has been taken care these team are realy amazing and
+                    talented! They can help me with fast and accurate
+                    solutions to all kinds of issues. Love it! Five stars for them.</p>
+                  <span class="testimonial__author">Jessica Lopez</span>
+                  <span class="testimonial__company">Apple</span>
+                </div>
+              </div>
+            </div>
+          </div> <!-- end slide -->
+
+        </div>
+      </section> <!-- end testimonials -->
+
+      <!-- From Blog -->
+      <section class="section-wrap pt-0 pb-0">
+        <div class="container">
+          <div class="title-row text-center">
+            <h2 class="section-title">Latest News</h2>
+          </div>
+          <div class="row">
+
+            <div class="col-lg-4">
+              <article class="entry entry-card">
+                <div class="entry__header">
+                  <a href="single-post-1.html">
+                    <img src="static/img/blog/standard/post_1.png" class="entry__img" alt="">
+                  </a>
+                  <div class="entry__category">
+                    <a href="single-post-1.html" class="entry__category-item">Finance</a>
+                  </div>
+                </div>
+                <div class="entry__body">
+                  <h4 class="entry__title">
+                    <a href="single-post-1.html">Business Mistakes to Avoid When Starting a Business</a>
+                  </h4>
+                  <div class="entry__meta">
+                    <span class="entry__meta-item entry__meta-author">
+                      <a href="#" class="entry__meta-author-url">
+                        <img src="static/img/blog/author/Ellipse.svg" class="entry__meta-author-img" alt="">
+                        <span class="entry__meta-author-name">Alexander Samokhin</span>
+                      </a>
+                    </span>
+                    <span class="entry__meta-item entry__meta-date">July 06, 2019</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-lg-4">
+              <article class="entry entry-card">
+                <div class="entry__header">
+                  <a href="single-post-1.html">
+                    <img src="static/img/blog/standard/post_2.png" class="entry__img" alt="">
+                  </a>
+                  <div class="entry__category">
+                    <a href="single-post-1.html" class="entry__category-item">Stock</a>
+                  </div>
+                </div>
+                <div class="entry__body">
+                  <h4 class="entry__title">
+                    <a href="single-post-1.html">Utilize these nine resources to help you take the stress out of
+                      preparing your taxes</a>
+                  </h4>
+                  <div class="entry__meta">
+                    <span class="entry__meta-item entry__meta-author">
+                      <a href="#" class="entry__meta-author-url">
+                        <img src="static/img/blog/author/Ellipse.svg" class="entry__meta-author-img" alt="">
+                        <span class="entry__meta-author-name">Alexander Samokhin</span>
+                      </a>
+                    </span>
+                    <span class="entry__meta-item entry__meta-date">July 06, 2019</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-lg-4">
+              <article class="entry entry-card">
+                <div class="entry__header">
+                  <a href="single-post-1.html">
+                    <img src="static/img/blog/standard/post_3.png" class="entry__img" alt="">
+                  </a>
+                  <div class="entry__category">
+                    <a href="single-post-1.html" class="entry__category-item">Finance</a>
+                  </div>
+                </div>
+                <div class="entry__body">
+                  <h4 class="entry__title">
+                    <a href="single-post-1.html">Investment Update, Successful people ask better questions</a>
+                  </h4>
+                  <div class="entry__meta">
+                    <span class="entry__meta-item entry__meta-author">
+                      <a href="#" class="entry__meta-author-url">
+                        <img src="static/img/blog/author/Ellipse.svg" class="entry__meta-author-img" alt="">
+                        <span class="entry__meta-author-name">Alexander Samokhin</span>
+                      </a>
+                    </span>
+                    <span class="entry__meta-item entry__meta-date">July 06, 2019</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+          </div>
+        </div>
+      </section> <!-- end from blog -->
+
+
+      <!-- CTA -->
+      <section class="section-wrap call-to-action text-center section-wrap--pb-140 bg-white-gradient"
+        style="background-image: url(static/img/cta/home1_cta_img.png);">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-6">
+
+              <h3 class="call-to-action__title">
+                Ready to get started? Get your Finance out of the way
+              </h3>
+              <p class="call-to-action__text lead">If you deliver enough value, making money becomes the easy part. Why
+                should you be stressful? Let us make this easier
+                for you.</p>
+              <a href="#" class="btn btn--lg btn--color">
+                <span>Contact Us</span>
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </section> <!-- end cta -->
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__widgets">
+            <div class="row">
+
+              <div class="col-lg-3 col-md-6">
+                <div class="widget widget-about-us">
+                  <!-- Logo -->
+                  <div class="navbar_left_black">
+                    <a href="index.html" class="logo-container">
+                      <h3>Casumi</h3>
+                      <h6>Consultancy_</h6>
+                    </a>
+                  </div>
+                  <div class="socials mt-32">
+                    <a href="#" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank"><i
+                        class="ui-twitter"></i></a>
+                    <a href="#" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank"><i
+                        class="ui-facebook"></i></a>
+                    <a href="#" class="social social-google-plus" aria-label="google plus" title="google plus"
+                      target="_blank"><i class="ui-google"></i></a>
+                  </div>
+                </div>
+              </div> <!-- end about us -->
+
+
+              <div class="col-lg-3 offset-lg-3 col-md-6">
+                <div class="widget widget_nav_menu">
+                  <h5 class="widget-title">Solutions</h5>
+                  <ul>
+                    <li><a href="#">Finance Strategy</a></li>
+                    <li><a href="#">Advertising</a></li>
+                    <li><a href="#">SMM</a></li>
+                    <li><a href="#">SEO</a></li>
+                    <li><a href="#">Google AdWords</a></li>
+                  </ul>
+                </div>
+              </div>
+
+
+              <div class="col-lg-3 col-md-6">
+                <div class="widget widget-address">
+                  <h5 class="widget-title">Company</h5>
+                  <ul>
+                    <li>
+                      <address>8910 University Center Lane Suite 620 San Diego, CA 92102</address>
+                    </li>
+                    <li>
+                      <span>Phone: </span>
+                      <a href="tel:+63-995-3959">+63-995-3959</a>
+                    </li>
+                    <li>
+                      <span>Email: </span>
+                      <a href="mailto:hi@margin.com">hi@margin.com</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div> <!-- end container -->
+
+        <div class="footer__bottom">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="widget widget_nav_menu">
+                  <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-6 text-right text-md-center">
+                <span class="copyright">
+                  &copy; 2019 Casumi, Made by <a href="https://deothemes.com/">DeoThemes</a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div> <!-- end footer bottom -->
+      </footer> <!-- end footer -->
+
+      <div id="back-to-top">
+        <a href="#top"><i class="ui-arrow-up"></i></a>
+      </div>
+
+    </div> <!-- end content wrapper -->
+  </main> <!-- end main wrapper -->
+
+
+  <!-- jQuery Scripts -->
+  <script src="{% static 'js/jquery.min.js' %}"></script> 
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/plugins.js' %}"></script> 
+  <script src="{% static 'js/scripts.js' %}"></script> 
+
+  <!-- Cookies -->
+  <script src="{% static 'js/plugins/cookieconsent.min.js' %}"></script> 
+  <script src="{% static 'js/cookies.js' %}"></script> 
+
+</body>
+
+<!-- Mirrored from www.udan.world/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Jul 2024 19:55:25 GMT -->
+
+</html>
