@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -160,7 +162,7 @@
     <div class="content-wrapper oh">
 
       <!-- Page Title -->
-      <section class="page-title bg-img bg-overlay" style="background-image: url(static/img/page_title/header\ background.png)">
+        <section class="page-title bg-img bg-overlay" style="background-image: url('{% static 'img/page_title/header-background.png' %}')">
         <div class="container">
           <div class="page-title__holder">
             <h1 class="page-title__title">We’re Casumi Business Consulting Agency</h1>
@@ -181,7 +183,7 @@
               </a>
             </div>
             <div class="col-lg-7 offset-lg-1 mt-md-72">
-              <img class="about_promo_img" src="static/img/promo/about_promo_img.png" alt="">
+              <img class="about_promo_img" src="{%  static 'img/promo/home_promo_img.png'  %}" alt="">
             </div>
           </div>
         </div> 
@@ -255,7 +257,7 @@
             <div class="slick-slide slick-slider-col">
               <div class="team box-shadow hover-down">
                 <div class="team__img-holder">
-                  <img src="static/img/team/About_team 1.png" alt="" class="team__img">
+                  <img src="{%  static 'img/team/About_team 1.png'  %}" alt="" class="team__img">
                 </div>
                 <div class="team__body">
                   <span class="team__occupation">CEO Consultant</span>
@@ -277,7 +279,7 @@
             <div class="slick-slide slick-slider-col">
               <div class="team box-shadow hover-down">
                 <div class="team__img-holder">
-                  <img src="static/img/team/About_team 2.png" alt="" class="team__img">
+                  <img src="{%  static 'img/team/About_team 2.png'  %}" alt="" class="team__img">
                 </div>
                 <div class="team__body">
                   <span class="team__occupation">Data Specialist</span>
@@ -299,7 +301,7 @@
             <div class="slick-slide slick-slider-col">
               <div class="team box-shadow hover-down">
                 <div class="team__img-holder">
-                  <img src="static/img/team/About_team 3.png" alt="" class="team__img">
+                  <img src="{%  static 'img/team/About_team 3.png'  %}" alt="" class="team__img">
                 </div>
                 <div class="team__body">
                   <span class="team__occupation">Marketing</span>
@@ -321,7 +323,7 @@
             <div class="slick-slide slick-slider-col">
               <div class="team box-shadow hover-down">
                 <div class="team__img-holder">
-                  <img src="static/img/team/About_team 4.png" alt="" class="team__img">
+                  <img src="{%  static 'img/team/About_team 4.png'  %}" alt="" class="team__img">
                 </div>
                 <div class="team__body">
                   <span class="team__occupation">Support</span>

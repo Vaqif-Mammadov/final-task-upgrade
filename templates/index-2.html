@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -169,8 +171,9 @@
 
       <!-- Hero -->
       <section class="hero">
-        <div class="hero__img bg-overlay" style="background-image: url(static/img/hero/home2_hero.png)">
-          <img src="static/img/hero/home2_hero.png" alt="" class="d-none">
+        <div class="hero__img bg-overlay"
+        style="background-image: url('{% static 'img/hero/home2_hero.png' %}')">
+        <img src="{%  static 'img/hero/home2_hero.png'  %}" alt="" class="d-none">
           <div class="container hero__container full-height">
             <div class="hero__text-holder hero__text-holder--1">
               <h3 class="hero__subtitle hero__subtitle--1">Advanced Consulting Services</h3>
@@ -200,7 +203,7 @@
 
             <div class="slick-slide slick-slider-col slick-service-boxes__item">
               <a href="#" class="service service--1 hover-up"
-                style="background-image: url(static/img/services/base\ \(1\).png)">
+              style="background-image: url('{% static 'img/services/base (1).png' %}')">
                 <h4 class="service__title">Strategy & Planning</h4>
                 <p class="service__text">We also provide tangible results and measurable long-term value business.</p>
               </a>
@@ -208,7 +211,7 @@
 
             <div class="slick-slide slick-slider-col slick-service-boxes__item">
               <a href="#" class="service service--1 hover-up"
-                style="background-image: url(static/img/services/base\ \(2\).png)">
+              style="background-image: url('{% static 'img/services/base (2).png' %}')">
                 <h4 class="service__title">Finance Services</h4>
                 <p class="service__text">We also provide tangible results and measurable long-term value business.</p>
               </a>
@@ -216,7 +219,7 @@
 
             <div class="slick-slide slick-slider-col slick-service-boxes__item">
               <a href="#" class="service service--1 hover-up"
-                style="background-image: url(static/img/services/base\ \(3\).png)">
+              style="background-image: url('{% static 'img/services/base (3).png' %}')">
                 <h4 class="service__title">Management</h4>
                 <p class="service__text">We also provide tangible results and measurable long-term value business.</p>
               </a>
@@ -224,7 +227,7 @@
 
             <div class="slick-slide slick-slider-col slick-service-boxes__item">
               <a href="#" class="service service--1 hover-up"
-                style="background-image: url(static/img/services/base\ \(4\).png)">
+              style="background-image: url('{% static 'img/services/base (4).png' %}')">
                 <h4 class="service__title">Sales growth</h4>
                 <p class="service__text">We also provide tangible results and measurable long-term value business.</p>
               </a>
@@ -232,7 +235,7 @@
 
             <div class="slick-slide slick-slider-col slick-service-boxes__item">
               <a href="#" class="service service--1 hover-up"
-                style="background-image: url(static/img/services/base\ \(5\).png)">
+              style="background-image: url('{% static 'img/services/base (5).png' %}')">
                 <h4 class="service__title">Accounting</h4>
                 <p class="service__text">We also provide tangible results and measurable long-term value business.</p>
               </a>
@@ -377,7 +380,7 @@
 
       <!-- CTA -->
       <section class="section-wrap call-to-action text-center section-wrap--pt-180 section-wrap--pb-180 bg-overlay"
-        style="background-image: url(static/img/cta/home2_cta.png);">
+      style="background-image: url('{% static 'img/cta/home2_cta.png' %}')">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-6">
@@ -414,7 +417,7 @@
             <div class="slick-slide slick-slider-col">
               <div class="team box-shadow hover-down">
                 <div class="team__img-holder">
-                  <img src="static/img/team/home2_team 1.png" alt="" class="team__img">
+                  <img src="{%  static 'img/team/home2_team 1.png'  %}" alt="" class="team__img">
                 </div>
                 <div class="team__body">
                   <span class="team__occupation">Founder</span>
@@ -441,7 +444,7 @@
             <div class="slick-slide slick-slider-col">
               <div class="team box-shadow hover-down">
                 <div class="team__img-holder">
-                  <img src="static/img/team/home2_team 2.png" alt="" class="team__img">
+                  <img src="{%  static 'img/team/home2_team 2.png'  %}" alt="" class="team__img">
                 </div>
                 <div class="team__body">
                   <span class="team__occupation">Data Specialist</span>
@@ -468,7 +471,7 @@
             <div class="slick-slide slick-slider-col">
               <div class="team box-shadow hover-down">
                 <div class="team__img-holder">
-                  <img src="static/img/team/home2_team 3.png" alt="" class="team__img">
+                  <img src="{%  static 'img/team/home2_team 3.png'  %}" alt="" class="team__img">
                 </div>
                 <div class="team__body">
                   <span class="team__occupation">Marketing</span>
@@ -495,7 +498,7 @@
             <div class="slick-slide slick-slider-col">
               <div class="team box-shadow hover-down">
                 <div class="team__img-holder">
-                  <img src="static/img/team/home2_team 4.png" alt="" class="team__img">
+                  <img src="{%  static 'img/team/home2_team 4.png'  %}" alt="" class="team__img">
                 </div>
                 <div class="team__body">
                   <span class="team__occupation">Support</span>

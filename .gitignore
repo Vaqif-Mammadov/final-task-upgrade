@@ -5,6 +5,7 @@
 __pycache__
 db.sqlite3
 media
+/old-templates/
 
 # Backup files # 
 *.bak 
@@ -12,7 +13,7 @@ media
 # If you are using PyCharm # 
 # User-specific stuff
 .idea/**/workspace.xml
-.idea/**/tasks.xml
+.idea/**/tasks.xmls
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf

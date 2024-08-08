@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect,get_object_or_404
+from django.shortcuts import render,redirect,get_object_or_404,HttpResponse
 
 
 # Create your views here.
@@ -34,3 +34,9 @@ def single_post_2_view(request):
 
 def not_found_404_view(request):
     return render (request, "404.html")
+
+
+
+
+# def detail_view(request,id):
+#     return HttpResponse ("Detail:",+ str (id))

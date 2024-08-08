@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -160,7 +162,8 @@
     <div class="content-wrapper oh">
 
       <!-- Page Title -->
-      <section class="page-title bg-img bg-overlay" style="background-image: url(static/img/page_title/pricing\ background.png)">
+      <section class="page-title bg-img bg-overlay"
+      style="background-image: url('{% static 'img/page_title/pricing background.png' %}')">   
         <div class="container">
           <div class="page-title__holder">
             <h1 class="page-title__title">Price Transparency <br> 14 days free trial without the high cost.</h1>
@@ -280,7 +283,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <div class="moneyback__container">
-                <img src="static/img/money_back_badge.png" class="moneyback__img" alt="">
+                <img src="{%  static 'img/money_back_badge.png'  %}" class="moneyback__img" alt="">
                 <div class="moneyback__info">
                   <h3 class="moneyback__title"><span class="moneyback__accent">100%</span> Moneyback Guarantee</h3>
                   <p class="moneyback__text lead">Buy with confidence: if you are not 100% satisfied with Valor Consultancy and our complete service, we offer 30-day money back guarantee without any questions!</p>

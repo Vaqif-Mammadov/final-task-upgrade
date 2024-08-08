@@ -24,16 +24,19 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view,name="home"),
-    path('home2', home2_view,name="home2"),
-    path('about', about_view,name="about"),
-    path('services', services_view,name="services"),
-    path('pricing', pricing_view,name="pricing"),
-    path('contact', contact_view,name="contact"),
-    path('blog_masonry', blog_masonry_view,name="blog_masonry"),
-    path('blog', blog_view,name="blog"),
-    path('single_post_1', single_post_1_view,name="single_post_1"),
-    path('single_post_2', single_post_2_view,name="single_post_2"),
-    path('not_found_404', not_found_404_view,name="not_found_404_view"),
+    path('home2/', home2_view,name="home2"),
+    path('about/', about_view,name="about"),
+    path('services/', services_view,name="services"),
+    path('pricing/', pricing_view,name="pricing"),
+    path('contact/', contact_view,name="contact"),
+    path('blog_masonry/', blog_masonry_view,name="blog_masonry"),
+    path('blog/', blog_view,name="blog"),
+    path('single_post_1/', single_post_1_view,name="single_post_1"),
+    path('single_post_2/', single_post_2_view,name="single_post_2"),
+    path('not_found_404/', not_found_404_view,name="not_found_404_view"),
+
+
+    # path('detail/<int:id', detail_view,name="detail"),
     
     # path("account/", include("account.urls")),
 ]

@@ -1,7 +1,10 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <!-- Mirrored from www.udan.world/services.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Jul 2024 19:56:08 GMT -->
+
 <head>
   <title>Casumi | Services</title>
 
@@ -9,9 +12,10 @@
   <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="">
-  
+
   <!-- Google Fonts -->
-  <link href='http://fonts.googleapis.com/css?family=Merriweather:300,400,700%7CBarlow:400,400i,600,700' rel='stylesheet'>
+  <link href='http://fonts.googleapis.com/css?family=Merriweather:300,400,700%7CBarlow:400,400i,600,700'
+    rel='stylesheet'>
 
   <!-- Css -->
   <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
@@ -60,20 +64,22 @@
               </div>
 
               <!-- Mobile toggle -->
-              <button type="button" class="nav__icon-toggle" id="nav__icon-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+              <button type="button" class="nav__icon-toggle" id="nav__icon-toggle" data-toggle="collapse"
+                data-target="#navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="nav__icon-toggle-bar"></span>
                 <span class="nav__icon-toggle-bar"></span>
                 <span class="nav__icon-toggle-bar"></span>
-              </button> 
-            </div>                      
+              </button>
+            </div>
 
             <!-- Navbar -->
             <nav id="navbar-collapse" class="nav__wrap collapse navbar-collapse nav--align-right">
               <ul class="nav__menu">
                 <li class="nav__dropdown active">
                   <a href="index.html" aria-haspopup="true">Home</a>
-                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true" aria-expanded="false"></i>
+                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
+                    aria-expanded="false"></i>
                   <ul class="nav__dropdown-menu">
                     <li><a href="index.html">Home 1</a></li>
                     <li><a href="index-2.html">Home 2</a></li>
@@ -81,7 +87,8 @@
                 </li>
                 <li class="nav__dropdown">
                   <a href="#" aria-haspopup="true">Pages</a>
-                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true" aria-expanded="false"></i>
+                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
+                    aria-expanded="false"></i>
                   <ul class="nav__dropdown-menu">
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
@@ -92,7 +99,8 @@
                 </li>
                 <li class="nav__dropdown">
                   <a href="blog.html" aria-haspopup="true">Features</a>
-                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true" aria-expanded="false"></i>
+                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
+                    aria-expanded="false"></i>
                   <ul class="nav__dropdown-menu">
                     <li><a href="icons.html">Icons</a></li>
                     <li><a href="elements.html">Elements</a></li>
@@ -100,13 +108,15 @@
                 </li>
                 <li class="nav__dropdown">
                   <a href="blog.html" aria-haspopup="true">Blog</a>
-                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true" aria-expanded="false"></i>
+                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
+                    aria-expanded="false"></i>
                   <ul class="nav__dropdown-menu">
                     <li><a href="blog.html">Blog Standard</a></li>
                     <li><a href="blog-masonry.html">Blog Masonry</a></li>
                     <li class="nav__dropdown">
                       <a href="single-post-1.html" aria-haspopup="true">Single Post</a>
-                      <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true" aria-expanded="false"></i>
+                      <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
+                        aria-expanded="false"></i>
                       <ul class="nav__dropdown-menu">
                         <li><a href="single-post-1.html">Fullwidth</a></li>
                         <li><a href="single-post-2.html">With Sidebar</a></li>
@@ -123,17 +133,18 @@
               <div class="nav__phone-mobile d-lg-none">
                 <a href="tel:+63-995-3959" class="nav__phone-number">+63-995-3959</a>
               </div>
-              
+
 
               <!-- Mobile Search -->
               <div class="nav__search-mobile d-lg-none">
                 <form role="search" method="get" class="search-form relative">
                   <input type="search" class="search-input" placeholder="Search" />
-                  <button type="submit" class="search-button" aria-label="search button"><i class="ui-search search-icon"></i></button>
+                  <button type="submit" class="search-button" aria-label="search button"><i
+                      class="ui-search search-icon"></i></button>
                 </form>
               </div>
 
-            </nav> <!-- end nav-wrap -->            
+            </nav> <!-- end nav-wrap -->
 
 
             <!-- Nav Right -->
@@ -146,11 +157,11 @@
               <div class="nav__right-item nav__search">
                 <a href="#" class="nav__search-trigger" id="nav__search-trigger">
                   <i class="ui-search"></i>
-                </a>               
-              </div> 
+                </a>
+              </div>
 
             </div> <!-- end nav right -->
-        
+
           </div> <!-- end flex-parent -->
         </div> <!-- end container -->
 
@@ -160,7 +171,8 @@
     <div class="content-wrapper oh">
 
       <!-- Page Title -->
-      <section class="page-title bg-img bg-overlay" style="background-image: url(static/img/page_title/services_background.png)">
+      <section class="page-title bg-img bg-overlay"
+        style="background-image: url('{% static 'img/page_title/services_background.png' %}')">
         <div class="container">
           <div class="page-title__holder">
             <h1 class="page-title__title">We Provide Professional Full-Services</h1>
@@ -168,18 +180,18 @@
         </div>
       </section> <!-- end page title -->
 
-			<!-- Services Title -->
+      <!-- Services Title -->
       <section class="section-wrap bg-dark">
         <div class="container">
           <div class="title-row mb-56">
             <h2 class="section-title text-center">Competency and Quality Services</h2>
           </div>
-        </div>        
+        </div>
       </section> <!-- end services title -->
 
       <!-- Service Boxes -->
       <div class="section-wrap offset-top-100 pt-0 pb-0">
-        <div class="container">      
+        <div class="container">
           <div class="row">
 
             <div class="col-lg-4">
@@ -245,15 +257,16 @@
               <div class="process">
                 <div class="row no-gutters">
                   <div class="col-lg-6">
-                    <img src="static/img/process/service_process_1.png" class="process__img" alt="">
+                    <img src="{%  static 'img/process/service_process_1.png'  %}" class="process__img" alt="">
                   </div>
                   <div class="col-lg-6">
                     <div class="process__info box-shadow">
                       <span class="process__number">1</span>
                       <h4 class="process__title">Brainstorming</h4>
                       <p class="process__text">The practice of helping organizations to improve their performance.</p>
-                      <p class="process__text">On the other hand, we bossed ourselves around, set impossible goals, and demanded longer hours than office jobs usually
-                      entail. It was the ultimate “flextime,”</p>
+                      <p class="process__text">On the other hand, we bossed ourselves around, set impossible goals, and
+                        demanded longer hours than office jobs usually
+                        entail. It was the ultimate “flextime,”</p>
                     </div>
                   </div>
                 </div>
@@ -261,33 +274,35 @@
               <div class="process">
                 <div class="row no-gutters">
                   <div class="col-lg-6">
-                    <img src="static/img/process/service_process_2.png" class="process__img" alt="">
-                  </div>               
+                    <img src="{%  static 'img/process/service_process_2.png'  %}" class="process__img" alt="">
+                  </div>
                   <div class="col-lg-6">
                     <div class="process__info box-shadow">
                       <span class="process__number">2</span>
                       <h4 class="process__title">Solution</h4>
                       <p class="process__text">The practice of helping organizations to improve their performance.</p>
-                      <p class="process__text">On the other hand, we bossed ourselves around, set impossible goals, and demanded longer hours than office jobs usually
-                      entail. It was the ultimate “flextime,”</p>
+                      <p class="process__text">On the other hand, we bossed ourselves around, set impossible goals, and
+                        demanded longer hours than office jobs usually
+                        entail. It was the ultimate “flextime,”</p>
                     </div>
-                  </div>                  
+                  </div>
                 </div>
               </div>
               <div class="process">
                 <div class="row no-gutters">
                   <div class="col-lg-6">
-                    <img src="static/img/process/service_process_3.png" class="process__img" alt="">
-                  </div>               
+                    <img src="{%  static 'img/process/service_process_3.png'  %}" class="process__img" alt="">
+                  </div>
                   <div class="col-lg-6">
                     <div class="process__info box-shadow">
                       <span class="process__number">3</span>
                       <h4 class="process__title">Support</h4>
                       <p class="process__text">The practice of helping organizations to improve their performance.</p>
-                      <p class="process__text">On the other hand, we bossed ourselves around, set impossible goals, and demanded longer hours than office jobs usually
-                      entail. It was the ultimate “flextime,”</p>
+                      <p class="process__text">On the other hand, we bossed ourselves around, set impossible goals, and
+                        demanded longer hours than office jobs usually
+                        entail. It was the ultimate “flextime,”</p>
                     </div>
-                  </div>                  
+                  </div>
                 </div>
               </div>
             </div>
@@ -296,7 +311,8 @@
       </section> <!-- end process -->
 
       <!-- CTA / Partners -->
-      <section class="section-wrap call-to-action text-center section-wrap--pt-140 section-wrap--pb-140 bg-dark" style="background-image: url(static/img/pattern.png);">
+      <section class="section-wrap call-to-action text-center section-wrap--pt-140 section-wrap--pb-140 bg-dark"
+      style="background-image: url('{% static 'img/pattern.png' %}')">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -309,48 +325,48 @@
               <div class="row mt-72">
                 <div class="col-lg-3 col-6">
                   <a href="#">
-                    <img src="static/img/partners/partner_logo_1.png" alt="">
+                    <img src="{%  static 'img/partners/partner_logo_1.png'  %}" alt="">
                   </a>
                 </div>
                 <div class="col-lg-3 col-6">
                   <a href="#">
-                    <img src="static/img/partners/partner_logo_2.png" alt="">
+                    <img src="{%  static 'img/partners/partner_logo_2.png'  %}" alt="">
                   </a>
                 </div>
                 <div class="col-lg-3 col-6">
                   <a href="#">
-                    <img src="static/img/partners/partner_logo_3.png" alt="">
+                    <img src="{%  static 'img/partners/partner_logo_3.png'  %}" alt="">
                   </a>
                 </div>
                 <div class="col-lg-3 col-6">
                   <a href="#">
-                    <img src="static/img/partners/partner_logo_4.png" alt="">
+                    <img src="{%  static 'img/partners/partner_logo_4.png'  %}" alt="">
                   </a>
                 </div>
                 <div class="col-lg-3 col-6">
                   <a href="#">
-                    <img src="static/img/partners/partner_logo_5.png" alt="">
+                    <img src="{%  static 'img/partners/partner_logo_5.png'  %}" alt="">
                   </a>
                 </div>
                 <div class="col-lg-3 col-6">
                   <a href="#">
-                    <img src="static/img/partners/partner_logo_6.png" alt="">
+                    <img src="{%  static 'img/partners/partner_logo_6.png'  %}" alt="">
                   </a>
                 </div>
                 <div class="col-lg-3 col-6">
                   <a href="#">
-                    <img src="static/img/partners/partner_logo_7.png" alt="">
+                    <img src="{%  static 'img/partners/partner_logo_7.png'  %}" alt="">
                   </a>
                 </div>
                 <div class="col-lg-3 col-6">
                   <a href="#">
-                    <img src="static/img/partners/partner_logo_8.png" alt="">
+                    <img src="{%  static 'img/partners/partner_logo_8.png'  %}" alt="">
                   </a>
                 </div>
               </div>
             </div>
           </div>
-        </div> 
+        </div>
       </section> <!-- end cta / partners -->
 
 
@@ -370,9 +386,12 @@
                     </a>
                   </div>
                   <div class="socials mt-32">
-                    <a href="#" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank"><i class="ui-twitter"></i></a>
-                    <a href="#" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank"><i class="ui-facebook"></i></a>
-                    <a href="#" class="social social-google-plus" aria-label="google plus" title="google plus" target="_blank"><i class="ui-google"></i></a>
+                    <a href="#" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank"><i
+                        class="ui-twitter"></i></a>
+                    <a href="#" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank"><i
+                        class="ui-facebook"></i></a>
+                    <a href="#" class="social social-google-plus" aria-label="google plus" title="google plus"
+                      target="_blank"><i class="ui-google"></i></a>
                   </div>
                 </div>
               </div> <!-- end about us -->
@@ -396,7 +415,9 @@
                 <div class="widget widget-address">
                   <h5 class="widget-title">Company</h5>
                   <ul>
-                    <li><address>8910 University Center Lane Suite 620 San Diego, CA 92102</address></li>
+                    <li>
+                      <address>8910 University Center Lane Suite 620 San Diego, CA 92102</address>
+                    </li>
                     <li>
                       <span>Phone: </span>
                       <a href="tel:+63-995-3959">+63-995-3959</a>
@@ -407,15 +428,15 @@
                     </li>
                   </ul>
                 </div>
-              </div>           
+              </div>
 
             </div>
-          </div>    
+          </div>
         </div> <!-- end container -->
 
         <div class="footer__bottom">
           <div class="container">
-            <div class="row">              
+            <div class="row">
               <div class="col-lg-6">
                 <div class="widget widget_nav_menu">
                   <ul>
@@ -432,7 +453,7 @@
                   &copy; 2019 Casumi, Made by <a href="https://deothemes.com/">DeoThemes</a>
                 </span>
               </div>
-            </div>            
+            </div>
           </div>
         </div> <!-- end footer bottom -->
       </footer> <!-- end footer -->
@@ -443,19 +464,20 @@
 
     </div> <!-- end content wrapper -->
   </main> <!-- end main wrapper -->
-  
 
- <!-- jQuery Scripts -->
-  <script src="{% static 'js/jquery.min.js' %}"></script> 
+
+  <!-- jQuery Scripts -->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'js/plugins.js' %}"></script> 
-  <script src="{% static 'js/scripts.js' %}"></script> 
+  <script src="{% static 'js/plugins.js' %}"></script>
+  <script src="{% static 'js/scripts.js' %}"></script>
 
   <!-- Cookies -->
-  <script src="{% static 'js/plugins/cookieconsent.min.js' %}"></script> 
-  <script src="{% static 'js/cookies.js' %}"></script> 
-    
+  <script src="{% static 'js/plugins/cookieconsent.min.js' %}"></script>
+  <script src="{% static 'js/cookies.js' %}"></script>
+
 </body>
 
 <!-- Mirrored from www.udan.world/services.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Jul 2024 19:56:29 GMT -->
+
 </html>
