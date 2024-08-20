@@ -16,6 +16,12 @@
   <!-- Google Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Merriweather:300,400,700%7CBarlow:400,400i,600,700'
     rel='stylesheet'>
+	
+  
+  <!-- Font awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+		integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Css -->
   <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
@@ -32,7 +38,7 @@
 </head>
 
 <body>
-
+  {% include 'overlays.html' %}
   <!-- Preloader -->
   <div class="loader-mask">
     <div class="loader">
@@ -51,17 +57,17 @@
             <!-- Search form -->
             <form role="search" method="get" class="nav__search-form">
               <input type="search" class="nav__search-input" id="nav__search-input" placeholder="Type &amp; Hit Enter">
-              <i class="ui-close nav__search-close" id="nav__search-close"></i>
+              <i class="fa-solid fa-search nav__search-close" id="nav__search-close"></i>
             </form>
 
             <div class="nav__header">
               <!-- Logo -->
-              <div class="navbar_left_white">
-                <a href="index.html" class="logo-container">
-                  <h3>Casumi</h3>
-                  <h6>Consultancy_</h6>
-                </a>
-              </div>
+             <div class="navbar_left_white">
+               <a href="{% url 'index' %}" class="logo-container">
+                 <h3>Casumi</h3>
+                 <h6>Consultancy_</h6>
+               </a>
+             </div>
 
               <!-- Mobile toggle -->
               <button type="button" class="nav__icon-toggle" id="nav__icon-toggle" data-toggle="collapse"
@@ -77,49 +83,50 @@
             <nav id="navbar-collapse" class="nav__wrap collapse navbar-collapse nav--align-right">
               <ul class="nav__menu">
                 <li class="nav__dropdown active">
-                  <a href="index.html" aria-haspopup="true">Home</a>
-                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
+                  <a href="#" aria-haspopup="true">Home</a>
+                  <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
                     aria-expanded="false"></i>
                   <ul class="nav__dropdown-menu">
-                    <li><a href="index.html">Home 1</a></li>
-                    <li><a href="index-2.html">Home 2</a></li>
+                    <li><a href="{% url 'index' %}">Home 1</a></li>
+                    <li><a href="{% url 'home2' %}">Home 2</a></li>
+
                   </ul>
                 </li>
                 <li class="nav__dropdown">
                   <a href="#" aria-haspopup="true">Pages</a>
-                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
+                  <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
                     aria-expanded="false"></i>
                   <ul class="nav__dropdown-menu">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="404.html">404</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'pricing' %}">Pricing</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url '404' %}">404</a></li>
                   </ul>
                 </li>
-                <li class="nav__dropdown">
+                <!-- <li class="nav__dropdown">
                   <a href="blog.html" aria-haspopup="true">Features</a>
-                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
+                  <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
                     aria-expanded="false"></i>
                   <ul class="nav__dropdown-menu">
                     <li><a href="icons.html">Icons</a></li>
                     <li><a href="elements.html">Elements</a></li>
                   </ul>
-                </li>
+                </li> -->
                 <li class="nav__dropdown">
-                  <a href="blog.html" aria-haspopup="true">Blog</a>
-                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
+                  <a href="#" aria-haspopup="true">Blog</a>
+                  <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
                     aria-expanded="false"></i>
                   <ul class="nav__dropdown-menu">
-                    <li><a href="blog.html">Blog Standard</a></li>
-                    <li><a href="blog-masonry.html">Blog Masonry</a></li>
+                    <li><a href="{% url 'blog' %}">Blog Standard</a></li>
+                    <li><a href="{% url 'blog-m' %}">Blog Masonry</a></li>
                     <li class="nav__dropdown">
-                      <a href="single-post-1.html" aria-haspopup="true">Single Post</a>
-                      <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
+                      <a href="#" aria-haspopup="true">Single Post</a>
+                      <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
                         aria-expanded="false"></i>
                       <ul class="nav__dropdown-menu">
-                        <li><a href="single-post-1.html">Fullwidth</a></li>
-                        <li><a href="single-post-2.html">With Sidebar</a></li>
+                        <li><a href="{% url 'single-p1' %}">Single post 1</a></li>
+                        <li><a href="{% url 'single-p2' %}">Single post 2</a></li>
                       </ul>
                     </li>
                   </ul>
@@ -131,7 +138,7 @@
 
               <!-- Mobile Phone -->
               <div class="nav__phone-mobile d-lg-none">
-                <a href="tel:+63-995-3959" class="nav__phone-number">+63-995-3959</a>
+                <a href="https://wa.me/+63-995-3959" target="_blank" class="nav__phone-number">+63-995-3959</a>
               </div>
 
 
@@ -139,15 +146,19 @@
               <div class="nav__search-mobile d-lg-none">
                 <form role="search" method="get" class="search-form relative">
                   <input type="search" class="search-input" placeholder="Search" />
-                  <button type="submit" class="search-button" aria-label="search button"><i
-                      class="ui-search search-icon"></i></button>
+                  <button type="submit" class="search-button" aria-label="search button">
+                    <i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
               </div>
 
             </nav> <!-- end nav-wrap -->
 
-
-            <!-- Nav Right -->
+                 <!-- Nav Right -->
+                 <div class="login-register">
+                  <button id="login" class="login">Log in</button>
+                  <button id="signup" class="signup">Sign Up</button>
+                </div>
+                
             <div class="nav__right d-none d-lg-flex">
               <div class="nav__right-item">
                 <a href="tel:+63-995-3959" class="nav__phone-number">+63-995-3959</a>
@@ -156,7 +167,7 @@
               <!-- Search -->
               <div class="nav__right-item nav__search">
                 <a href="#" class="nav__search-trigger" id="nav__search-trigger">
-                  <i class="ui-search"></i>
+                  <i class="fa-solid fa-magnifying-glass"></i>
                 </a>
               </div>
 
@@ -195,48 +206,48 @@
           <div class="row">
 
             <div class="col-lg-4">
-              <a href="#" class="service box-shadow hover-line hover-down">
-                <i class="service__icon o-business-report-1"></i>
+              <a href="{% url 'services' %}" class="service box-shadow hover-line hover-down">
+                <i class="fa-solid fa-chart-line service__icon"></i>
                 <h4 class="service__title">Strategy & Planning</h4>
                 <p class="service__text">We also provide tangible results and measurable long-term value business.</p>
               </a>
             </div>
 
             <div class="col-lg-4">
-              <a href="#" class="service box-shadow hover-line hover-down">
-                <i class="service__icon o-sales-performance-up-1"></i>
+              <a href="{% url 'services' %}" class="service box-shadow hover-line hover-down">
+                <i class="fa-solid fa-tv service__icon"></i>
                 <h4 class="service__title">Finance Services</h4>
                 <p class="service__text">We also provide tangible results and measurable long-term value business.</p>
               </a>
             </div>
 
             <div class="col-lg-4">
-              <a href="#" class="service box-shadow hover-line hover-down">
-                <i class="service__icon o-social-1"></i>
+              <a href="{% url 'services' %}" class="service box-shadow hover-line hover-down">
+                <i class="fa-solid fa-people-group service__icon"></i>
                 <h4 class="service__title">Management</h4>
                 <p class="service__text">We also provide tangible results and measurable long-term value business.</p>
               </a>
             </div>
 
             <div class="col-lg-4">
-              <a href="#" class="service box-shadow hover-line hover-down">
-                <i class="service__icon o-synced-book-1"></i>
+              <a href="{% url 'services' %}" class="service box-shadow hover-line hover-down">
+                <i class="fa-solid fa-chart-simple service__icon"></i>
                 <h4 class="service__title">Audit and Evaluation</h4>
                 <p class="service__text">We also provide tangible results and measurable long-term value business.</p>
               </a>
             </div>
 
             <div class="col-lg-4">
-              <a href="#" class="service box-shadow hover-line hover-down">
-                <i class="service__icon o-special-price-1"></i>
+              <a href="{% url 'services' %}" class="service box-shadow hover-line hover-down">
+                <i class="fa-solid fa-arrow-trend-up service__icon"></i>
                 <h4 class="service__title">Taxes Management</h4>
                 <p class="service__text">We also provide tangible results and measurable long-term value business.</p>
               </a>
             </div>
 
             <div class="col-lg-4">
-              <a href="#" class="service box-shadow hover-line hover-down">
-                <i class="service__icon o-health-1"></i>
+              <a href="{% url 'services' %}" class="service box-shadow hover-line hover-down">
+                <i class="fa-solid fa-file-waveform service__icon"></i>
                 <h4 class="service__title">Insurance Services</h4>
                 <p class="service__text">We also provide tangible results and measurable long-term value business.</p>
               </a>
@@ -319,47 +330,47 @@
               <h3 class="call-to-action__title mb-40">
                 Hundreds of businesses already trust us. Ready to start?
               </h3>
-              <a href="#" class="btn btn--lg btn--color">
+              <a href="{% url 'contact' %}" class="btn btn--lg btn--color">
                 <span>Contact Us</span>
               </a>
               <div class="row mt-72">
                 <div class="col-lg-3 col-6">
-                  <a href="#">
+                  <a href="{% url 'about' %}">
                     <img src="{%  static 'img/partners/partner_logo_1.png'  %}" alt="">
                   </a>
                 </div>
                 <div class="col-lg-3 col-6">
-                  <a href="#">
+                  <a href="{% url 'about' %}">
                     <img src="{%  static 'img/partners/partner_logo_2.png'  %}" alt="">
                   </a>
                 </div>
                 <div class="col-lg-3 col-6">
-                  <a href="#">
+                  <a href="{% url 'about' %}">
                     <img src="{%  static 'img/partners/partner_logo_3.png'  %}" alt="">
                   </a>
                 </div>
                 <div class="col-lg-3 col-6">
-                  <a href="#">
+                  <a href="{% url 'about' %}">
                     <img src="{%  static 'img/partners/partner_logo_4.png'  %}" alt="">
                   </a>
                 </div>
                 <div class="col-lg-3 col-6">
-                  <a href="#">
+                  <a href="{% url 'about' %}">
                     <img src="{%  static 'img/partners/partner_logo_5.png'  %}" alt="">
                   </a>
                 </div>
                 <div class="col-lg-3 col-6">
-                  <a href="#">
+                  <a href="{% url 'about' %}">
                     <img src="{%  static 'img/partners/partner_logo_6.png'  %}" alt="">
                   </a>
                 </div>
                 <div class="col-lg-3 col-6">
-                  <a href="#">
+                  <a href="{% url 'about' %}">
                     <img src="{%  static 'img/partners/partner_logo_7.png'  %}" alt="">
                   </a>
                 </div>
                 <div class="col-lg-3 col-6">
-                  <a href="#">
+                  <a href="{% url 'about' %}">
                     <img src="{%  static 'img/partners/partner_logo_8.png'  %}" alt="">
                   </a>
                 </div>
@@ -380,18 +391,18 @@
                 <div class="widget widget-about-us">
                   <!-- Logo -->
                   <div class="navbar_left_black">
-                    <a href="index.html" class="logo-container">
+                    <a href="{% url 'index' %}" class="logo-container">
                       <h3>Casumi</h3>
                       <h6>Consultancy_</h6>
                     </a>
                   </div>
                   <div class="socials mt-32">
-                    <a href="#" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank"><i
-                        class="ui-twitter"></i></a>
-                    <a href="#" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank"><i
-                        class="ui-facebook"></i></a>
-                    <a href="#" class="social social-google-plus" aria-label="google plus" title="google plus"
-                      target="_blank"><i class="ui-google"></i></a>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fconsultancy_uk" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank">
+                      <i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.facebook.com/groups/managementconsultingforum/" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank">
+                      <i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://support.google.com/business/answer/6300665?hl=en" class="social social-google-plus" aria-label="google plus" title="google plus"
+                      target="_blank"><i class="fa-brands fa-google-plus-g"></i></a>
                   </div>
                 </div>
               </div> <!-- end about us -->
@@ -401,11 +412,11 @@
                 <div class="widget widget_nav_menu">
                   <h5 class="widget-title">Solutions</h5>
                   <ul>
-                    <li><a href="#">Finance Strategy</a></li>
-                    <li><a href="#">Advertising</a></li>
-                    <li><a href="#">SMM</a></li>
-                    <li><a href="#">SEO</a></li>
-                    <li><a href="#">Google AdWords</a></li>
+                    <li><a href="{% url 'contact' %}">Finance Strategy</a></li>
+                    <li><a href="{% url 'contact' %}">Advertising</a></li>
+                    <li><a href="{% url 'contact' %}">SMM</a></li>
+                    <li><a href="{% url 'contact' %}">SEO</a></li>
+                    <li><a href="{% url 'contact' %}">Google AdWords</a></li>
                   </ul>
                 </div>
               </div>
@@ -440,11 +451,11 @@
               <div class="col-lg-6">
                 <div class="widget widget_nav_menu">
                   <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'pricing' %}">Pricing</a></li>
+                    <li><a href="{% url 'blog' %}">Blog</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
                   </ul>
                 </div>
               </div>
@@ -459,7 +470,7 @@
       </footer> <!-- end footer -->
 
       <div id="back-to-top">
-        <a href="#top"><i class="ui-arrow-up"></i></a>
+        <a href="#top"><i class="fa-solid fa-angles-up"></i></a>
       </div>
 
     </div> <!-- end content wrapper -->
@@ -467,6 +478,7 @@
 
 
   <!-- jQuery Scripts -->
+  <script src="{% static 'js/overlay.js' %}"></script>
   <script src="{% static 'js/jquery.min.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
   <script src="{% static 'js/plugins.js' %}"></script>

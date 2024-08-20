@@ -1,5 +1,7 @@
 var DEOTHEMES = DEOTHEMES || {};
 
+
+
 (function($){
 	"use strict";
 
@@ -182,6 +184,8 @@ var DEOTHEMES = DEOTHEMES || {};
 			});
 
 		},
+
+		
 
 		mobileNavigation: function() {
 			var $navDropdown = $('.nav__dropdown');

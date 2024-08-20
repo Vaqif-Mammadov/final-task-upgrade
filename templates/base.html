@@ -4,6 +4,147 @@
 <html lang="en">
 
 <!-- Mirrored from www.udan.world/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Jul 2024 19:53:25 GMT -->
+<!-- Preloader -->
+{% include 'overlays.html' %}
+<div class="loader-mask">
+  <div class="loader">
+    "Loading..."
+  </div>
+</div>
+
+<main class="main-wrapper">
+
+  <!-- Navigation -->
+  <header class="nav nav--transparentk">
+    <div class="nav__holder nav--sticky">
+      <div class="container-fluid container-semi-fluid nav__container">
+        <div class="flex-parent">
+
+          <!-- Search form -->
+          <form role="search" method="get" class="nav__search-form">
+            <input type="search" class="nav__search-input" id="nav__search-input" placeholder="Type &amp; Hit Enter">
+            <i class="fa-solid fa-search nav__search-close" id="nav__search-close"></i>
+          </form>
+
+          <div class="nav__header">
+            <!-- Logo -->
+           <div class="navbar_left_black">
+             <a href="{% url 'index' %}" class="logo-container">
+               <h3>Casumi</h3>
+               <h6>Consultancy_</h6>
+             </a>
+           </div>
+            <!-- Mobile toggle -->
+            <button type="button" class="nav__icon-toggle" id="nav__icon-toggle" data-toggle="collapse"
+              data-target="#navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="nav__icon-toggle-bar"></span>
+              <span class="nav__icon-toggle-bar"></span>
+              <span class="nav__icon-toggle-bar"></span>
+            </button>
+          </div>
+
+          <!-- Navbar -->
+          <nav id="navbar-collapse" class="nav__wrap collapse navbar-collapse nav--align-right">
+            <ul class="nav__menu">
+              <li class="nav__dropdown active">
+                <a href="#" aria-haspopup="true">Home</a>
+                <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
+                  aria-expanded="false"></i>
+                <ul class="nav__dropdown-menu">
+                  <li><a href="{% url 'index' %}">Home 1</a></li>
+                  <li><a href="{% url 'home2' %}">Home 2</a></li>
+
+                </ul>
+              </li>
+              <li class="nav__dropdown">
+                <a href="#" aria-haspopup="true">Pages</a>
+                <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
+                  aria-expanded="false"></i>
+                <ul class="nav__dropdown-menu">
+                  <li><a href="{% url 'about' %}">About</a></li>
+                  <li><a href="{% url 'services' %}">Services</a></li>
+                  <li><a href="{% url 'pricing' %}">Pricing</a></li>
+                  <li><a href="{% url 'contact' %}">Contact</a></li>
+                  <li><a href="{% url '404' %}">404</a></li>
+                </ul>
+              </li>
+              <!-- <li class="nav__dropdown">
+                <a href="blog.html" aria-haspopup="true">Features</a>
+                <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
+                  aria-expanded="false"></i>
+                <ul class="nav__dropdown-menu">
+                  <li><a href="icons.html">Icons</a></li>
+                  <li><a href="elements.html">Elements</a></li>
+                </ul>
+              </li> -->
+              <li class="nav__dropdown">
+                <a href="#" aria-haspopup="true">Blog</a>
+                <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
+                  aria-expanded="false"></i>
+                <ul class="nav__dropdown-menu">
+                  <li><a href="{% url 'blog' %}">Blog Standard</a></li>
+                  <li><a href="{% url 'blog-m' %}">Blog Masonry</a></li>
+                  <li class="nav__dropdown">
+                    <a href="#" aria-haspopup="true">Single Post</a>
+                    <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
+                      aria-expanded="false"></i>
+                    <ul class="nav__dropdown-menu">
+                      <li><a href="{% url 'single-p1' %}">Single post 1</a></li>
+                      <li><a href="{% url 'single-p2' %}">Single post 2</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Purchase</a>
+              </li>
+            </ul> <!-- end menu -->
+
+            <!-- Mobile Phone -->
+            <div class="nav__phone-mobile d-lg-none">
+              <a href="https://wa.me/+63-995-3959" target="_blank" class="nav__phone-number">+63-995-3959</a>
+            </div>
+
+
+            <!-- Mobile Search -->
+            <div class="nav__search-mobile d-lg-none">
+              <form role="search" method="get" class="search-form relative">
+                <input type="search" class="search-input" placeholder="Search" />
+                <button type="submit" class="search-button" aria-label="search button">
+                  <i class="fa-solid fa-magnifying-glass"></i></button>
+              </form>
+            </div>
+
+          </nav> <!-- end nav-wrap -->
+
+
+               <!-- Nav Right -->
+               <div class="login-register">
+                <button id="login" class="login">Log in</button>
+                <button id="signup" class="signup">Sign Up</button>
+              </div>
+              
+          <div class="nav__right d-none d-lg-flex">
+            <div class="nav__right-item">
+              <a href="tel:+63-995-3959" class="nav__phone-number">+63-995-3959</a>
+            </div>
+
+            <!-- Search -->
+            <div class="nav__right-item nav__search">
+              <a href="#" class="nav__search-trigger" id="nav__search-trigger">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </a>
+            </div>
+
+          </div> <!-- end nav right -->
+
+        </div> <!-- end flex-parent -->
+      </div> <!-- end container -->
+
+    </div>
+  </header> <!-- end navigation -->
+</main>
 
 <head>
   <title>Casumi | Consulting Finance HTML Template</title>
@@ -28,262 +169,130 @@
   <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.html' %}">
   <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/apple-touch-icon-72x72.png' %}">
   <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/apple-touch-icon-114x114.png' %}">
-  <body>
-
-</head>
 
 <body>
+
+  </head>
+
+  <body>
+
     {% block navbar %}
 
     {% endblock %}
-        
-    
+
+
     {% block body %}
-        
+
     {% endblock %}
-  <!-- Preloader -->
-  <div class="loader-mask">
-    <div class="loader">
-      "Loading..."
-    </div>
-  </div>
+    <!-- Preloader -->
 
-  <main class="main-wrapper">
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__widgets">
+          <div class="row">
 
-    <!-- Navigation -->
-    <header class="nav">
-      <div class="nav__holder nav--sticky">
-        <div class="container-fluid container-semi-fluid nav__container">
-          <div class="flex-parent">
-
-            <!-- Search form -->
-            <form role="search" method="get" class="nav__search-form">
-              <input type="search" class="nav__search-input" id="nav__search-input" placeholder="Type &amp; Hit Enter">
-              <i class="ui-close nav__search-close" id="nav__search-close"></i>
-            </form>
-
-            <div class="nav__header">
-              <div class="navbar_left_black">
-                <a href="index.html" class="logo-container">
-                  <h3>Casumi</h3>
-                  <h6>Consultancy_</h6>
-                </a>
+            <div class="col-lg-3 col-md-6">
+              <div class="widget widget-about-us">
+                <!-- Logo -->
+                <div class="navbar_left_black">
+                  <a href="{% url 'index' %}" class="logo-container">
+                    <h3>Casumi</h3>
+                    <h6>Consultancy_</h6>
+                  </a>
+                </div>
+                <div class="socials mt-32">
+                  <a href="https://x.com/i/flow/login?redirect_after_login=%2Fconsultancy_uk" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank">
+                    <i class="fa-brands fa-x-twitter"></i></a>
+                  <a href="https://www.facebook.com/groups/managementconsultingforum/" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank">
+                    <i class="fa-brands fa-facebook-f"></i></a>
+                  <a href="https://support.google.com/business/answer/6300665?hl=en" class="social social-google-plus" aria-label="google plus" title="google plus"
+                    target="_blank"><i class="fa-brands fa-google-plus-g"></i></a>
+                </div>
               </div>
+            </div> <!-- end about us -->
 
-              <!-- Mobile toggle -->
-              <button type="button" class="nav__icon-toggle" id="nav__icon-toggle" data-toggle="collapse"
-                data-target="#navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="nav__icon-toggle-bar"></span>
-                <span class="nav__icon-toggle-bar"></span>
-                <span class="nav__icon-toggle-bar"></span>
-              </button>
+
+            <div class="col-lg-3 offset-lg-3 col-md-6">
+              <div class="widget widget_nav_menu">
+                <h5 class="widget-title">Solutions</h5>
+                <ul>
+                  <li><a href="{% url 'contact' %}">Finance Strategy</a></li>
+                  <li><a href="{% url 'contact' %}">Advertising</a></li>
+                  <li><a href="{% url 'contact' %}">SMM</a></li>
+                  <li><a href="{% url 'contact' %}">SEO</a></li>
+                  <li><a href="{% url 'contact' %}">Google AdWords</a></li>
+                </ul>
             </div>
 
-            <!-- Navbar -->
-            <nav id="navbar-collapse" class="nav__wrap collapse navbar-collapse nav--align-right">
-              <ul class="nav__menu">
-                <li class="nav__dropdown active">
-                  <a href="index.html" aria-haspopup="true">Home</a>
-                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
-                    aria-expanded="false"></i>
-                  <ul class="nav__dropdown-menu">
-                    <li><a href="index.html">Home 1</a></li>
-                    <li><a href="index-2.html">Home 2</a></li>
-                  </ul>
-                </li>
-                <li class="nav__dropdown">
-                  <a href="#" aria-haspopup="true">Pages</a>
-                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
-                    aria-expanded="false"></i>
-                  <ul class="nav__dropdown-menu">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="404.html">404</a></li>
-                  </ul>
-                </li>
-                <li class="nav__dropdown">
-                  <a href="blog.html" aria-haspopup="true">Features</a>
-                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
-                    aria-expanded="false"></i>
-                  <ul class="nav__dropdown-menu">
-                    <li><a href="icons.html">Icons</a></li>
-                    <li><a href="elements.html">Elements</a></li>
-                  </ul>
-                </li>
-                <li class="nav__dropdown">
-                  <a href="blog.html" aria-haspopup="true">Blog</a>
-                  <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
-                    aria-expanded="false"></i>
-                  <ul class="nav__dropdown-menu">
-                    <li><a href="blog.html">Blog Standard</a></li>
-                    <li><a href="blog-masonry.html">Blog Masonry</a></li>
-                    <li class="nav__dropdown">
-                      <a href="single-post-1.html" aria-haspopup="true">Single Post</a>
-                      <i class="ui-arrow-down nav__dropdown-trigger" role="button" aria-haspopup="true"
-                        aria-expanded="false"></i>
-                      <ul class="nav__dropdown-menu">
-                        <li><a href="single-post-1.html">Fullwidth</a></li>
-                        <li><a href="single-post-2.html">With Sidebar</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#">Purchase</a>
-                </li>
-              </ul> <!-- end menu -->
 
-              <!-- Mobile Phone -->
-              <div class="nav__phone-mobile d-lg-none">
-                <a href="https://wa.me/+63-995-3959" target="_blank" class="nav__phone-number">+63-995-3959</a>
+            <div class="col-lg-3 col-md-6">
+              <div class="widget widget-address">
+                <h5 class="widget-title">Company</h5>
+                <ul>
+                  <li>
+                    <address>8910 University Center Lane Suite 620 San Diego, CA 92102</address>
+                  </li>
+                  <li>
+                    <span>Phone: </span>
+                    <a href="tel:+63-995-3959">+63-995-3959</a>
+                  </li>
+                  <li>
+                    <span>Email: </span>
+                    <a href="mailto:hi@margin.com">hi@margin.com</a>
+                  </li>
+                </ul>
               </div>
+            </div>
 
+          </div>
+        </div>
+      </div> <!-- end container -->
 
-              <!-- Mobile Search -->
-              <div class="nav__search-mobile d-lg-none">
-                <form role="search" method="get" class="search-form relative">
-                  <input type="search" class="search-input" placeholder="Search" />
-                  <button type="submit" class="search-button" aria-label="search button"><i
-                      class="ui-search search-icon"></i></button>
-                </form>
-              </div>
-
-            </nav> <!-- end nav-wrap -->
-
-
-            <!-- Nav Right -->
-            <div class="nav__right d-none d-lg-flex">
-              <div class="nav__right-item">
-                <a href="https://wa.me/+63-995-3959" target="_blank" class="nav__phone-number">+63-995-3959</a>
-              </div>
-
-              <!-- Search -->
-              <div class="nav__right-item nav__search">
-                <a href="#" class="nav__search-trigger" id="nav__search-trigger">
-                  <i class="ui-search"></i>
-                </a>
-              </div>
-
-            </div> <!-- end nav right -->
-
-          </div> <!-- end flex-parent -->
-        </div> <!-- end container -->
-
-      </div>
-    </header> <!-- end navigation -->
-
-
-      
-      <!-- Footer -->
-      <footer class="footer">
+      <div class="footer__bottom">
         <div class="container">
-          <div class="footer__widgets">
-            <div class="row">
-
-              <div class="col-lg-3 col-md-6">
-                <div class="widget widget-about-us">
-                  <!-- Logo -->
-                  <div class="navbar_left_black">
-                    <a href="index.html" class="logo-container">
-                      <h3>Casumi</h3>
-                      <h6>Consultancy_</h6>
-                    </a>
-                  </div>
-                  <div class="socials mt-32">
-                    <a href="#" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank"><i
-                        class="ui-twitter"></i></a>
-                    <a href="#" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank"><i
-                        class="ui-facebook"></i></a>
-                    <a href="#" class="social social-google-plus" aria-label="google plus" title="google plus"
-                      target="_blank"><i class="ui-google"></i></a>
-                  </div>
-                </div>
-              </div> <!-- end about us -->
-
-
-              <div class="col-lg-3 offset-lg-3 col-md-6">
-                <div class="widget widget_nav_menu">
-                  <h5 class="widget-title">Solutions</h5>
-                  <ul>
-                    <li><a href="#">Finance Strategy</a></li>
-                    <li><a href="#">Advertising</a></li>
-                    <li><a href="#">SMM</a></li>
-                    <li><a href="#">SEO</a></li>
-                    <li><a href="#">Google AdWords</a></li>
-                  </ul>
-                </div>
-              </div>
-
-
-              <div class="col-lg-3 col-md-6">
-                <div class="widget widget-address">
-                  <h5 class="widget-title">Company</h5>
-                  <ul>
-                    <li>
-                      <address>8910 University Center Lane Suite 620 San Diego, CA 92102</address>
-                    </li>
-                    <li>
-                      <span>Phone: </span>
-                      <a href="tel:+63-995-3959">+63-995-3959</a>
-                    </li>
-                    <li>
-                      <span>Email: </span>
-                      <a href="mailto:hi@margin.com">hi@margin.com</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div> <!-- end container -->
-
-        <div class="footer__bottom">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="widget widget_nav_menu">
-                  <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-lg-6 text-right text-md-center">
-                <span class="copyright">
-                  &copy; 2019 Casumi, Made by <a href="https://deothemes.com/">DeoThemes</a>
-                </span>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="widget widget_nav_menu">
+                <ul>
+                  <li><a href="{% url 'about' %}">About</a></li>
+                  <li><a href="{% url 'services' %}">Services</a></li>
+                  <li><a href="{% url 'pricing' %}">Pricing</a></li>
+                  <li><a href="{% url 'blog' %}">Blog</a></li>
+                  <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
               </div>
             </div>
+            <div class="col-lg-6 text-right text-md-center">
+              <span class="copyright">
+                &copy; 2019 Casumi, Made by <a href="https://deothemes.com/">DeoThemes</a>
+              </span>
+            </div>
           </div>
-        </div> <!-- end footer bottom -->
-      </footer> <!-- end footer -->
+        </div>
+      </div> <!-- end footer bottom -->
+    </footer> <!-- end footer -->
 
-      <div id="back-to-top">
-        <a href="#top"><i class="ui-arrow-up"></i></a>
-      </div>
+    <div id="back-to-top">
+      <a href="#top"><i class="fa-solid fa-angles-up"></i></a>
+    </div>
 
-  </main> <!-- end main wrapper -->
+    </main> <!-- end main wrapper -->
 
 
-  <!-- jQuery Scripts -->
-  <script src="{% static 'js/jquery.min.js' %}"></script> 
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'js/plugins.js' %}"></script> 
-  <script src="{% static 'js/scripts.js' %}"></script> 
+    <!-- jQuery Scripts -->
+    <script src="{% static 'js/overlay.js' %}"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
 
-  <!-- Cookies -->
-  <script src="{% static 'js/plugins/cookieconsent.min.js' %}"></script> 
-  <script src="{% static 'js/cookies.js' %}"></script> 
+    <!-- Cookies -->
+    <script src="{% static 'js/plugins/cookieconsent.min.js' %}"></script>
+    <script src="{% static 'js/cookies.js' %}"></script>
 
-</body>
+  </body>
 
-<!-- Mirrored from www.udan.world/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Jul 2024 19:55:25 GMT -->
+  <!-- Mirrored from www.udan.world/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Jul 2024 19:55:25 GMT -->
 
 </html>
