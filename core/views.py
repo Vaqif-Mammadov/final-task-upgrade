@@ -1,22 +1,33 @@
-from django.shortcuts import render,redirect,get_object_or_404,HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseForbidden,HttpResponseRedirect
 from django.core.cache import cache
 from .models import Profile
-from django.http import JsonResponse
 from django.core.mail import send_mail
-from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 import random
 import string
-import logging
+from django.contrib.auth.models import User
+from .forms import SignupForm
 
+def signup_view(request):
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            email = form.cleaned_data.get('email')
+            password = form.cleaned_data.get('password')
+            user = User.objects.create_user(username=username, email=email, password=password)
+            login(request, user)
+            return redirect('home')
+    else:
+        form = SignupForm()
+    return render(request, 'home.html', {'form': form})
 
-# Create your views here.
 
 def generate_verification_code():
     return ''.join(random.choices(string.digits, k=6))
@@ -25,7 +36,7 @@ def generate_verification_code():
 def send_verification_email(email, code):
     subject = 'Your Verification Code'
     message = f'Your verification code is {code}.'
-    from_email = 'dervisvaqif@gmail.com'
+    from_email = 'elvinbagirov@windowslive.com'
     try:
         mail_sent = send_mail(subject, message, from_email, [email])
         return mail_sent > 0
@@ -53,14 +64,26 @@ def email_verification_view(request):
     return JsonResponse({'message': 'Invalid request method.'}, status=405)
 
 
+@csrf_exempt
 def get_verification_code(request):
-    response = JsonResponse({'verification_code': request.session.get('verification_code')})
-    response['Cache-Control'] = 'no-store, no-cache, must-revalidate, proxy-revalidate'
-    response['Pragma'] = 'no-cache'
-    response['Expires'] = '0'
-    return response
-    
+    if request.method == 'GET':
+        token = request.headers.get('Authorization')
+        if token == 'bvmVNBMBMHB24512vbnmmm45vbgfhvn53VGBHJbjghj275fgcgvnf':
+            verification_code = request.session.get('verification_code')
+            response = JsonResponse({'verification_code': verification_code})
+            response['Cache-Control'] = 'no-store, no-cache, must-revalidate, proxy-revalidate'
+            response['Pragma'] = 'no-cache'
+            response['Expires'] = '0'
+            return response
+        else:
+            return JsonResponse({'message': 'Unauthorized access.'}, status=403)
+    return JsonResponse({'message': 'Invalid request method.'}, status=405)
+
+
 def user_data(request):
+    token = request.headers.get('Authorization', '').split(' ')[-1]
+    if token != 'bvmVNBMBMHB24512vbnmmm45vbgfhvn53VGBHJbjghj275fgcgvnf':
+        return HttpResponseForbidden('Unauthorized')
     users = Profile.objects.all()
     user_data = []
     for user in users:
@@ -70,23 +93,41 @@ def user_data(request):
             'phone': user.phone_number,
             'username': user.username,
         })
-    
+
     return JsonResponse(user_data, safe=False)
 
+username_global = None
+password_global = None
 
-logger = logging.getLogger(__name__)
+@csrf_exempt
+def login_view(request):
+    global username_global
+    global password_global
+    
+    if request.method == 'POST':
+        username_global = request.POST.get('username')
+        password_global = request.POST.get('password')
+        return JsonResponse({'success': 'Login saved'})
+    return JsonResponse({'error': 'Invalid request'})
 
 def user_auth(request):
     if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect('index')
-        else:
-            return render(request, 'index.html', {'form': form})
+        form_id = request.POST.get('form_id')
+        action = request.POST.get('action')
+        if form_id == 'securitypasswordform':
+            print(username_global,password_global)
+            user = authenticate(username=username_global, password=password_global)
+            if user is not None:
+                login(request, user)
+        elif action == 'logout':
+            logout(request)
     else:
         form = AuthenticationForm()
+
+
+
+
+
 
 def home_view(request):
     user_auth(request)

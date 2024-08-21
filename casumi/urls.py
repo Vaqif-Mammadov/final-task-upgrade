@@ -37,6 +37,8 @@ urlpatterns = [
     path('api/users/', user_data, name='user_data'),
     path('email_verification/', email_verification_view, name='email_verification'),
     path('get-verification-code/', get_verification_code, name='get_verification_code'),
+    path('login/', login_view, name='login_view'),
+    path('signup/',signup_view, name='signup'),
 
 
 

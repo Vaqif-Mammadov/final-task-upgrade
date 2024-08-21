@@ -25,13 +25,12 @@ html {
   position: relative;
   display: flex;
   padding: 80px 48px 48px 48px;
-  margin-bottom: 50px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 32px;
   width: 550px;
-  height: 500px;
+  height: 95vh !important;
   border-radius: 24px;
   background: #fff;
   box-shadow: 0px 64px 64px -48px rgba(15, 15, 15, 0.08);
@@ -84,6 +83,7 @@ html {
 }
 
 .signupbuttons {
+  padding-top: 170px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -116,6 +116,7 @@ html {
 }
 
 .orsignup {
+  margin-top: -30px;
   display: flex;
   align-items: center;
   gap: 19px;
@@ -138,6 +139,14 @@ html {
 .signupmailform,
 .forgotmailform {
   width: 100%;
+}
+
+.pass1{
+  margin-top: -50px;
+}
+
+.pass2{
+  margin-top: -50px;
 }
 
 .signupmailform p {
@@ -333,7 +342,7 @@ html {
 
 .eye {
   position: absolute;
-  top: 350px;
+  top: 315px;
   right: 50px;
   display: flex;
   width: 18px;
@@ -721,6 +730,7 @@ html {
 }
 
 .confirmheader h2 {
+  padding-top: 40px;
   width: 350px;
   color: var#1C1C1E;
   text-align: center;
@@ -764,6 +774,17 @@ html {
   height: 24px;
 }
 
+.mailz{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  .phonez{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
 #confirmContinue {
   margin-top: 40px;
   display: flex;
@@ -787,13 +808,15 @@ html {
 
   .signupmain {
     margin-top: 20px;
+    
   }
 
   .signupcontainer {
+    height: 95vh !important;
     padding: 10px;
     gap: 15px;
     width: 350px;
-    height: 530px;
+    height: 100vh;
   }
 
   .close {
@@ -844,6 +867,10 @@ html {
     padding: 10px;
   }
 
+  .signupform input{
+    height: 40px !important;
+  }
+
   #mailarea {
     width: 340px;
   }
@@ -888,6 +915,7 @@ html {
     font-size: 14px;
     padding-left: 10px;
     line-height: 20px;
+    margin-bottom: 60px;
   }
 
   .mailzone input,

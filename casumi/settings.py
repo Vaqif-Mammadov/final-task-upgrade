@@ -125,6 +125,37 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
+ALLOWED_HOSTS = ['*']
+
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'  # Gmail istifadə edirsinizsə
+# EMAIL_PORT = 587  # Gmail üçün standart port
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'dervis.vm@gmail.com'
+# EMAIL_HOST_PASSWORD = 'TerkidunyaDervis'
+# DEFAULT_FROM_EMAIL = 'dervisvaqif@gmail.com'
+
+
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.office365.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'elvinbagirov@windowslive.com'
+# EMAIL_HOST_PASSWORD = '0844045EBb'
+# DEFAULT_FROM_EMAIL = 'elvinbagirov@windowslive.com'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'vusala.aga@yandex.com'
+EMAIL_HOST_PASSWORD = 'vusala2024'
+DEFAULT_FROM_EMAIL = 'vusala.aga@yandex.com'
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

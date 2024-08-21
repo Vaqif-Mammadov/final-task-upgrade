@@ -18,5 +18,5 @@ class EmailVerification(models.Model):
         self.verification_code = ''.join(random.choices('0123456789', k=6))
         self.save()
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.user.username} - {self.verification_code}"
