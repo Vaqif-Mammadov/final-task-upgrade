@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from .models import Profile
 
 class SignupForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput, label='Password')
@@ -17,3 +18,13 @@ class SignupForm(forms.ModelForm):
 
         if password and password_repeat and password != password_repeat:
             raise ValidationError('Passwords do not match')
+        
+
+class PasswordResetRequestForm(forms.Form):
+    email = forms.EmailField(label='Email Address', max_length=254)
+    
+
+class ProfilePictureForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['profile_picture']

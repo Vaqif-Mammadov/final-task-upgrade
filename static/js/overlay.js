@@ -1,4 +1,3 @@
-
 let testedusers = [];
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -167,12 +166,15 @@ let newPasswordOverlay = document.getElementById("newPasswordOverlay")
 let successOverlay = document.getElementById("successOverlay")
 let poster = document.getElementById("poster")
 let mailto = document.getElementById("mailto")
-let messageblock = document.getElementById("messageblock")
 let confirmedemail = document.getElementById("confirmedemail")
 let confirmedphone = document.getElementById("confirmedphone")
 let passwordfield = document.getElementById("passwordlogin")
 let usernamefield = document.getElementById("usernamelogin")
 let buttoncontinue = document.getElementById("confirmContinue")
+let forgotmailarea = document.getElementById("forgotmailarea")
+let pass = document.querySelectorAll(".pass")
+let globalemail
+let resendbutton = document.getElementById("resend")
 
 
 
@@ -213,12 +215,16 @@ if (securityContinue) {
     securityContinue.addEventListener("click", endofsignin)
 }
 
+if (resendbutton) {
+    resendbutton.addEventListener("click", () => verificationCodeSender('emailform'));
+}
+
 function closewindow() {
     overlays.forEach(overlay => { overlay.style.display = "none" });
 }
 
 function closer() {
-    document.querySelectorAll(".close").forEach(closeoverlay => { closeoverlay.addEventListener('click', closewindow) })
+    closeoverlays.forEach(closeoverlay => { closeoverlay.addEventListener('click', closewindow) })
 
 }
 
@@ -243,20 +249,17 @@ function login() {
 
 document.querySelectorAll('form').forEach(form => {
     form.addEventListener('submit', function (event) {
-        if (form.id === 'changepasswordform' || form.id === 'logoutForm' || form.id === "loginForm" || form.id === 'signupmailform') {
+        if (form.id === 'securitypasswordform' || form.id === 'logoutForm' || form.id === "loginForm" || form.id === 'signupmailform') {
             return;
         }
         event.preventDefault();
-        console.log('form gönderilmedi.');
     });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('loginForm');
-    console.log(form)
     form.addEventListener('submit', function (event) {
         const formData = new FormData(form);
-        console.log(formData)
         const csrfToken = formData.get('csrfmiddlewaretoken');
         event.preventDefault();
         fetch('/login/', {
@@ -266,13 +269,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 'X-CSRFToken': csrfToken
             }
         })
-            .then(response => response.json())
-            .then(data => {
-                const messageElement = document.getElementById('responseMessage');
-                messageElement.innerText = data.success;
-            })
             .catch(error => {
-                console.error('Login fetch error', error);
+                console.error('error', error);
             });
     });
 });
@@ -286,6 +284,9 @@ function resetFormInDiv(divId) {
         }
     }
 }
+
+
+// verification login fields
 
 if (passwordfield && usernamefield) {
     usernamefield.addEventListener("change", testbuttons)
@@ -307,6 +308,27 @@ function testbuttons() {
     }
 }
 
+// verification forgot password fields
+
+if (forgotmailarea) {
+    forgotmailarea.addEventListener("change", testmailfields)
+
+}
+function testmailfields() {
+    test = false
+    for (i = 1; i <= testedusers.length - 1; i++) {
+        if (testedusers[i].email == forgotmailarea.value) {
+            confirmedemail.innerText = testedusers[i].email
+            document.getElementById("verifyemailaddress").textContent = forgotmailarea.value
+            test = true
+            break
+        }
+    }
+    if (test) {
+        document.getElementById("forgotnext").disabled = false
+    }
+}
+
 function confirmaccount() {
     buttoncontinue.disabled = true
     closewindow()
@@ -314,18 +336,18 @@ function confirmaccount() {
     document.getElementById("confirmContinue").addEventListener("click", security);
     overlays[2].style.display = "flex";
     closer();
-
 }
 
-// send email 
+// send email
 
-function security() {
+
+function verificationCodeSender(form) {
     if (document.getElementById("getcodebyphone").checked) {
         mailto.innerText = testedusers[i].phone
     } else {
         mailto.innerText = testedusers[i].email
     }
-    var formElement = document.getElementById('emailform');
+    var formElement = document.getElementById(form);
     if (!(formElement instanceof HTMLFormElement)) {
         console.error('The selected element is not an HTMLFormElement.');
         return;
@@ -342,16 +364,42 @@ function security() {
     })
         .then(response => response.json())
         .then(data => {
-            alert(data.message);
+            if (data.status == "success") {
+                Swal.fire({
+                    title: 'Info',
+                    text: 'A verification  code has been sent to your email',
+                    icon: 'info',
+                    confirmButtonText: 'Ok'
+                });
+                return;
+            }
+            else {
+                Swal.fire({
+                    title: 'Info',
+                    text: 'Check email or phone field',
+                    icon: 'info',
+                    confirmButtonText: 'Ok'
+                });
+
+            }
         })
         .catch(error => {
-            console.error('Error:', error);
-            alert('An error occurred. Please try again.');
+            Swal.fire({
+                title: 'Error',
+                text: 'An error occured',
+                icon: 'info',
+                confirmButtonText: 'Ok'
+            });
         });
+}
 
+function security() {
+    verificationCodeSender('emailform')
     closewindow()
     resetFormInDiv(overlays[3].id)
+    start = 1
     overlays[3].style.display = "flex"
+    document.getElementById("input1").focus()
     closer()
 
 }
@@ -368,17 +416,27 @@ async function fetchVerificationCode() {
             }
         });
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error('HTTP error! status: ${response.status}');
         }
         const data = await response.json();
         if (data.verification_code) {
             return data.verification_code;
         } else {
-            console.error('Verification code is not found');
+            Swal.fire({
+                title: 'Invalid Code!',
+                text: 'Verification code is not found',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            });
             return null;
         }
     } catch (error) {
-        console.error('Error:', error);
+        Swal.fire({
+            title: 'Error',
+            text: 'An error occured',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        });
         return null;
     }
 }
@@ -397,9 +455,13 @@ function iforgotpassword() {
 }
 
 function forgotnext() {
+    verificationCodeSender('forgotmailform')
     resetFormInDiv(overlays[5].id)
     overlays[5].style.display = "flex"
+    start = 7
     document.getElementById("forgotVerifyNext").addEventListener("click", verifypass)
+    globalemail = forgotmailarea.value
+    document.getElementById("input7").focus()
     closer()
 }
 
@@ -407,9 +469,11 @@ function verifypass() {
     closewindow()
     resetFormInDiv(overlays[6].id)
     overlays[6].style.display = "flex"
+    document.getElementById("NewPasswordNext").disabled = true
     document.getElementById("NewPasswordNext").addEventListener("click", createpass)
     closer()
 }
+
 let passes = document.querySelectorAll(".pass")
 let next = document.getElementById("forgotnext")
 let characterverifies = document.querySelectorAll(".characterverify")
@@ -421,7 +485,6 @@ if (characterverifies) {
 
 function changetype(e) {
     e.target.type = "password"
-    // e.target.nextElementByTabIndex.focus();
 }
 
 function moveToNext(previousFieldId, current, nextFieldId) {
@@ -504,14 +567,18 @@ document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
     });
 });
 
-
 //verifycharacter tester
 
-document.querySelectorAll(".characterverify").forEach(char => { char.addEventListener("change", verifier) })
+let start
+document.querySelectorAll(".characterverify").forEach(char => {
+    char.addEventListener("change", function () {
+        verifier(start);
+    });
+});
 
-function verifier() {
+function verifier(start) {
     let counter = 0
-    for (i = 1; i <= 6; i++) {
+    for (i = start; i <= start + 5; i++) {
         if (document.getElementById(`input${i}`).value) {
             counter++
         }
@@ -526,10 +593,162 @@ function verifier() {
             globalCode = await fetchVerificationCode();
             if (globalCode == verifycharacters) {
                 document.getElementById('securityContinue').disabled = false
+                document.getElementById('forgotVerifyNext').disabled = false
             } else {
-                alert("Verifycation code is invalid")
+                Swal.fire({
+                    title: 'Invalid Code!',
+                    text: 'Verification code is invalid',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                });
             }
         }
         main();
     }
 }
+
+
+
+// password controller
+
+if (pass) {
+    pass.forEach(passwordzone => {
+        passwordzone.addEventListener('change', activator)
+    })
+}
+
+function activator() {
+    if (
+        document.getElementById('id_new_password1').value && document.getElementById('id_new_password2').value) {
+        if (document.getElementById('id_new_password1').value === document.getElementById('id_new_password2').value) {
+            document.getElementById("NewPasswordNext").disabled = false
+            changer()
+        } else {
+            Swal.fire({
+                title: 'Passwords',
+                text: 'Passwords is not same',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            });
+        }
+    }
+}
+
+function changer() {
+    const passwordChangeForm = document.getElementById('passwordchange');
+
+    if (passwordChangeForm) {
+        passwordChangeForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const newPassword1 = document.getElementById('id_new_password1').value;
+            const newPassword2 = document.getElementById('id_new_password2').value;
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            email = globalemail
+
+            fetch('/password-change/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken,
+                },
+                body: JSON.stringify({ new_password1: newPassword1, new_password2: newPassword2, email: email })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        overlays[7].style.display = "flex"
+                    } else if (data.status === 'error') {
+                        Swal.fire({
+                            title: 'Error',
+                            text: data.message,
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        });
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    }
+    if (document.getElementById("successContinue")) {
+        this.addEventListener("click", () => { overlays[7].style.display = 'none' })
+    }
+
+}
+
+// profiles
+
+let profilicon = document.querySelector(".profiles");
+if (profilicon) {
+    profilicon.addEventListener("click", toggledrop);
+}
+function toggledrop() {
+    let profileContents = document.querySelector(".profilecontents");
+    if (profileContents) {
+        if (profileContents.classList.contains("showed")) {
+            profileContents.classList.remove("showed");
+            setTimeout(() => {
+                profileContents.style.display = 'none';
+            }, 300);
+        } else {
+            profileContents.style.display = 'flex';
+            setTimeout(() => {
+                profileContents.classList.add("showed");
+            }, 10);
+        }
+    }
+}
+
+let updater = document.getElementById("profileUpdater")
+let changebutton = document.getElementById("changephoto")
+
+if (updater && changephoto) {
+    changephoto.addEventListener("click", changeprofilephoto)
+}
+function changeprofilephoto() {
+    updater.style.display = "flex"
+
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    let profileForm = document.getElementById('profilePictureForm');
+    let profileUpdater = document.getElementById('profileUpdater');
+    closer()
+
+    if (profileForm) {
+        profileForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            let formData = new FormData(profileForm);
+            fetch('/update-profile-picture/', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': document.querySelector('input[name="csrfmiddlewaretoken"]').value
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        if (data.new_picture_url) {
+                            document.getElementById('profilepictureimage').src = data.new_picture_url;
+                            profileUpdater.style.display = 'none';
+                            Swal.fire({
+                                title: 'Profile picture',
+                                text: 'Profile picture updated successfully!',
+                                icon: 'success',
+                                confirmButtonText: 'Ok'
+                            });
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'An error occurred. Please try again.',
+                        icon: 'error',
+                        confirmButtonText: 'Ok'
+                    });
+                });
+        });
+    }
+});

@@ -39,9 +39,8 @@ urlpatterns = [
     path('get-verification-code/', get_verification_code, name='get_verification_code'),
     path('login/', login_view, name='login_view'),
     path('signup/',signup_view, name='signup'),
-
-
-
+    path('password-change/', password_change, name='password_change'),
+    path('update-profile-picture/', update_profile_picture, name='update_profile_picture'),
 
 
     # path('detail/<int:id', detail_view,name="detail"),

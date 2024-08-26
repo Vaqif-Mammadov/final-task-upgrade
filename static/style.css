@@ -22,15 +22,14 @@ html {
 /* /---------------------------------------------Overlays-----------------------------------------------------/ */
 /* /---------------------------------------------Signup-------------------------------------------------------/ */
 .signupcontainer {
+  height: 95vh !important;
   position: relative;
   display: flex;
-  padding: 80px 48px 48px 48px;
+  padding: 0 16px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 32px;
-  width: 550px;
-  height: 95vh !important;
+  gap: 6px;
   border-radius: 24px;
   background: #fff;
   box-shadow: 0px 64px 64px -48px rgba(15, 15, 15, 0.08);
@@ -56,8 +55,7 @@ html {
   align-items: center;
 }
 
-#casumi {
-  padding-top: 100px;
+#bulk {
   color: #1c1c1e;
   font-size: 2rem;
   font-weight: 900;
@@ -65,61 +63,23 @@ html {
   letter-spacing: 1.3px;
 }
 
-#work {
-  color: #1c1c1e;
-  text-align: center;
-  font-size: 26px;
-  font-weight: 600;
-  line-height: 40px;
-  letter-spacing: 0.16px;
-}
-
-#out {
-  color: #1c1c1e;
-  font-size: 26px;
-  font-weight: 400;
-  line-height: 40px;
-  letter-spacing: 0.16px;
+#username, #email,#password,#password_repeat{
+  height: 45px !important;
+  border-radius: 24px;
 }
 
 .signupbuttons {
-  padding-top: 170px;
+  padding-top: 70px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 16px;
 }
 
-#withgoogle {
-  display: flex;
-  width: 250px;
-  padding: 12px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border-radius: 16px;
-  border: 1px solid #e9ebed;
-  cursor: pointer;
-}
-
-#withapple {
-  display: flex;
-  width: 250px;
-  padding: 12px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  flex: 1 0 0;
-  border-radius: 16px;
-  border: 1px solid #e9ebed;
-  cursor: pointer;
-}
-
 .orsignup {
-  margin-top: -30px;
   display: flex;
   align-items: center;
-  gap: 19px;
+  gap: 5px;
 }
 
 .orsignup hr {
@@ -141,14 +101,10 @@ html {
   width: 100%;
 }
 
-.pass1{
-  margin-top: -50px;
+.signupform p{
+  margin: 0;
+  padding: 0 !important;
 }
-
-.pass2{
-  margin-top: -50px;
-}
-
 .signupmailform p {
   color: #1c1c1e;
   font-size: 14px;
@@ -157,12 +113,53 @@ html {
   letter-spacing: 0.07px;
 }
 
+.passdiv{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.passdiv label{
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 0px !important;
+}
+
+.pass1,.pass2{
+  width: 48%;
+}
+
+
+.pass1{
+  position: relative;
+}
+
+#eye1{
+  position: absolute;
+  right: 12px;
+  top: 36px;
+}
+
+.pass2{
+  position: relative;
+}
+
+#eye2{
+  position: absolute;
+  right: 12px;
+  top: 36px;
+}
+
 #signupcontinue,
 #forgotcontinue {
+  height: 45px !important;
   display: flex;
   padding: 16px;
-  margin: 20px 0;
-  padding-inline: 170px;
+  padding-inline: 200px;
+  margin: 0 auto;
+  padding-inline: 200px;
   font-weight: 500;
   font-size: 1rem;
   justify-content: center;
@@ -178,8 +175,6 @@ html {
 #mailarea,
 #forgotmailarea {
   display: flex;
-  width: 400px;
-  height: 52px;
   padding-left: 16px;
   align-items: center;
   border-radius: 24px;
@@ -189,6 +184,7 @@ html {
 
 .terms span,
 .reguestlogin span {
+  margin: 0 auto;
   color: #aeaeb2;
   font-size: 14px;
   font-weight: 500;
@@ -198,6 +194,7 @@ html {
 
 .terms a,
 .reguestlogin a {
+  margin: 0 auto;
   color: #064bb4;
   font-size: 14px;
   font-weight: 500;
@@ -225,13 +222,10 @@ html {
 .signinmain {
   position: relative;
   display: flex;
-  width: 500px;
-  height: 530px;
-  margin-bottom: 10px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 9px;
   border-radius: 24px;
   background: #fff;
   box-shadow: 0px 64px 64px -48px rgba(15, 15, 15, 0.08);
@@ -259,7 +253,7 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
 }
 
 .mailzone {
@@ -272,6 +266,7 @@ html {
 }
 
 .passwordzone {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -291,10 +286,8 @@ html {
 
 .mailzone input,
 .passwordzone input {
+  height: 45px !important;
   display: flex;
-  height: 52px;
-  width: 450px;
-  padding-left: 16px;
   align-items: center;
   align-self: stretch;
   border-radius: 24px;
@@ -304,15 +297,14 @@ html {
 }
 
 .signinform button {
+  height: 45px !important;
   display: flex;
   margin-top: 10px;
-  width: 450px;
   padding: 16px;
+  padding-inline: 200px;
   justify-content: center;
   align-items: center;
   border-radius: 24px;
-  font-weight: 900;
-  font-size: 1.125rem;
   background: red;
   color: #fff;
   font-size: 16px;
@@ -340,16 +332,12 @@ html {
   cursor: pointer;
 }
 
-.eye {
+#logineye{
   position: absolute;
-  top: 315px;
-  right: 50px;
-  display: flex;
-  width: 18px;
-  height: 18px;
-  justify-content: center;
-  align-items: center;
+  top: 50px;
+  right: 20px;
 }
+
 
 /* /---------------------------------------------forgotPassword-------------------------------------------------------/ */
 
@@ -357,9 +345,7 @@ html {
 .forgotVerify {
   display: flex;
   position: relative;
-  padding: 48px;
-  width: 500px;
-  height: 500px;
+  padding: 24px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -371,7 +357,6 @@ html {
 
 .forgotcontent {
   display: flex;
-  width: 500px;
   flex-direction: column;
   align-items: center;
   gap: 40px;
@@ -402,10 +387,15 @@ html {
   letter-spacing: 0.08px;
 }
 
+.forgotform input{
+  height: 45px !important;
+}
+
 #forgotnext {
+  height: 45px !important;
   display: flex;
-  width: 400px;
   padding: 16px;
+  padding-inline: 200px;
   justify-content: center;
   align-items: center;
   border-radius: 24px;
@@ -418,8 +408,6 @@ html {
 /* /---------------------------------------------forgotVerify-------------------------------------------------------/ */
 
 .forgotVerifyContent {
-  width: 300px;
-  height: 350px;
   display: flex;
   padding: 48px;
   flex-direction: column;
@@ -449,7 +437,6 @@ html {
   font-weight: 400;
   line-height: 22px;
   letter-spacing: 0.08px;
-  width: 500px;
   text-align: center;
 }
 
@@ -458,7 +445,6 @@ html {
   display: flex;
   align-items: flex-start;
   gap: 18px;
-  width: 420px;
   margin: 0 auto;
 }
 
@@ -479,10 +465,11 @@ html {
 }
 
 #forgotVerifyNext {
+  height: 45px !important;
   display: flex;
-  width: 450px;
-  margin: auto;
+  margin: 0 auto;
   padding: 16px;
+  padding-inline: 190px;
   justify-content: center;
   align-items: center;
   border-radius: 24px;
@@ -494,24 +481,24 @@ html {
 
 .resendbutton {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: flex-start;
-  gap: 16px;
+  padding-top: 10px;
 }
 
-.resendbutton a {
+#resend {
+  height: 45px !important;
   display: flex;
-  width: 500px;
+  margin: 0 auto !important;
   padding: 16px;
+  padding-inline: 70px;
   justify-content: center;
   align-items: center;
   border-radius: 24px;
-  color: #064bb4;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0.08px;
-  text-decoration: none;
+  background: #3f3f3f;
+  color: #fff;
+  border: none;
+  outline: none;
 }
 
 /* /---------------------------------------------change-Password-------------------------------------------------------/ */
@@ -665,10 +652,11 @@ html {
 }
 
 #securityContinue {
+  height: 45px !important;
   margin-top: 20px;
   display: flex;
-  width: 450px;
   padding: 16px;
+  padding-inline: 200px;
   justify-content: center;
   align-items: center;
   border-radius: 24px;
@@ -699,24 +687,20 @@ html {
 }
 /* /---------------------------------------------Confirm-------------------------------------------------------/ */
 .confirm {
+  height: 95vh;
   position: relative;
-  width: 450px;
-  height: 550px;
   display: flex;
   padding: 48px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
   border-radius: 24px;
   background: #fff;
   box-shadow: 0px 64px 64px -48px rgba(15, 15, 15, 0.08);
 }
 
 .confirmContent {
-  padding-bottom: 100px;
   display: flex;
-  width: 500px;
   flex-direction: column;
   align-items: center;
   gap: 48px;
@@ -786,10 +770,11 @@ html {
   }
 
 #confirmContinue {
+  height: 45px !important;
   margin-top: 40px;
   display: flex;
-  width: 400px;
   padding: 16px;
+  padding-inline: 150px;
   justify-content: center;
   align-items: center;
   border-radius: 24px;
@@ -807,16 +792,8 @@ html {
   /* /---------------------------------------- Overlays.CSS-----------------------------------------------------/ */
 
   .signupmain {
-    margin-top: 20px;
-    
-  }
-
-  .signupcontainer {
     height: 95vh !important;
-    padding: 10px;
-    gap: 15px;
-    width: 350px;
-    height: 100vh;
+    width: 400px;
   }
 
   .close {
@@ -831,18 +808,6 @@ html {
     align-items: center;
   }
 
-  #work {
-    color: #1c1c1e;
-    font-size: 18px;
-    line-height: 24px;
-  }
-
-  #out {
-    color: #1c1c1e;
-    font-size: 18px;
-    line-height: 24px;
-  }
-
   #withgoogle {
     width: 50%;
     padding: 6px 25px;
@@ -854,60 +819,68 @@ html {
   }
 
   .orsignup hr {
-    width: 68px;
+    width: 58px;
   }
 
   .orsignup span {
-    font-size: 11px;
-    line-height: 12px;
+    font-size: 10px;
+    line-height: 10px;
   }
 
+  #signupcontinue{
+    padding-inline: 100px;
+  }
+
+  
   .signupform p {
-    font-size: 16px;
-    padding: 10px;
+    font-size: 12px;
+    padding-left: 10px;
+  }
+  .signupform label {
+    font-size: 12px;
+    padding-left: 10px;
   }
 
   .signupform input{
-    height: 40px !important;
+    height: 35px !important;
+    font-size: 12px;
   }
 
   #mailarea {
     width: 340px;
   }
 
-  #signupcontinue {
-    width: 160px;
-  }
-
   .terms span,
   .reguestlogin span {
+    margin: 0 auto;
     font-size: 12px;
     line-height: 16px;
   }
 
   .terms {
-    width: 300px;
+    margin: 0 auto;
   }
 
   .terms a,
   .reguestlogin a {
+    margin: 0 auto;
     font-size: 12px;
     line-height: 16px;
   }
 
   .signinmain {
-    width: 350px;
-    height: 550px;
+    height: 95vh !important;
+  }
+
+  #bulk{
+    font-size: 24px;
+    line-height: 16px;
   }
 
   .signinheader h2 {
-    width: 250px;
-    font-size: 24px;
-    line-height: 28px;
-  }
-
-  .signincontent {
-    padding: 22px;
+    width: 200px;
+    font-size: 16px;
+    line-height: 16px;
   }
 
   .mailzone label,
@@ -915,14 +888,9 @@ html {
     font-size: 14px;
     padding-left: 10px;
     line-height: 20px;
-    margin-bottom: 60px;
   }
 
-  .mailzone input,
-  .passwordzone input {
-    width: 330px;
-    margin-bottom: 20px;
-  }
+
 
   .signinform button {
     margin: 0 auto;
@@ -971,13 +939,21 @@ html {
   }
 
   #forgotmailarea {
-    width: 330px;
-    border: none;
-  }
+    border: 1px solid #e9ebed;
+}
+
+  /* #forgotmailform label{
+    padding-left: 10px !important;
+  } */
 
   #forgotnext {
     display: flex;
+    margin: 0 auto;
     width: 320px;
+    padding: 14px;
+    border-radius: 22px;
+    font-size: 16px;
+    line-height: 22px;
   }
 
   #forgotVerifyNext {
@@ -988,7 +964,7 @@ html {
     justify-content: center;
     align-items: center;
     border-radius: 16px;
-    background: #bcff5e;
+    background: red;
     border: none;
   }
 
@@ -1053,8 +1029,8 @@ html {
     width: 270px;
   }
 
-  .securitypass {
-    gap: 25px;
+  .securitypass, .verifypass {
+    gap: 10px;
   }
 
   .characterverify {
@@ -1137,6 +1113,123 @@ html {
     line-height: 20px;
   }
 }
+.profiles {
+  position: absolute;
+  right: 80px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profiles img {
+  width: 100%;
+}
+
+.profilecontents {
+  display: none;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+  flex-direction: column;
+  position: absolute;
+  top: 80px;
+  z-index: 3;
+  right: 10px;
+  width: 120px;
+  height: 90px;
+  background-color: #F7F8FA;
+  border-radius: 14px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.profilecontents.showed {
+  display: flex; 
+  opacity: 1;
+  max-height: 500px; 
+}
+
+
+#usernamfield,#changephoto {
+  width: 100%;
+  background-color: transparent;
+  padding-left: 10px;
+  color: #000;
+  font-size: 14px;
+
+}
+
+#logoutbutton {
+  color: #000;
+  background-color: transparent;
+  padding-right:50px;
+  font-size: 16px;
+  border: none;
+}
+
+#logoutbutton:hover,
+#usernamfield:hover,
+#changephoto:hover{
+  color: red;
+  font-weight: 600;
+  transform: scale(1.05);
+  transition: 0.05s;
+}
+
+
+
+.profileUpdater .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+
+.overlayContent{
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:30px;
+}
+
+.overlayContent form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:30px;
+}
+
+.overlaycontent h2{
+  width: 200px;
+  font-size: 20px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#id_profile_picture{
+  font-size: 16px;
+  padding-left:10px ;
+  width: 250px;
+
+}
+
+#changephotobutton{
+  font-size: 16px;
+  padding: 10px 15px ;
+  background-color: #b0b0d6;
+  border-radius: 20px;
+  font-weight: 400;
+  color: white;
+  margin-top: 50px;
+}
+
+
+
 
 /* advanced------------------------------------------------------------------------------------------------- */
 
@@ -1207,9 +1300,7 @@ a:focus {
   color: #16133e;
 }
 
-p {
-  margin: 0 0 24px;
-}
+
 
 video {
   height: 100%;
@@ -2932,6 +3023,17 @@ table thead tr th {
 /*-------------------------------------------------------*/
 /* Hero
 /*-------------------------------------------------------*/
+/* WELCOMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE */
+#welcome{
+  font-size: 1.5rem;
+  padding-left: 20px;
+
+}
+
+/* WELCOMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE */
+
+
+
 .hero {
   padding: 0;
 }
@@ -4722,6 +4824,7 @@ header .flex-parent {
 
 .nav__phone-mobile {
   margin-top: 16px;
+  margin-left: 200px;
   color: #16133e;
 }
 

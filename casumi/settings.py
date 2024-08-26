@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib import messages
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,8 +28,6 @@ SECRET_KEY = 'django-insecure-$6hyad&9v23jehhgnn7&$w-3h$oukt@g6e-f^qjc$ah!%9wq&r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -37,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "core",
     "article",
     "ckeditor",
+    "core.apps.CoreConfig"
 
 ]
 
@@ -128,32 +129,15 @@ AUTHENTICATION_BACKENDS = [
 ALLOWED_HOSTS = ['*']
 
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'  # Gmail istifadə edirsinizsə
-# EMAIL_PORT = 587  # Gmail üçün standart port
-# EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'dervis.vm@gmail.com'
-# EMAIL_HOST_PASSWORD = 'TerkidunyaDervis'
-# DEFAULT_FROM_EMAIL = 'dervisvaqif@gmail.com'
-
-
-
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.office365.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'elvinbagirov@windowslive.com'
-# EMAIL_HOST_PASSWORD = '0844045EBb'
-# DEFAULT_FROM_EMAIL = 'elvinbagirov@windowslive.com'
-
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.yandex.com'
-EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.office365.com'
+# EMAIL_HOST = 'smtp.yandex.com'
+# EMAIL_HOST = 'smtp.gmail.com'  # Gmail istifadə edirsinizsə
+EMAIL_PORT = 587  # Gmail üçün standart port
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'vusala.aga@yandex.com'
-EMAIL_HOST_PASSWORD = 'vusala2024'
-DEFAULT_FROM_EMAIL = 'vusala.aga@yandex.com'
+EMAIL_HOST_USER = 'casuminew@outlook.com'
+EMAIL_HOST_PASSWORD = 'casumi2024'
+DEFAULT_FROM_EMAIL = 'casuminew@outlook.com'
 
 
 # Static files (CSS, JavaScript, Images)
@@ -164,10 +148,11 @@ STATICFILES_DIRS = [BASE_DIR, 'static']
 STATIC_ROOT=BASE_DIR /"staticfiles"
 
 
-
-MEDIA_URL='img/'
-MEDIA_ROOT=(BASE_DIR, 'static/img')
+import os
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CKEDITOR_UPLOAD_PATH="uploads/"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
