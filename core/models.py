@@ -4,6 +4,7 @@ import random
 from django.utils import timezone
 from ckeditor.fields import RichTextField
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=20, blank=True, null=True)
@@ -31,8 +32,59 @@ class PasswordResetCode(models.Model):
     def is_valid(self):
         return timezone.now() <= self.expired_at
     
+
+    # homeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 class Service(models.Model):
     name=models.CharField(max_length=100,verbose_name="Xidmətin adı")
     icon=models.FileField(null=True,blank=True,verbose_name="İkonu")
     title = models.CharField(max_length=100,verbose_name="Başlıq")
     description=RichTextField(max_length=500,verbose_name="Açıqlama")
+
+class Serv(models.Model):
+    image=models.FileField(verbose_name="Şəkil")
+    title = models.CharField(max_length=100,verbose_name="Başlıq")
+    description=RichTextField(max_length=500,verbose_name="Açıqlama")
+
+class Praise(models.Model):
+    image=models.FileField(verbose_name="Şəkil")
+    title = models.CharField(max_length=100,verbose_name="Başlıq")
+    description=RichTextField(max_length=500,verbose_name="Açıqlama")
+    name_lastname = models.CharField(max_length=100,verbose_name="Ad və soyad")
+    company = models.CharField(max_length=100,verbose_name="Şirkət")
+    
+class New(models.Model):
+    image=models.FileField(verbose_name="Şəkil")
+    category = models.CharField(max_length=100,verbose_name="Kateqoriya")
+    title = models.CharField(max_length=100,verbose_name="Başlıq")
+    name_lastname = models.CharField(max_length=100,verbose_name="Ad və soyad")
+    icon = models.FileField(verbose_name="Profil şəkli")
+    history = models.DateTimeField(auto_now_add=True)
+
+
+# homeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+
+# HOME222222222222222222222222222222222222222222222222222222222222222222
+class Slickbox(models.Model):
+    image=models.FileField(verbose_name="Şəkil")
+    title = models.CharField(max_length=100,verbose_name="Başlıq")
+    description=RichTextField(max_length=500,verbose_name="Açıqlama")
+
+
+
+
+# HOME222222222222222222222222222222222222222222222222222222222222222222
+    
+
+class Consultant(models.Model):
+    name=models.CharField(max_length=100,verbose_name="Adı")
+    last_name=models.CharField(max_length=100,verbose_name="Soyadı")
+    photo=models.FileField()
+    description=RichTextField(max_length=1000,verbose_name="Haqqında")
+    email=models.EmailField(max_length=100,verbose_name="E-mail",blank=True)
+    phone=models.CharField(max_length=100,verbose_name="Telefon",blank=True)
+    occupation=models.CharField(max_length=100,verbose_name="Vəzifə")
+    twitter=models.CharField(max_length=100,verbose_name="Twitter")
+    facebook=models.CharField(max_length=100,verbose_name="Facebook")
+    youtube=models.CharField(max_length=100,verbose_name="Youtube")
+    instagram=models.CharField(max_length=100,verbose_name="Instagram")
+   

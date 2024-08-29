@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.http import JsonResponse, HttpResponseForbidden,HttpResponse
 from django.core.cache import cache
-from .models import Profile,Service
+from .models import *
 from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
 import random
@@ -31,7 +31,7 @@ def signup_view(request):
             return redirect('index')
     else:
         form = SignupForm()
-    return render(request, 'home.html', {'form': form})
+    return render(request, 'index.html', {'form': form})
 
 def generate_verification_code():
     return ''.join(random.choices(string.digits, k=6))
@@ -40,7 +40,7 @@ def generate_verification_code():
 def send_verification_email(email, code):
     subject = 'Your Verification Code'
     message = f'Your verification code is {code}.'
-    from_email = 'casuminew@outlook.com'
+    from_email = 'casumi2024@outlook.com'
     try:
         mail_sent = send_mail(subject, message, from_email, [email])
         return mail_sent > 0
@@ -107,14 +107,14 @@ def login_view(request):
     if request.method == 'POST':
         username_global = request.POST.get('username')
         password_global = request.POST.get('password')
-        print(username_global)
-    return render(request,'index.html')
+    return render(request,request.path)
 
 def user_auth(request):
     if request.method == 'POST':
         form_id = request.POST.get('form_id')
         action = request.POST.get('action')
         if form_id == 'securitypasswordform':
+            print(username_global ,password_global)
             user = authenticate(username=username_global, password=password_global)
             if user is not None:
                 login(request, user)
@@ -146,8 +146,6 @@ def password_change(request):
             return JsonResponse({'status': 'error', 'message': 'Invalid JSON.'}, status=400)
     return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
 
-
-#
 @login_required
 def update_profile_picture(request):
     if request.method == 'POST':
@@ -160,21 +158,55 @@ def update_profile_picture(request):
             return JsonResponse({'success': False, 'error': 'Form is not valid'})
     return JsonResponse({'success': False, 'error': 'Invalid request'})
 
+# homeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+
 
 def home_view(request):
     user_auth(request)
     services=Service.objects.all()
-    context={'services':services
+    servs=Serv.objects.all()
+    praises=Praise.objects.all()
+    news=New.objects.all()
+    context={'services':services,
+             'servs':servs,
+             'praises':praises,
+             'news':news
+             
              }
     return render(request, 'index.html',context)
 
+# homeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+
+
+# HOME222222222222222222222222222222222222222222222222222222222222222
+
 def home2_view(request):
     user_auth(request)
-    return render (request, "index-2.html")
+    slickboxes=Slickbox.objects.all()
+    consultants=Consultant.objects.all()
+    context={'consultants':consultants,
+             'slickboxes':slickboxes,
+
+    }
+    return render (request, "index-2.html",context)
+
+
+
+
+# HOME222222222222222222222222222222222222222222222222222222222222222
+
+
+
+
+
 
 def about_view(request):
     user_auth(request)
-    return render (request, "about.html")
+    consultants=Consultant.objects.all()
+    return render (request, "about.html",{'consultants':consultants})
+
+
+
 
 @login_required
 def services_view(request):
@@ -183,6 +215,9 @@ def services_view(request):
     context={'services':services
              }
     return render (request, "services.html",context)
+
+
+
 
 def pricing_view(request):
     user_auth(request)

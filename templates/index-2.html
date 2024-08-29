@@ -152,11 +152,13 @@
 
           </nav> <!-- end nav-wrap -->
 
-
              <!-- Nav Right -->
              <div class="login-register">
-              <button id="login" class="login">Log in</button>
-              <button id="signup" class="signup">Sign Up</button>
+              <form id="form" method="post">
+                {% csrf_token %}
+                <button class="loginButton" id="login" type="submit" name="login">Login</button>
+                <button class="signupButton" id="signup" type="submit" name="signup">Signup</button>
+              </form>
             </div>
 
             <div class="nav__right d-none d-lg-flex">
@@ -170,7 +172,15 @@
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </a>
               </div>
-
+              {% if user.is_authenticated %}
+              <div class="profiles">
+                {% if user.profile.profile_picture %}
+                <img id="profilepictureimage" src="{{ user.profile.profile_picture.url }}" alt="">
+                {% else %}
+                <img id="profilepictureimage" src="{% static '/img/empty.jpg'%}" alt="">
+                {% endif %}
+              </div>
+              {% endif %}
             </div> <!-- end nav right -->
 
           </div> <!-- end flex-parent -->
@@ -190,7 +200,7 @@
             <div class="hero__text-holder hero__text-holder--1">
               <h3 class="hero__subtitle hero__subtitle--1">Advanced Consulting Services</h3>
               <h1 class="hero__title hero__title--1">Business Solution <br> Experts<span class="hero__dot">.</span></h1>
-              <a href="{% url 'contact' %}" class="btn btn--lg btn--color" tabindex="0">
+              <a class="contactus btn btn--lg btn--color"  class="btn btn--lg btn--color" tabindex="0">
                 <span>Contact Us</span>
               </a>
             </div>
@@ -212,46 +222,16 @@
       <section class="section-wrap bg-light">
         <div class="container">
           <div class="slick-service-boxes--1 slick-slider-row slick-arrows-outside-top">
-            <div class="slick-slide slick-slider-col slick-service-boxes__item">
-              <a href="#" class="service service--1 hover-up"
-              style="background-image: url('{% static 'img/services/base (1).png' %}')">
-                <h4 class="service__title">Strategy & Planning</h4>
-                <p class="service__text">We also provide tangible results and measurable long-term value business.</p>
-              </a>
-            </div>
-
-            <div class="slick-slide slick-slider-col slick-service-boxes__item">
-              <a href="#" class="service service--1 hover-up"
-              style="background-image: url('{% static 'img/services/base (2).png' %}')">
-                <h4 class="service__title">Finance Services</h4>
-                <p class="service__text">We also provide tangible results and measurable long-term value business.</p>
-              </a>
-            </div>
-
-            <div class="slick-slide slick-slider-col slick-service-boxes__item">
-              <a href="#" class="service service--1 hover-up"
-              style="background-image: url('{% static 'img/services/base (3).png' %}')">
-                <h4 class="service__title">Management</h4>
-                <p class="service__text">We also provide tangible results and measurable long-term value business.</p>
-              </a>
-            </div>
-
             
-            <div class=" slick-slide slick-slider-col slick-service-boxes__item" >         
-              <a href="#" class="service service--1 hover-up "
-              style="background-image: url('{% static 'img/services/base (4).png' %}')">
-                <h4 class="service__title">Sales growth</h4>
-                <p class="service__text">We also provide tangible results and measurable long-term value business.</p>
-              </a>
-            </div>
-
+            {% for slickbox in slickboxes %}
             <div class="slick-slide slick-slider-col slick-service-boxes__item">
               <a href="#" class="service service--1 hover-up"
-              style="background-image: url('{% static 'img/services/base (5).png' %}')">
-                <h4 class="service__title">Accounting</h4>
-                <p class="service__text">We also provide tangible results and measurable long-term value business.</p>
+              style="background-image: url('{{ slickbox.image.url }}')">
+                <h4 class="service__title">{{slickbox.title}}</h4>
+                <span id="slickboxestext" class="service__text">{{slickbox.description|safe|truncatewords:20}}</span>
               </a>
-            </div>
+            </div>             
+            {% endfor %}
 
           </div> <!-- end slick-service-boxes -->
         </div>
@@ -399,7 +379,7 @@
               <h3 class="call-to-action__title">
                 Ready to get a free Consultation for your business?
               </h3>
-              <a href="{% url 'blog' %}" class="btn btn--lg btn--color">
+                <a class="contactus btn btn--lg btn--color"  class="btn btn--lg btn--color">
                 <span>Contact Us</span>
               </a>
             </div>
@@ -425,112 +405,36 @@
 
           <div class="slick-team slick-slider-row">
 
+
+            {% for consultant in consultants %}
             <div class="slick-slide slick-slider-col">
               <div class="team box-shadow hover-down">
                 <div class="team__img-holder">
-                  <img src="{%  static 'img/team/home2_team 1.png'  %}" alt="" class="team__img">
+                  <img src="{{consultant.photo.url}}" alt="" class="team__img">
                 </div>
                 <div class="team__body">
-                  <span class="team__occupation">Founder</span>
-                  <h5 class="team__name">Alexander Samokhin</h5>
+                  <span class="team__occupation"> {{consultant.occupation}} </span>
+                  <h5 class="team__name"> {{consultant.name}} {{consultant.last_name}} </h5>
                   <p class="team__text">
-                    Being ultimately responsible for all day-to-day management decisions and for implementing the
-                    Company's long and short
-                    term plans.
+                    {{consultant.description|safe|truncatewords:10}}
                   </p>
                   <div class="socials">
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fconsultancy_uk" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank">
+                    <a href="{{consultant.twitter}}"
+                      class="social social-twitter" aria-label="twitter" title="twitter" target="_blank">
                       <i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.facebook.com/groups/managementconsultingforum/" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank">
+                    <a href="{{consultant.facebook}}" class="social social-facebook"
+                      aria-label="facebook" title="facebook" target="_blank">
                       <i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.youtube.com/watch?v=ClaPr5s5SrE" class="social social-youtube" aria-label="youtube" title="google plus"
-                      target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/twc.az/?hl=en" class="social social-instagram" aria-label="instagram" title="instagram"
-                      target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="{{consultant.youtube}}" class="social social-youtube"
+                      aria-label="youtube" title="google plus" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="{{consultant.instagram}}" class="social social-instagram"
+                      aria-label="instagram" title="instagram" target="_blank"><i
+                        class="fa-brands fa-instagram"></i></a>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div class="slick-slide slick-slider-col">
-              <div class="team box-shadow hover-down">
-                <div class="team__img-holder">
-                  <img src="{%  static 'img/team/home2_team 2.png'  %}" alt="" class="team__img">
-                </div>
-                <div class="team__body">
-                  <span class="team__occupation">Data Specialist</span>
-                  <h5 class="team__name">Martha Smith</h5>
-                  <p class="team__text">
-                    Being ultimately responsible for all day-to-day management decisions and for implementing the
-                    Company's long and short
-                    term plans.
-                  </p>
-                  <div class="socials">
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fconsultancy_uk" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank">
-                      <i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.facebook.com/groups/managementconsultingforum/" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank">
-                      <i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.youtube.com/watch?v=ClaPr5s5SrE" class="social social-youtube" aria-label="youtube" title="google plus"
-                      target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/twc.az/?hl=en" class="social social-instagram" aria-label="instagram" title="instagram"
-                      target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="slick-slide slick-slider-col">
-              <div class="team box-shadow hover-down">
-                <div class="team__img-holder">
-                  <img src="{%  static 'img/team/home2_team 3.png'  %}" alt="" class="team__img">
-                </div>
-                <div class="team__body">
-                  <span class="team__occupation">Marketing</span>
-                  <h5 class="team__name">Kelly Green</h5>
-                  <p class="team__text">
-                    Being ultimately responsible for all day-to-day management decisions and for implementing the
-                    Company's long and short
-                    term plans.
-                  </p>
-                  <a href="https://x.com/i/flow/login?redirect_after_login=%2Fconsultancy_uk" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank">
-                    <i class="fa-brands fa-x-twitter"></i></a>
-                  <a href="https://www.facebook.com/groups/managementconsultingforum/" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank">
-                    <i class="fa-brands fa-facebook-f"></i></a>
-                  <a href="https://www.youtube.com/watch?v=ClaPr5s5SrE" class="social social-youtube" aria-label="youtube" title="google plus"
-                    target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                  <a href="https://www.instagram.com/twc.az/?hl=en" class="social social-instagram" aria-label="instagram" title="instagram"
-                    target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="slick-slide slick-slider-col">
-              <div class="team box-shadow hover-down">
-                <div class="team__img-holder">
-                  <img src="{%  static 'img/team/home2_team 4.png'  %}" alt="" class="team__img">
-                </div>
-                <div class="team__body">
-                  <span class="team__occupation">Support</span>
-                  <h5 class="team__name">Joeby Ragpa</h5>
-                  <p class="team__text">
-                    Being ultimately responsible for all day-to-day management decisions and for implementing the
-                    Company's long and short
-                    term plans.
-                  </p>
-                  <div class="socials">
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fconsultancy_uk" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank">
-                      <i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.facebook.com/groups/managementconsultingforum/" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank">
-                      <i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.youtube.com/watch?v=ClaPr5s5SrE" class="social social-youtube" aria-label="youtube" title="google plus"
-                      target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/twc.az/?hl=en" class="social social-instagram" aria-label="instagram" title="instagram"
-                      target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
 
           </div> <!-- end slider -->
 

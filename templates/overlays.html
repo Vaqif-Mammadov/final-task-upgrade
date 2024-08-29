@@ -156,17 +156,17 @@
                     <input type="hidden" name="form_id" value="securitypasswordform">
                     <input type="hidden" name="action" value="continue">
                     <div class="securitypass">
-                        <div class="characterverify"><input id="input1" type="number" maxlength="1"
+                        <div class="characterverify"><input id="input1" type="text" maxlength="1"
                                 oninput="moveToNext( 'input1' ,this,'input2')"></div>
-                        <div class="characterverify"><input id="input2" type="number" maxlength="1"
+                        <div class="characterverify"><input id="input2" type="text" maxlength="1"
                                 oninput="moveToNext( 'input1' ,this,'input3')"></div>
-                        <div class="characterverify"><input id="input3" type="number" maxlength="1"
+                        <div class="characterverify"><input id="input3" type="text" maxlength="1"
                                 oninput="moveToNext( 'input2' ,this,'input4')"></div>
-                        <div class="characterverify"><input id="input4" type="number" maxlength="1"
+                        <div class="characterverify"><input id="input4" type="text" maxlength="1"
                                 oninput="moveToNext( 'input3' ,this,'input5')"></div>
-                        <div class="characterverify"><input id="input5" type="number" maxlength="1"
+                        <div class="characterverify"><input id="input5" type="text" maxlength="1"
                                 oninput="moveToNext( 'input4' ,this,'input6')"></div>
-                        <div class="characterverify"><input id="input6" type="number" maxlength="1"
+                        <div class="characterverify"><input id="input6" type="text" maxlength="1"
                                 oninput="moveToNext( 'input5' ,this,'securityContinue')"></div>
                     </div>
                     <button id="securityContinue" type="submit" name="login" disabled>Continue</button>
@@ -221,17 +221,17 @@
                 <form method="post" id="forgotVerifypasswordform">
                     {% csrf_token %}
                     <div class="verifypass">
-                        <div class="characterverify"><input id="input7" type="number" maxlength="1"
+                        <div class="characterverify"><input id="input7" type="text" maxlength="1"
                                 oninput="moveToNext( 'input7' ,this,'input8')"></div>
-                        <div class="characterverify"><input id="input8" type="number" maxlength="1"
+                        <div class="characterverify"><input id="input8" type="text" maxlength="1"
                                 oninput="moveToNext( 'input7' ,this,'input9')"></div>
-                        <div class="characterverify"><input id="input9" type="number" maxlength="1"
+                        <div class="characterverify"><input id="input9" type="text" maxlength="1"
                                 oninput="moveToNext( 'input8' ,this,'input10')"></div>
-                        <div class="characterverify"><input id="input10" type="number" maxlength="1"
+                        <div class="characterverify"><input id="input10" type="text" maxlength="1"
                                 oninput="moveToNext( 'input9' ,this,'input11')"></div>
-                        <div class="characterverify"><input id="input11" type="number" maxlength="1"
+                        <div class="characterverify"><input id="input11" type="text" maxlength="1"
                                 oninput="moveToNext( 'input10' ,this,'input12')"></div>
-                        <div class="characterverify"><input id="input12" type="number" maxlength="1"
+                        <div class="characterverify"><input id="input12" type="text" maxlength="1"
                                 oninput="moveToNext( 'input11' ,this,'input12')"></div>
                     </div>
                     <button id='forgotVerifyNext' type="submit" disabled>Next</button>

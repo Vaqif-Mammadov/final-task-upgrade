@@ -1113,9 +1113,14 @@ html {
     line-height: 20px;
   }
 }
+
+
+
+
+
 .profiles {
   position: absolute;
-  right: 80px;
+  right: 20px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -1128,6 +1133,7 @@ html {
 
 .profilecontents {
   display: none;
+  color: #1d1d94;
   opacity: 0;
   max-height: 0;
   overflow: hidden;
@@ -1136,49 +1142,57 @@ html {
   position: absolute;
   top: 80px;
   z-index: 3;
-  right: 10px;
-  width: 120px;
-  height: 90px;
-  background-color: #F7F8FA;
-  border-radius: 14px;
+  right: 20px;
+  width: 160px;
+  height: 180px;
+  background-color:#f7f9fa;
+  border-radius: 12px;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.profilecontents.showed {
+  display: flex !important; 
+  opacity: 1;
+  max-height: 500px !important; 
+}
+
+.buttons{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#changephoto {
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-}
-.profilecontents.showed {
-  display: flex; 
-  opacity: 1;
-  max-height: 500px; 
-}
-
-
-#usernamfield,#changephoto {
-  width: 100%;
-  background-color: transparent;
-  padding-left: 10px;
-  color: #000;
-  font-size: 14px;
-
+  padding: 0 5px;
+  height: 30px;
+  background-color: #3f3f3f;
+  color: #fff;
+  border-radius: 15px
 }
 
 #logoutbutton {
-  color: #000;
-  background-color: transparent;
-  padding-right:50px;
-  font-size: 16px;
-  border: none;
+  height: 30px;
+  font-size: 14px;
+  background-color: red;
+  border-radius: 15px;
+  color: white;
 }
 
 #logoutbutton:hover,
-#usernamfield:hover,
 #changephoto:hover{
-  color: red;
   font-weight: 600;
-  transform: scale(1.05);
+  transform: scale(1.08);
   transition: 0.05s;
+  cursor: pointer;
 }
-
-
 
 .profileUpdater .close {
   position: absolute;
@@ -1187,10 +1201,9 @@ html {
   cursor: pointer;
 }
 
-
 .overlayContent{
-  width: 300px;
-  height: 400px;
+  width: 300px !important;
+  height: 400px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1215,7 +1228,6 @@ html {
   font-size: 16px;
   padding-left:10px ;
   width: 250px;
-
 }
 
 #changephotobutton{
@@ -1226,6 +1238,13 @@ html {
   font-weight: 400;
   color: white;
   margin-top: 50px;
+}
+
+.profileUpdater .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
 }
 
 
@@ -1641,6 +1660,10 @@ address {
 /*-------------------------------------------------------*/
 /* Buttons
 /*-------------------------------------------------------*/
+.contactus btn btn--lg btn--color{
+  color: #fff !important;
+}
+
 .btn {
   font-weight: 700;
   font-family: "Barlow", sans-serif;
@@ -1651,7 +1674,7 @@ address {
   border: 0;
   border-radius: 50px;
   transition: all 0.2s ease-in-out;
-  color: #fff;
+  color: #fff !important;
   background-color: #fe001a;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -3217,7 +3240,7 @@ table thead tr th {
 }
 .service--1 .service__text,
 .service--1 .service__title {
-  color: #fff;
+  color: #fff !important;
   position: relative;
   z-index: 1;
 }
@@ -3812,7 +3835,7 @@ table thead tr th {
 }
 
 /*-------------------------------------------------------*/
-/* Contoct Form
+/* Contact Form
 /*-------------------------------------------------------*/
 .contact-form-container {
   background-color: #f7f9fa;

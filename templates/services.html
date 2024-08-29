@@ -155,8 +155,11 @@
 
             <!-- Nav Right -->
             <div class="login-register">
-              <button id="login" class="login">Log in</button>
-              <button id="signup" class="signup">Sign Up</button>
+              <form id="form" method="post">
+                {% csrf_token %}
+                <button class="loginButton" id="login" type="submit" name="login">Login</button>
+                <button class="signupButton" id="signup" type="submit" name="signup">Signup</button>
+              </form>
             </div>
 
             <div class="nav__right d-none d-lg-flex">
@@ -170,7 +173,15 @@
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </a>
               </div>
-
+              {% if user.is_authenticated %}
+              <div class="profiles">
+                {% if user.profile.profile_picture %}
+                <img id="profilepictureimage" src="{{ user.profile.profile_picture.url }}" alt="">
+                {% else %}
+                <img id="profilepictureimage" src="{% static '/img/empty.jpg'%}" alt="">
+                {% endif %}
+              </div>
+              {% endif %}
             </div> <!-- end nav right -->
 
           </div> <!-- end flex-parent -->
@@ -209,7 +220,7 @@
               <a href="{% url 'services' %}" class="service box-shadow hover-line hover-down">
                 <img src="{{service.icon.url}}" alt="">
                 <h4 class="service__title">{{service.title}}</h4>
-                <p class="service__text">{{service.description|safe}}</p>
+                <p class="service__text">{{service.description|safe|truncatewords:10}}</p>
               </a>
             </div>
             {% endfor %}
@@ -290,7 +301,7 @@
               <h3 class="call-to-action__title mb-40">
                 Hundreds of businesses already trust us. Ready to start?
               </h3>
-              <a href="{% url 'contact' %}" class="btn btn--lg btn--color">
+                <a class="contactus btn btn--lg btn--color"  class="btn btn--lg btn--color">
                 <span>Contact Us</span>
               </a>
               <div class="row mt-72">

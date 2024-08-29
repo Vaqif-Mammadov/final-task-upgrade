@@ -135,9 +135,9 @@ EMAIL_HOST = 'smtp.office365.com'
 # EMAIL_HOST = 'smtp.gmail.com'  # Gmail istifadə edirsinizsə
 EMAIL_PORT = 587  # Gmail üçün standart port
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'casuminew@outlook.com'
-EMAIL_HOST_PASSWORD = 'casumi2024'
-DEFAULT_FROM_EMAIL = 'casuminew@outlook.com'
+EMAIL_HOST_USER = 'casumi2024@outlook.com'
+EMAIL_HOST_PASSWORD = 'casumi2023'
+DEFAULT_FROM_EMAIL = 'casumi2024@outlook.com'
 
 
 # Static files (CSS, JavaScript, Images)

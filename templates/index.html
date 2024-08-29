@@ -12,7 +12,7 @@
   <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="">
-
+  <meta name="is_authenticated" content="{{ user.is_authenticated }}">
   <!-- Google Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Merriweather:300,400,700%7CBarlow:400,400i,600,700'
     rel='stylesheet'>
@@ -189,6 +189,19 @@
                   {% endif %}
                 </div>
                 {% endif %}
+                <div class="profilecontents">
+                  <span id="usernamfield">{{ user.username }}</span>
+                  <span id="programfield">Program : {{ user.profile.get_program_name }}</span>
+                  <span id="planfield"> Plan : {{ user.profile.get_plan_name }}</span>
+                  <div class="buttons">
+                    <div id="changephoto">Change photo</div>
+                    <form id="logoutForm" method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="action" value="logout">
+                      <button id="logoutbutton" class="logoutbutton" type="submit">Logout</button>
+                    </form>
+                  </div>
+                </div>
               </div> <!-- end nav right -->
 
             </div> <!-- end flex-parent -->
@@ -214,11 +227,12 @@
         <section class="hero">
           <div class="slick-custom-arrows">
 
+            {% for serv in servs %}
             <div class="hero__item slick-slide">
               <div class="row no-gutters">
                 <div class="col-lg-4 order-lg-1 order-2">
-                  <div class="hero__img" style="background-image: url(static/img/hero/hero_slide_1.png)">
-                    <img src="{%  static 'img/hero/hero_slide_1.png'  %}" alt="" class="d-none">
+                  <div class="hero__img" style="background-image: url('{{ serv.image.url }}');">
+                    <img src="{{serv.image.url}}" alt="" class="d-none">
                   </div>
 
                   <!-- Slider nav -->
@@ -231,9 +245,10 @@
                 </div>
                 <div class="col-lg-8 order-1 order-lg-2">
                   <div class="hero__text-holder">
-                    <h3 class="hero__subtitle">Advanced Consulting Services</h3>
-                    <h1 class="hero__title hero__title--boxed">Business Solution Experts<span class="hero__dot">.</h1>
-                    <a href="https://wa.me/+994515718203" target="_blank" class="btn btn--lg btn--color">
+                    <h3 class="hero__subtitle">{{serv.title}}</h3>
+                    <h1 class="hero__title hero__title--boxed">{{serv.description|safe|truncatewords:10}}<span
+                        class="hero__dot">.</h1>
+                    <a class="contactus btn btn--lg btn--color"  target="_blank" class="btn btn--lg btn--color">
                       <span>Contact Us</span>
                     </a>
                   </div>
@@ -241,61 +256,7 @@
               </div>
             </div> <!-- .hero__item -->
 
-            <div class="hero__item slick-slide">
-              <div class="row no-gutters">
-                <div class="col-lg-4 order-lg-1 order-2">
-                  <div class="hero__img" style="background-image: url(static/img/hero/hero_slide_2.jpg)">
-                    <img src="{%  static 'img/hero/hero_slide_2.jpg' %}" alt="" class="d-none">
-                  </div>
-
-                  <!-- Slider nav -->
-                  <div class="slick-custom-nav">
-                    <button class="slick-custom-nav__prev slick-prev slick-arrow" type="button"
-                      aria-label="prev">Prev></button>
-                    <button class="slick-custom-nav__next slick-next slick-arrow" type="button"
-                      aria-label="next">Next></button>
-                  </div>
-                </div>
-                <div class="col-lg-8 order-1 order-lg-2">
-                  <div class="hero__text-holder">
-                    <h3 class="hero__subtitle">Visa & Education Consulting</h3>
-                    <h1 class="hero__title hero__title--boxed">Visa Training & Education<span class="hero__dot">.</span>
-                    </h1>
-                    <a href="https://wa.me/+994515718203" target="_blank" class="btn btn--lg btn--color">
-                      <span>Contact Us</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div> <!-- .hero__item -->
-
-            <div class="hero__item slick-slide">
-              <div class="row no-gutters">
-                <div class="col-lg-4 order-lg-1 order-2">
-                  <div class="hero__img" style="background-image: url(static/img/hero/hero_slide_3.jpg)">
-                    <img src="{%  static 'img/hero/hero_slide_3.jpg' %}" alt="" class="d-none">
-                  </div>
-
-                  <!-- Slider nav -->
-                  <div class="slick-custom-nav">
-                    <button class="slick-custom-nav__prev slick-prev slick-arrow" type="button"
-                      aria-label="prev">Prev></button>
-                    <button class="slick-custom-nav__next slick-next slick-arrow" type="button"
-                      aria-label="next">Next></button>
-                  </div>
-                </div>
-                <div class="col-lg-8 order-1 order-lg-2">
-                  <div class="hero__text-holder">
-                    <h3 class="hero__subtitle">Visa & Education Consulting</h3>
-                    <h1 class="hero__title hero__title--boxed">Business Visa B1<span class="hero__dot"> . </span>H1<span
-                        class="hero__dot"> . </span>L1<span class="hero__dot"> . </span>E</h1>
-                    <a href="https://wa.me/+994515718203" target="_blank" class="btn btn--lg btn--color">
-                      <span>Contact Us</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div> <!-- .hero__item -->
+            {% endfor %}
 
           </div> <!-- .owl -->
         </section> <!-- end hero -->
@@ -319,7 +280,7 @@
                 <a href="{% url 'services' %}" class="service box-shadow hover-line hover-down">
                   <img src="{{service.icon.url}}" alt="">
                   <h4 class="service__title">{{service.title}}</h4>
-                  <p class="service__text">{{service.description|safe}}</p>
+                  <p class="service__text">{{service.description|safe|truncatewords:10}}</p>
                 </a>
               </div>
               {% endfor %}
@@ -338,7 +299,7 @@
                   on your site to help you increase sales.
                   From layout to copy to design, there are limitless combinations of changes that may improve your
                   visitor-to-sale conversion rate.</p>
-                <a href="{% url 'contact' %}" class="btn btn--lg btn--color">
+                <a class="contactus btn btn--lg btn--color"  class="btn btn--lg btn--color">
                   <span>Contact Us</span>
                 </a>
               </div>
@@ -355,12 +316,11 @@
         <section class="section-wrap pt-48">
           <div class="slick-custom-arrows">
 
+            {% for praise in praises %}
             <div class="slick-slide ">
               <div class="testimonial">
-                <div class="testimonial__img-holder"
-                  style="background-image: url(static/img/testimonials/home_testimonial_1.png)">
-                  <img src="{%  static 'img/testimonials/home_testimonial_1.png'  %}" class="testimonial__img d-none"
-                    alt="">
+                <div class="testimonial__img-holder" style="background-image: url('{{praise.image.url}}');">
+                  <img src="{{praise.image}}" class="testimonial__img d-none" alt="">
                   <!-- Slider nav -->
                   <div class="slick-custom-nav">
                     <button class="slick-custom-nav__prev slick-prev slick-arrow" type="button" aria-label="prev">Prev
@@ -371,70 +331,16 @@
                 </div>
                 <div class="testimonial__info">
                   <div class="testimonial__info-container">
-                    <h2 class="section-title">Service Is Top-notch</h2>
-                    <p class="testimonial__text"> Every detail has been taken care these team are realy amazing and
-                      talented! They can help me with fast and accurate
-                      solutions to all kinds of issues. Love it! Five stars for them.</p>
-                    <span class="testimonial__author">Joeby Ragpa</span>
-                    <span class="testimonial__company">DeoThemes</span>
+                    <h2 class="section-title">{{praise.title}}</h2>
+                    <h6 class="testimonial__text"> {{praise.description|safe|truncatewords:200}} </h6>
+                    <span class="testimonial__author">{{praise.name_lastname}}</span>
+                    <span class="testimonial__company">{{praise.company}}</span>
                   </div>
                 </div>
               </div>
             </div> <!-- end slide -->
+            {% endfor %}
 
-            <div class="slick-slide ">
-              <div class="testimonial">
-                <div class="testimonial__img-holder"
-                  style="background-image: url(static/img/testimonials/testimonial_img_2.png)">
-                  <img src="{%  static 'img/testimonials/testimonial_img_2.png'  %}" class="testimonial__img d-none"
-                    alt="">
-                  <!-- Slider nav -->
-                  <div class="slick-custom-nav">
-                    <button class="slick-custom-nav__prev slick-prev slick-arrow" type="button" aria-label="prev">Prev
-                      ></button>
-                    <button class="slick-custom-nav__next slick-next slick-arrow" type="button" aria-label="next">Next
-                      ></button>
-                  </div>
-                </div>
-                <div class="testimonial__info">
-                  <div class="testimonial__info-container">
-                    <h2 class="section-title">They Are The Best</h2>
-                    <p class="testimonial__text">Every detail has been taken care these team are realy amazing and
-                      talented! They can help me with fast and accurate
-                      solutions to all kinds of issues. Love it! Five stars for them.</p>
-                    <span class="testimonial__author">Mick Jagger</span>
-                    <span class="testimonial__company">Google</span>
-                  </div>
-                </div>
-              </div>
-            </div> <!-- end slide -->
-
-            <div class="slick-slide ">
-              <div class="testimonial">
-                <div class="testimonial__img-holder"
-                  style="background-image: url(static/img/testimonials/testimonial_img_3.png)">
-                  <img src="{%  static 'img/testimonials/testimonial_img_3.png'  %}" class="testimonial__img d-none"
-                    alt="">
-                  <!-- Slider nav -->
-                  <div class="slick-custom-nav">
-                    <button class="slick-custom-nav__prev slick-prev slick-arrow" type="button" aria-label="prev">Prev
-                      ></button>
-                    <button class="slick-custom-nav__next slick-next slick-arrow" type="button" aria-label="next">Next
-                      ></button>
-                  </div>
-                </div>
-                <div class="testimonial__info">
-                  <div class="testimonial__info-container">
-                    <h2 class="section-title">100% Satisfied</h2>
-                    <p class="testimonial__text">Every detail has been taken care these team are realy amazing and
-                      talented! They can help me with fast and accurate
-                      solutions to all kinds of issues. Love it! Five stars for them.</p>
-                    <span class="testimonial__author">Jessica Lopez</span>
-                    <span class="testimonial__company">Apple</span>
-                  </div>
-                </div>
-              </div>
-            </div> <!-- end slide -->
 
           </div>
         </section> <!-- end testimonials -->
@@ -446,89 +352,36 @@
               <h2 class="section-title">Latest News</h2>
             </div>
             <div class="row">
+              {% for new in news %}
+              <div class="col-lg-4">                 
 
-              <div class="col-lg-4">
                 <article class="entry entry-card">
                   <div class="entry__header">
                     <a href="{% url 'single-p1' %}">
-                      <img src="{%  static 'img/blog/standard/post_1.png'  %}" class="entry__img" alt="">
+                      <img src="{{new.image.url}}" class="entry__img" alt="">
                     </a>
                     <div class="entry__category">
-                      <a href="{% url 'single-p1' %}" class="entry__category-item">Finance</a>
+                      <a href="{% url 'single-p1' %}" class="entry__category-item">{{new.category}}</a>
                     </div>
                   </div>
                   <div class="entry__body">
                     <h4 class="entry__title">
-                      <a href="{% url 'single-p1' %}">Business Mistakes to Avoid When Starting a Business</a>
+                      <a href="{% url 'single-p1' %}">{{new.title}}</a>
                     </h4>
                     <div class="entry__meta">
                       <span class="entry__meta-item entry__meta-author">
                         <a href="#" class="entry__meta-author-url">
-                          <img src="{%  static 'img/blog/author/Ellipse.svg'  %}" class="entry__meta-author-img" alt="">
-                          <span class="entry__meta-author-name">Alexander Samokhin</span>
+                          <img src="{{new.icon.url}}" class="entry__meta-author-img" alt="">
+                          <span class="entry__meta-author-name">{{new.name_lastname}}</span>
                         </a>
                       </span>
-                      <span class="entry__meta-item entry__meta-date">July 06, 2019</span>
+                      <span class="entry__meta-item entry__meta-date">{{new.history}}</span>
                     </div>
                   </div>
                 </article>
-              </div>
-
-              <div class="col-lg-4">
-                <article class="entry entry-card">
-                  <div class="entry__header">
-                    <a href="{% url 'single-p1' %}">
-                      <img src="{%  static 'img/blog/standard/post_2.png'  %}" class="entry__img" alt="">
-                    </a>
-                    <div class="entry__category">
-                      <a href="{% url 'single-p1' %}" class="entry__category-item">Stock</a>
-                    </div>
-                  </div>
-                  <div class="entry__body">
-                    <h4 class="entry__title">
-                      <a href="{% url 'single-p1' %}">Utilize these nine resources to help you take the stress out of
-                        preparing your taxes</a>
-                    </h4>
-                    <div class="entry__meta">
-                      <span class="entry__meta-item entry__meta-author">
-                        <a href="#" class="entry__meta-author-url">
-                          <img src="{%  static 'img/blog/author/Ellipse.svg'  %}" class="entry__meta-author-img" alt="">
-                          <span class="entry__meta-author-name">Alexander Samokhin</span>
-                        </a>
-                      </span>
-                      <span class="entry__meta-item entry__meta-date">July 06, 2019</span>
-                    </div>
-                  </div>
-                </article>
-              </div>
-
-              <div class="col-lg-4">
-                <article class="entry entry-card">
-                  <div class="entry__header">
-                    <a href="{% url 'single-p1' %}">
-                      <img src="{%  static 'img/blog/standard/post_3.png'  %}" class="entry__img" alt="">
-                    </a>
-                    <div class="entry__category">
-                      <a href="{% url 'single-p1' %}" class="entry__category-item">Finance</a>
-                    </div>
-                  </div>
-                  <div class="entry__body">
-                    <h4 class="entry__title">
-                      <a href="{% url 'single-p1' %}">Investment Update, Successful people ask better questions</a>
-                    </h4>
-                    <div class="entry__meta">
-                      <span class="entry__meta-item entry__meta-author">
-                        <a href="#" class="entry__meta-author-url">
-                          <img src="{%  static 'img/blog/author/Ellipse.svg'  %}" class="entry__meta-author-img" alt="">
-                          <span class="entry__meta-author-name">Alexander Samokhin</span>
-                        </a>
-                      </span>
-                      <span class="entry__meta-item entry__meta-date">July 06, 2019</span>
-                    </div>
-                  </div>
-                </article>
-              </div>
-
+                
+              </div> 
+              {% endfor %}
             </div>
           </div>
         </section> <!-- end from blog -->
@@ -548,7 +401,7 @@
                   Why
                   should you be stressful? Let us make this easier
                   for you.</p>
-                <a href="{% url 'contact' %}" class="btn btn--lg btn--color">
+                <a class="contactus btn btn--lg btn--color"  class="btn btn--lg btn--color">
                   <span>Contact Us</span>
                 </a>
 
@@ -666,7 +519,12 @@
     <!-- Cookies -->
     <script src="{% static 'js/plugins/cookieconsent.min.js' %}"></script>
     <script src="{% static 'js/cookies.js' %}"></script>
-
+    <script type="application/json" id="config-data">
+      {
+          "is_authenticated": {{ user.is_authenticated|yesno:"true,false" }}
+      }
+  </script>
+  
   </body>
 
   <!-- Mirrored from www.udan.world/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Jul 2024 19:55:25 GMT -->

@@ -61,12 +61,12 @@
 
             <div class="nav__header">
               <!-- Logo -->
-             <div class="navbar_left_white">
-               <a href="{% url 'index' %}" class="logo-container">
-                 <h3>Casumi</h3>
-                 <h6>Consultancy_</h6>
-               </a>
-             </div>
+              <div class="navbar_left_white">
+                <a href="{% url 'index' %}" class="logo-container">
+                  <h3>Casumi</h3>
+                  <h6>Consultancy_</h6>
+                </a>
+              </div>
 
               <!-- Mobile toggle -->
               <button type="button" class="nav__icon-toggle" id="nav__icon-toggle" data-toggle="collapse"
@@ -78,8 +78,8 @@
               </button>
             </div>
 
-             <!-- Navbar -->
-             <nav id="navbar-collapse" class="nav__wrap collapse navbar-collapse nav--align-right">
+            <!-- Navbar -->
+            <nav id="navbar-collapse" class="nav__wrap collapse navbar-collapse nav--align-right">
               <ul class="nav__menu">
                 <li class="nav__dropdown active">
                   <a href="#" aria-haspopup="true">Home</a>
@@ -125,7 +125,7 @@
                         aria-expanded="false"></i>
                       <ul class="nav__dropdown-menu">
                         <li><a href="{% url 'single-p1' %}">Single post 1</a></li>
-                          <li><a href="{% url 'single-p2' %}">Single post 2</a></li>
+                        <li><a href="{% url 'single-p2' %}">Single post 2</a></li>
                       </ul>
                     </li>
                   </ul>
@@ -154,12 +154,15 @@
 
 
 
-                 <!-- Nav Right -->
-                 <div class="login-register">
-                  <button id="login" class="login">Log in</button>
-                  <button id="signup" class="signup">Sign Up</button>
-                </div>
-                
+            <!-- Nav Right -->
+            <div class="login-register">
+              <form id="form" method="post">
+                {% csrf_token %}
+                <button class="loginButton" id="login" type="submit" name="login">Login</button>
+                <button class="signupButton" id="signup" type="submit" name="signup">Signup</button>
+              </form>
+            </div>
+
 
             <div class="nav__right d-none d-lg-flex">
               <div class="nav__right-item">
@@ -172,7 +175,15 @@
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </a>
               </div>
-
+              {% if user.is_authenticated %}
+              <div class="profiles">
+                {% if user.profile.profile_picture %}
+                <img id="profilepictureimage" src="{{ user.profile.profile_picture.url }}" alt="">
+                {% else %}
+                <img id="profilepictureimage" src="{% static '/img/empty.jpg'%}" alt="">
+                {% endif %}
+              </div>
+              {% endif %}
             </div> <!-- end nav right -->
 
           </div> <!-- end flex-parent -->
@@ -203,7 +214,7 @@
                 on your site to help you increase sales.
                 From layout to copy to design, there are limitless combinations of changes that may improve your
                 visitor-to-sale conversion rate.</p>
-              <a href="{% url 'contact' %}" class="btn btn--lg btn--color">
+                <a class="contactus btn btn--lg btn--color"  class="btn btn--lg btn--color">
                 <span>Contact Us</span>
               </a>
             </div>
@@ -216,7 +227,8 @@
 
 
       <!-- Statistic -->
-      <section class="section-wrap bg-dark pb-40 pb-md-24" style="background-image: url({% static 'img/pattern.png' %})">
+      <section class="section-wrap bg-dark pb-40 pb-md-24"
+        style="background-image: url({% static 'img/pattern.png' %})">
         <div class="container">
           <div class="row title-row">
             <div class="col-lg-5">
@@ -244,7 +256,7 @@
             </div>
             <div class="col-lg-3 col-sm-6">
               <div class="statistic">
-                <i class="fa-solid fa-graduation-cap statistic__icon"></i>                
+                <i class="fa-solid fa-graduation-cap statistic__icon"></i>
                 <span class="statistic__number">550</span>
                 <h5 class="statistic__title">Highly specialised consultants</h5>
               </div>
@@ -281,113 +293,35 @@
 
           <div class="slick-team slick-slider-row">
 
+            {% for consultant in consultants %}
             <div class="slick-slide slick-slider-col">
               <div class="team box-shadow hover-down">
                 <div class="team__img-holder">
-                  <img src="{%  static 'img/team/About_team 1.png'  %}" alt="" class="team__img">
+                  <img src="{{consultant.photo.url}}" alt="" class="team__img">
                 </div>
                 <div class="team__body">
-                  <span class="team__occupation">CEO Consultant</span>
-                  <h5 class="team__name">Alexander Samokhin</h5>
+                  <span class="team__occupation"> {{consultant.occupation}} </span>
+                  <h5 class="team__name"> {{consultant.name}} {{consultant.last_name}} </h5>
                   <p class="team__text">
-                    Being ultimately responsible for all day-to-day management decisions and for implementing the
-                    Company's long and short
-                    term plans.
+                    {{consultant.description|safe|truncatewords:10}}
                   </p>
                   <div class="socials">
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fconsultancy_uk" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank">
+                    <a href="{{consultant.twitter}}"
+                      class="social social-twitter" aria-label="twitter" title="twitter" target="_blank">
                       <i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.facebook.com/groups/managementconsultingforum/" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank">
+                    <a href="{{consultant.facebook}}" class="social social-facebook"
+                      aria-label="facebook" title="facebook" target="_blank">
                       <i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.youtube.com/watch?v=ClaPr5s5SrE" class="social social-youtube" aria-label="youtube" title="google plus"
-                      target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/twc.az/?hl=en" class="social social-instagram" aria-label="instagram" title="instagram"
-                      target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="{{consultant.youtube}}" class="social social-youtube"
+                      aria-label="youtube" title="google plus" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="{{consultant.instagram}}" class="social social-instagram"
+                      aria-label="instagram" title="instagram" target="_blank"><i
+                        class="fa-brands fa-instagram"></i></a>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div class="slick-slide slick-slider-col">
-              <div class="team box-shadow hover-down">
-                <div class="team__img-holder">
-                  <img src="{%  static 'img/team/About_team 2.png'  %}" alt="" class="team__img">
-                </div>
-                <div class="team__body">
-                  <span class="team__occupation">Data Specialist</span>
-                  <h5 class="team__name">Martha Smith</h5>
-                  <p class="team__text">
-                    Being ultimately responsible for all day-to-day management decisions and for implementing the
-                    Company's long and short
-                    term plans.
-                  </p>
-                  <div class="socials">
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fconsultancy_uk" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank">
-                      <i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.facebook.com/groups/managementconsultingforum/" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank">
-                      <i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.youtube.com/watch?v=ClaPr5s5SrE" class="social social-youtube" aria-label="youtube" title="google plus"
-                      target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/twc.az/?hl=en" class="social social-instagram" aria-label="instagram" title="instagram"
-                      target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="slick-slide slick-slider-col">
-              <div class="team box-shadow hover-down">
-                <div class="team__img-holder">
-                  <img src="{%  static 'img/team/About_team 3.png'  %}" alt="" class="team__img">
-                </div>
-                <div class="team__body">
-                  <span class="team__occupation">Marketing</span>
-                  <h5 class="team__name">Kelly Green</h5>
-                  <p class="team__text">
-                    Being ultimately responsible for all day-to-day management decisions and for implementing the
-                    Company's long and short
-                    term plans.
-                  </p>
-                  <div class="socials">
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fconsultancy_uk" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank">
-                      <i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.facebook.com/groups/managementconsultingforum/" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank">
-                      <i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.youtube.com/watch?v=ClaPr5s5SrE" class="social social-youtube" aria-label="youtube" title="google plus"
-                      target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/twc.az/?hl=en" class="social social-instagram" aria-label="instagram" title="instagram"
-                      target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="slick-slide slick-slider-col">
-              <div class="team box-shadow hover-down">
-                <div class="team__img-holder">
-                  <img src="{%  static 'img/team/About_team 4.png'  %}" alt="" class="team__img">
-                </div>
-                <div class="team__body">
-                  <span class="team__occupation">Support</span>
-                  <h5 class="team__name">Joeby Ragpa</h5>
-                  <p class="team__text">
-                    Being ultimately responsible for all day-to-day management decisions and for implementing the
-                    Company's long and short
-                    term plans.
-                  </p>
-                  <div class="socials">
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fconsultancy_uk" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank">
-                      <i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.facebook.com/groups/managementconsultingforum/" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank">
-                      <i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.youtube.com/watch?v=ClaPr5s5SrE" class="social social-youtube" aria-label="youtube" title="google plus"
-                      target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/twc.az/?hl=en" class="social social-instagram" aria-label="instagram" title="instagram"
-                      target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
 
           </div> <!-- end slider -->
 
@@ -410,12 +344,15 @@
                     </a>
                   </div>
                   <div class="socials mt-32">
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fconsultancy_uk" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank">
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fconsultancy_uk"
+                      class="social social-twitter" aria-label="twitter" title="twitter" target="_blank">
                       <i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.facebook.com/groups/managementconsultingforum/" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank">
+                    <a href="https://www.facebook.com/groups/managementconsultingforum/" class="social social-facebook"
+                      aria-label="facebook" title="facebook" target="_blank">
                       <i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://support.google.com/business/answer/6300665?hl=en" class="social social-google-plus" aria-label="google plus" title="google plus"
-                      target="_blank"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="https://support.google.com/business/answer/6300665?hl=en" class="social social-google-plus"
+                      aria-label="google plus" title="google plus" target="_blank"><i
+                        class="fa-brands fa-google-plus-g"></i></a>
                   </div>
                 </div>
               </div> <!-- end about us -->
