@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Service,Consultant,Serv,Praise,New,Slickbox
+from .models import Service,Consultant,Serv,Praise,New,Slickbox,Plan,Sponsor,Contact
 
 # homeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 @admin.register(Serv)
@@ -25,6 +25,10 @@ class NewAdmin(admin.ModelAdmin):
 class SlickboxAdmin(admin.ModelAdmin):
     list_display=('title','description')
 
+@admin.register(Plan)
+class PlanAdmin(admin.ModelAdmin):
+    list_display=('name','price_monthly','price_yearly','my_list')
+
 
 # HOME222222222222222222222222222222222222222222222222222
 
@@ -32,3 +36,21 @@ class SlickboxAdmin(admin.ModelAdmin):
 @admin.register(Consultant)
 class ConsultantAdmin(admin.ModelAdmin):
     list_display=('name','last_name','occupation')
+
+
+
+#    SERVICEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+@admin.register(Sponsor)
+class SponsorAdmin(admin.ModelAdmin):
+    list_display=('logo',)
+
+#    SERVICEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+
+
+# CONTACTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display=('name','tel1','mail1','adress1')
+
+
+# CONTACTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT

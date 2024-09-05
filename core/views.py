@@ -177,56 +177,77 @@ def home_view(request):
 
 # homeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 
-
 # HOME222222222222222222222222222222222222222222222222222222222222222
-
 def home2_view(request):
     user_auth(request)
-    slickboxes=Slickbox.objects.all()
-    consultants=Consultant.objects.all()
-    context={'consultants':consultants,
-             'slickboxes':slickboxes,
+    slickboxes = Slickbox.objects.all()
+    consultants = Consultant.objects.all()
+    plans = Plan.objects.all()
+    
+    for plan in plans:
+        try:
+            plan_features = plan.get_my_list()
+            print(f"Plan: {plan.name}, Features: {plan_features}")
+        except Exception as e:
+            print(f"Error with plan {plan.name}: {e}")
 
+    context = {
+        'consultants': consultants,
+        'slickboxes': slickboxes,
+        'plans': plans,
     }
-    return render (request, "index-2.html",context)
 
-
-
+    return render(request, "index-2.html", context)
 
 # HOME222222222222222222222222222222222222222222222222222222222222222
-
-
-
-
-
 
 def about_view(request):
     user_auth(request)
     consultants=Consultant.objects.all()
     return render (request, "about.html",{'consultants':consultants})
 
-
-
-
+# SERVICEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 @login_required
 def services_view(request):
     user_auth(request)
     services=Service.objects.all()
-    context={'services':services
+    sponsors=Sponsor.objects.all()
+    context={'services':services,
+             'sponsors':sponsors,
              }
     return render (request, "services.html",context)
+# SERVICEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 
-
-
-
+# PRICINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+@login_required
 def pricing_view(request):
     user_auth(request)
-    return render (request, "pricing.html")
+    plans = Plan.objects.all()
+    for plan in plans:
+        try:
+            plan_features = plan.get_my_list()
+            print(f"Plan: {plan.name}, Features: {plan_features}")
+        except Exception as e:
+            print(f"Error with plan {plan.name}: {e}")
+
+    context={'plans':plans,
+    }
+    return render (request, "pricing.html",context)
+
+# PRICINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
 
 
+# CONTACTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+@login_required
 def contact_view(request):
     user_auth(request)
-    return render (request, "contact.html")
+    contacts = Contact.objects.all()
+    context={'contacts':contacts,
+
+    }        
+    return render (request, "contact.html",context)
+
+# CONTACTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
 def blog_masonry_view(request):
     user_auth(request)
@@ -236,13 +257,30 @@ def blog_view(request):
     user_auth(request)
     return render (request, "blog.html")
 
+# BLOG_POST111111111111111111111111111111111111111111111111111111111111
 def single_post_1_view(request):
     user_auth(request)
-    return render (request, "single-post-1.html")
+    news=New.objects.all()
 
+    context={'news':news,
+             
+             }
+    return render (request, "single-post-1.html", context)
+
+# BLOG_POST111111111111111111111111111111111111111111111111111111111111
+
+# BLOG_POST22222222222222222222222222222222222222222222222222222222222222222222222222222
 def single_post_2_view(request):
     user_auth(request)
-    return render (request, "single-post-2.html")
+    news=New.objects.all()
+
+    context={'news':news,
+             
+             }
+
+    return render (request, "single-post-2.html",context)
+
+# BLOG_POST22222222222222222222222222222222222222222222222222222222222222222222222222222
 
 def not_found_404_view(request):
     user_auth(request)

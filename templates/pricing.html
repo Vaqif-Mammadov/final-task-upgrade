@@ -219,93 +219,32 @@
           </div>
 
           <div class="row">
-
+            {% for plan in plans %}
             <div class="col-lg-4">
               <div class="pricing box-shadow hover-line hover-down">
                 <div class="pricing__price-box">
-                  <h3 class="pricing__title">Free</h3>
-                  <span class="pricing__currency">$</span>
-                  <span class="pricing__price" data-year-price="0" data-month-price="0">0</span>
+                  <h3 class="pricing__title">{{ plan.name }}</h3>
+                  <span class="pricing__currency"></span>
+                  <span class="pricing__price" data-year-price="{{ plan.price_yearly }}"
+                    data-month-price="{{ plan.price_monthly }}">{{ plan.price_monthly }}</span>
                 </div>
                 <p class="pricing__text">
-                  An entry tool for those who started. Forever free.
+                  {{ plan.description|safe }}
                 </p>
                 <ul class="pricing__features">
+                  {% for service in plan.get_my_list %}
                   <li class="pricing__feature">
                     <i class="fa-solid fa-check pricing__check"></i>
-                    <span class="pricing__feature-text"><strong>14 days free</strong> trial business consulting</span>
+                    <span class="pricing__feature-text"> <strong>{{ service }}</strong></span>
                   </li>
+                  {% endfor %}
                 </ul>
                 <div class="pricing__button">
                   <a href="{% url 'pricing' %}" class="btn btn--lg btn--dark"><span>Get Started</span></a>
                 </div>
               </div>
             </div>
-
-            <div class="col-lg-4">
-              <div class="pricing box-shadow hover-line hover-down pricing--best">
-                <div class="pricing__price-box">
-                  <h3 class="pricing__title">Business</h3>
-                  <span class="pricing__currency">$</span>
-                  <span class="pricing__price" data-year-price="129.00" data-month-price="29.99">29.99</span>
-                </div>
-                <p class="pricing__text">
-                  For entrepreneurs and small businesses.
-                </p>
-                <ul class="pricing__features">
-                  <li class="pricing__feature">
-                    <i class="fa-solid fa-check pricing__check"></i>
-                    <span class="pricing__feature-text">Business <strong>Analyzing</strong></span>
-                  </li>
-                  <li class="pricing__feature">
-                    <i class="fa-solid fa-check pricing__check"></i>
-                    <span class="pricing__feature-text">Management <strong>Strategy</strong></span>
-                  </li>
-                  <li class="pricing__feature">
-                    <i class="fa-solid fa-check pricing__check"></i>
-                    <span class="pricing__feature-text">Bookkeeping</span>
-                  </li>
-                </ul>
-                <div class="pricing__button">
-                  <a href="{% url 'pricing' %}" class="btn btn--lg btn--color"><span>Get Started</span></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4">
-              <div class="pricing box-shadow hover-line hover-down">
-                <div class="pricing__price-box">
-                  <h3 class="pricing__title">Premium</h3>
-                  <span class="pricing__currency">$</span>
-                  <span class="pricing__price" data-year-price="245.00" data-month-price="49.99">49.99</span>
-                </div>
-                <p class="pricing__text">
-                  Perfect plan for agencies and big companies
-                </p>
-                <ul class="pricing__features">
-                  <li class="pricing__feature">
-                    <i class="fa-solid fa-check pricing__check"></i>
-                    <span class="pricing__feature-text">Management <strong>Strategy</strong></span>
-                  </li>
-                  <li class="pricing__feature">
-                    <i class="fa-solid fa-check pricing__check"></i>
-                    <span class="pricing__feature-text"><strong>Full</strong> Business Analyzing</span>
-                  </li>
-                  <li class="pricing__feature">
-                    <i class="fa-solid fa-check pricing__check"></i>
-                    <span class="pricing__feature-text">Bookkeeping</span>
-                  </li>
-                  <li class="pricing__feature">
-                    <i class="fa-solid fa-check pricing__check"></i>
-                    <span class="pricing__feature-text"><strong>Monthly</strong> Reports</span>
-                  </li>
-                </ul>
-                <div class="pricing__button">
-                  <a href="{% url 'pricing' %}" class="btn btn--lg btn--dark"><span>Get Started</span></a>
-                </div>
-              </div>
-            </div>
-
+            {% endfor %}
           </div>
         </div>
       </section> <!-- end pricing tables -->

@@ -62,12 +62,12 @@
 
             <div class="nav__header">
               <!-- Logo -->
-             <div class="navbar_left_white">
-               <a href="{% url 'index' %}" class="logo-container">
-                 <h3>Casumi</h3>
-                 <h6>Consultancy_</h6>
-               </a>
-             </div>
+              <div class="navbar_left_white">
+                <a href="{% url 'index' %}" class="logo-container">
+                  <h3>Casumi</h3>
+                  <h6>Consultancy_</h6>
+                </a>
+              </div>
 
               <!-- Mobile toggle -->
               <button type="button" class="nav__icon-toggle" id="nav__icon-toggle" data-toggle="collapse"
@@ -79,32 +79,32 @@
               </button>
             </div>
 
-           <!-- Navbar -->
-           <nav id="navbar-collapse" class="nav__wrap collapse navbar-collapse nav--align-right">
-            <ul class="nav__menu">
-              <li class="nav__dropdown active">
-                <a href="#" aria-haspopup="true">Home</a>
-                <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
-                  aria-expanded="false"></i>
-                <ul class="nav__dropdown-menu">
-                  <li><a href="{% url 'index' %}">Home 1</a></li>
-                  <li><a href="{% url 'home2' %}">Home 2</a></li>
+            <!-- Navbar -->
+            <nav id="navbar-collapse" class="nav__wrap collapse navbar-collapse nav--align-right">
+              <ul class="nav__menu">
+                <li class="nav__dropdown active">
+                  <a href="#" aria-haspopup="true">Home</a>
+                  <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
+                    aria-expanded="false"></i>
+                  <ul class="nav__dropdown-menu">
+                    <li><a href="{% url 'index' %}">Home 1</a></li>
+                    <li><a href="{% url 'home2' %}">Home 2</a></li>
 
-                </ul>
-              </li>
-              <li class="nav__dropdown">
-                <a href="#" aria-haspopup="true">Pages</a>
-                <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
-                  aria-expanded="false"></i>
-                <ul class="nav__dropdown-menu">
-                  <li><a href="{% url 'about' %}">About</a></li>
-                  <li><a href="{% url 'services' %}">Services</a></li>
-                  <li><a href="{% url 'pricing' %}">Pricing</a></li>
-                  <li><a href="{% url 'contact' %}">Contact</a></li>
-                  <li><a href="{% url '404' %}">404</a></li>
-                </ul>
-              </li>
-              <!-- <li class="nav__dropdown">
+                  </ul>
+                </li>
+                <li class="nav__dropdown">
+                  <a href="#" aria-haspopup="true">Pages</a>
+                  <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
+                    aria-expanded="false"></i>
+                  <ul class="nav__dropdown-menu">
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'pricing' %}">Pricing</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url '404' %}">404</a></li>
+                  </ul>
+                </li>
+                <!-- <li class="nav__dropdown">
                 <a href="blog.html" aria-haspopup="true">Features</a>
                 <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
                   aria-expanded="false"></i>
@@ -113,56 +113,56 @@
                   <li><a href="elements.html">Elements</a></li>
                 </ul>
               </li> -->
-              <li class="nav__dropdown">
-                <a href="#" aria-haspopup="true">Blog</a>
-                <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
-                  aria-expanded="false"></i>
-                <ul class="nav__dropdown-menu">
-                  <li><a href="{% url 'blog' %}">Blog Standard</a></li>
-                  <li><a href="{% url 'blog-m' %}">Blog Masonry</a></li>
-                  <li class="nav__dropdown">
-                    <a href="#" aria-haspopup="true">Single Post</a>
-                    <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
-                      aria-expanded="false"></i>
-                    <ul class="nav__dropdown-menu">
-                      <li><a href="{% url 'single-p1' %}">Single post 1</a></li>
-                      <li><a href="{% url 'single-p2' %}">Single post 2</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">Purchase</a>
-              </li>
-            </ul> <!-- end menu -->
+                <li class="nav__dropdown">
+                  <a href="#" aria-haspopup="true">Blog</a>
+                  <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
+                    aria-expanded="false"></i>
+                  <ul class="nav__dropdown-menu">
+                    <li><a href="{% url 'blog' %}">Blog Standard</a></li>
+                    <li><a href="{% url 'blog-m' %}">Blog Masonry</a></li>
+                    <li class="nav__dropdown">
+                      <a href="#" aria-haspopup="true">Single Post</a>
+                      <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
+                        aria-expanded="false"></i>
+                      <ul class="nav__dropdown-menu">
+                        <li><a href="{% url 'single-p1' %}">Single post 1</a></li>
+                        <li><a href="{% url 'single-p2' %}">Single post 2</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Purchase</a>
+                </li>
+              </ul> <!-- end menu -->
 
-            <!-- Mobile Phone -->
-            <div class="nav__phone-mobile d-lg-none">
-              <a href="https://wa.me/+63-995-3959" target="_blank" class="nav__phone-number">+63-995-3959</a>
-            </div>
+              <!-- Mobile Phone -->
+              <div class="nav__phone-mobile d-lg-none">
+                <a href="https://wa.me/+63-995-3959" target="_blank" class="nav__phone-number">+63-995-3959</a>
+              </div>
 
 
-            <!-- Mobile Search -->
-            <div class="nav__search-mobile d-lg-none">
-              <form role="search" method="get" class="search-form relative">
-                <input type="search" class="search-input" placeholder="Search" />
-                <button type="submit" class="search-button" aria-label="search button">
-                  <i class="fa-solid fa-magnifying-glass"></i></button>
+              <!-- Mobile Search -->
+              <div class="nav__search-mobile d-lg-none">
+                <form role="search" method="get" class="search-form relative">
+                  <input type="search" class="search-input" placeholder="Search" />
+                  <button type="submit" class="search-button" aria-label="search button">
+                    <i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+              </div>
+
+            </nav> <!-- end nav-wrap -->
+
+
+            <!-- Nav Right -->
+            <div class="login-register">
+              <form id="form" method="post">
+                {% csrf_token %}
+                <button class="loginButton" id="login" type="submit" name="login">Login</button>
+                <button class="signupButton" id="signup" type="submit" name="signup">Signup</button>
               </form>
             </div>
 
-          </nav> <!-- end nav-wrap -->
-
-
-                 <!-- Nav Right -->
-                 <div class="login-register">
-                  <form id="form" method="post">
-                    {% csrf_token %}
-                    <button class="loginButton" id="login" type="submit" name="login">Login</button>
-                    <button class="signupButton" id="signup" type="submit" name="signup">Signup</button>
-                  </form>
-                </div>
-                
             <div class="nav__right d-none d-lg-flex">
               <div class="nav__right-item">
                 <a href="tel:+63-995-3959" class="nav__phone-number">+63-995-3959</a>
@@ -218,14 +218,26 @@
         <div class="container">
           <div class="row">
 
+            {% for contact in contacts %}
             <div class="col-lg-4">
               <div class="service box-shadow hover-line hover-down">
-                <i class="fa-regular fa-address-book service__icon "></i>
-                <h4 class="service__title">Call Us</h4>
-                <p class="service__text"><a href="tel:+1-800-155-4561">+ 1 (800) 155 4561</a></p>
-                <p class="service__text"><a href="tel:+1-800-155-4562">+ 1 (800) 155 4562</a></p>
+                <i><img src="{{contact.icon.url}}" alt=""></i>
+                <h4 class="service__title">{{contact.name}}</h4>
+                <p class="service__text"><a href="tel:+1-800-155-4561">{{contact.tel1}}</a></p>
+                <p class="service__text"><a href="tel:+1-800-155-4561">{{contact.tel2}}</a></p>
+                <p class="service__text"><a href="mailto:themesupport@gmail.com">{{contact.mail1}}</a></p>
+                <p class="service__text"><a href="mailto:themesupport@gmail.com">{{contact.mail2}}</a></p>
+                <address>{{contact.adress1}}</address>
+                <address>{{contact.adress2}}</address>
               </div>
             </div>
+            {% endfor %}
+
+          </div>
+        </div>
+
+
+        <!-- <div class="col-lg-4">
 
             <div class="col-lg-4">
               <div class="service box-shadow hover-line hover-down">
@@ -242,154 +254,158 @@
                 <h4 class="service__title">Visit Us</h4>
                 <address>Melbourne's GPO 350 Bourke St.<br>Melbourne VIC 3000, Australia</address>
               </div>
+            </div> -->
+
+      </div>
+    </div>
+    </div> <!-- end service boxes -->
+
+    <!-- Contact Form -->
+    <section class="section-wrap bg-light">
+      <div class="container">
+
+        <div class="title-row text-center">
+          <h2 class="section-title">Send us a message</h2>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-5">
+            <!-- Contact Form -->
+            <form id="contact-form" class="contact-form" method="post" action="#">
+
+              <div class="form-group">
+                <input name="name" class="form-group__input" id="name" type="text" placeholder="Name *" required>
+              </div>
+
+              <div class="form-group">
+                <input name="email" id="email" type="email" placeholder="Email *" required>
+              </div>
+
+              <div class="form-group">
+                <input name="phone" id="phone" type="text" placeholder="Phone Number">
+              </div>
+
+              <div class="contact-message">
+                <textarea id="message" name="message" rows="5" placeholder="Message"></textarea>
+              </div>
+
+              <div class="consent-checkbox">
+                <label>
+                  <input class="consent-checkbox__input" type="checkbox" name="your-consent" required>
+                  <span class="consent-checkbox__label">I agree to the <a
+                      href="https://policies.google.com/privacy">privacy policy</a>.</span>
+                </label>
+              </div>
+
+              <input type="submit" class="btn btn--lg btn--color btn--wide btn--button" value="Send Message"
+                id="submit-message">
+              <div id="msg" class="message"></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section> <!-- end contact form -->
+
+    <!-- Google Map -->
+    <div class="contact-footer-top">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3092.305331982695!2d45.40367547483453!3d39.19051032935787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40142e1690a3e445%3A0xe33eeb6c5bda5c2f!2sNax%C3%A7%C4%B1van%20Universiteti!5e0!3m2!1sen!2saz!4v1709194256130!5m2!1sen!2saz"></iframe>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__widgets">
+          <div class="row">
+
+            <div class="col-lg-3 col-md-6">
+              <div class="widget widget-about-us">
+                <!-- Logo -->
+                <div class="navbar_left_black">
+                  <a href="{% url 'index' %}" class="logo-container">
+                    <h3>Casumi</h3>
+                    <h6>Consultancy_</h6>
+                  </a>
+                </div>
+                <div class="socials mt-32">
+                  <a href="https://x.com/i/flow/login?redirect_after_login=%2Fconsultancy_uk"
+                    class="social social-twitter" aria-label="twitter" title="twitter" target="_blank">
+                    <i class="fa-brands fa-x-twitter"></i></a>
+                  <a href="https://www.facebook.com/groups/managementconsultingforum/" class="social social-facebook"
+                    aria-label="facebook" title="facebook" target="_blank">
+                    <i class="fa-brands fa-facebook-f"></i></a>
+                  <a href="https://support.google.com/business/answer/6300665?hl=en" class="social social-google-plus"
+                    aria-label="google plus" title="google plus" target="_blank"><i
+                      class="fa-brands fa-google-plus-g"></i></a>
+                </div>
+              </div>
+            </div> <!-- end about us -->
+
+
+            <div class="col-lg-3 offset-lg-3 col-md-6">
+              <div class="widget widget_nav_menu">
+                <h5 class="widget-title">Solutions</h5>
+                <ul>
+                  <li><a href="{% url 'contact' %}">Finance Strategy</a></li>
+                  <li><a href="{% url 'contact' %}">Advertising</a></li>
+                  <li><a href="{% url 'contact' %}">SMM</a></li>
+                  <li><a href="{% url 'contact' %}">SEO</a></li>
+                  <li><a href="{% url 'contact' %}">Google AdWords</a></li>
+                </ul>
+              </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+              <div class="widget widget-address">
+                <h5 class="widget-title">Company</h5>
+                <ul>
+                  <li>
+                    <address>8910 University Center Lane Suite 620 San Diego, CA 92102</address>
+                  </li>
+                  <li>
+                    <span>Phone: </span>
+                    <a href="tel:+63-995-3959">+63-995-3959</a>
+                  </li>
+                  <li>
+                    <span>Email: </span>
+                    <a href="mailto:hi@margin.com">hi@margin.com</a>
+                  </li>
+                </ul>
+              </div>
             </div>
 
           </div>
         </div>
-      </div> <!-- end service boxes -->
+      </div> <!-- end container -->
 
-      <!-- Contact Form -->
-      <section class="section-wrap bg-light">
+      <div class="footer__bottom">
         <div class="container">
-
-          <div class="title-row text-center">
-            <h2 class="section-title">Send us a message</h2>
-          </div>
-
-          <div class="row justify-content-center">
-            <div class="col-lg-5">
-              <!-- Contact Form -->
-              <form id="contact-form" class="contact-form" method="post" action="#">
-
-                <div class="form-group">
-                  <input name="name" class="form-group__input" id="name" type="text" placeholder="Name *" required>
-                </div>
-
-                <div class="form-group">
-                  <input name="email" id="email" type="email" placeholder="Email *" required>
-                </div>
-
-                <div class="form-group">
-                  <input name="phone" id="phone" type="text" placeholder="Phone Number">
-                </div>
-
-                <div class="contact-message">
-                  <textarea id="message" name="message" rows="5" placeholder="Message"></textarea>
-                </div>
-
-                <div class="consent-checkbox">
-                  <label>
-                    <input class="consent-checkbox__input" type="checkbox" name="your-consent" required>
-                    <span class="consent-checkbox__label">I agree to the <a href="https://policies.google.com/privacy">privacy policy</a>.</span>
-                  </label>
-                </div>
-
-                <input type="submit" class="btn btn--lg btn--color btn--wide btn--button" value="Send Message"
-                  id="submit-message">
-                <div id="msg" class="message"></div>
-              </form>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="widget widget_nav_menu">
+                <ul>
+                  <li><a href="{% url 'about' %}">About</a></li>
+                  <li><a href="{% url 'services' %}">Services</a></li>
+                  <li><a href="{% url 'pricing' %}">Pricing</a></li>
+                  <li><a href="{% url 'blog' %}">Blog</a></li>
+                  <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-6 text-right text-md-center">
+              <span class="copyright">
+                &copy; 2019 Casumi, Made by <a href="https://deothemes.com/">DeoThemes</a>
+              </span>
             </div>
           </div>
-
         </div>
-      </section> <!-- end contact form -->
+      </div> <!-- end footer bottom -->
+    </footer> <!-- end footer -->
 
-      <!-- Google Map -->
-      <div class="contact-footer-top">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3092.305331982695!2d45.40367547483453!3d39.19051032935787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40142e1690a3e445%3A0xe33eeb6c5bda5c2f!2sNax%C3%A7%C4%B1van%20Universiteti!5e0!3m2!1sen!2saz!4v1709194256130!5m2!1sen!2saz"></iframe>
-      </div>
-      <!-- Footer -->
-      <footer class="footer">
-        <div class="container">
-          <div class="footer__widgets">
-            <div class="row">
-
-              <div class="col-lg-3 col-md-6">
-                <div class="widget widget-about-us">
-                  <!-- Logo -->
-                  <div class="navbar_left_black">
-                    <a href="{% url 'index' %}" class="logo-container">
-                      <h3>Casumi</h3>
-                      <h6>Consultancy_</h6>
-                    </a>
-                  </div>
-                  <div class="socials mt-32">
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fconsultancy_uk" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank">
-                      <i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.facebook.com/groups/managementconsultingforum/" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank">
-                      <i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://support.google.com/business/answer/6300665?hl=en" class="social social-google-plus" aria-label="google plus" title="google plus"
-                      target="_blank"><i class="fa-brands fa-google-plus-g"></i></a>
-                  </div>
-                </div>
-              </div> <!-- end about us -->
-
-
-              <div class="col-lg-3 offset-lg-3 col-md-6">
-                <div class="widget widget_nav_menu">
-                  <h5 class="widget-title">Solutions</h5>
-                  <ul>
-                    <li><a href="{% url 'contact' %}">Finance Strategy</a></li>
-                    <li><a href="{% url 'contact' %}">Advertising</a></li>
-                    <li><a href="{% url 'contact' %}">SMM</a></li>
-                    <li><a href="{% url 'contact' %}">SEO</a></li>
-                    <li><a href="{% url 'contact' %}">Google AdWords</a></li>
-                  </ul>
-                </div>
-              </div>
-
-
-              <div class="col-lg-3 col-md-6">
-                <div class="widget widget-address">
-                  <h5 class="widget-title">Company</h5>
-                  <ul>
-                    <li>
-                      <address>8910 University Center Lane Suite 620 San Diego, CA 92102</address>
-                    </li>
-                    <li>
-                      <span>Phone: </span>
-                      <a href="tel:+63-995-3959">+63-995-3959</a>
-                    </li>
-                    <li>
-                      <span>Email: </span>
-                      <a href="mailto:hi@margin.com">hi@margin.com</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div> <!-- end container -->
-
-        <div class="footer__bottom">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="widget widget_nav_menu">
-                  <ul>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'services' %}">Services</a></li>
-                    <li><a href="{% url 'pricing' %}">Pricing</a></li>
-                    <li><a href="{% url 'blog' %}">Blog</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-lg-6 text-right text-md-center">
-                <span class="copyright">
-                  &copy; 2019 Casumi, Made by <a href="https://deothemes.com/">DeoThemes</a>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div> <!-- end footer bottom -->
-      </footer> <!-- end footer -->
-
-      <div id="back-to-top">
-        <a href="#top"><i class="fa-solid fa-angles-up"></i></a>
-      </div>
+    <div id="back-to-top">
+      <a href="#top"><i class="fa-solid fa-angles-up"></i></a>
+    </div>
 
     </div> <!-- end content wrapper -->
   </main> <!-- end main wrapper -->

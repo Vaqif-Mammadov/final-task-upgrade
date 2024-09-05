@@ -305,46 +305,17 @@
                 <span>Contact Us</span>
               </a>
               <div class="row mt-72">
+                
+                {% for sponsor in sponsors %}
                 <div class="col-lg-3 col-6">
                   <a href="{% url 'about' %}">
-                    <img src="{%  static 'img/partners/partner_logo_1.png'  %}" alt="">
+                    <img src="{{sponsor.logo.url}}" alt="">
                   </a>
                 </div>
-                <div class="col-lg-3 col-6">
-                  <a href="{% url 'about' %}">
-                    <img src="{%  static 'img/partners/partner_logo_2.png'  %}" alt="">
-                  </a>
-                </div>
-                <div class="col-lg-3 col-6">
-                  <a href="{% url 'about' %}">
-                    <img src="{%  static 'img/partners/partner_logo_3.png'  %}" alt="">
-                  </a>
-                </div>
-                <div class="col-lg-3 col-6">
-                  <a href="{% url 'about' %}">
-                    <img src="{%  static 'img/partners/partner_logo_4.png'  %}" alt="">
-                  </a>
-                </div>
-                <div class="col-lg-3 col-6">
-                  <a href="{% url 'about' %}">
-                    <img src="{%  static 'img/partners/partner_logo_5.png'  %}" alt="">
-                  </a>
-                </div>
-                <div class="col-lg-3 col-6">
-                  <a href="{% url 'about' %}">
-                    <img src="{%  static 'img/partners/partner_logo_6.png'  %}" alt="">
-                  </a>
-                </div>
-                <div class="col-lg-3 col-6">
-                  <a href="{% url 'about' %}">
-                    <img src="{%  static 'img/partners/partner_logo_7.png'  %}" alt="">
-                  </a>
-                </div>
-                <div class="col-lg-3 col-6">
-                  <a href="{% url 'about' %}">
-                    <img src="{%  static 'img/partners/partner_logo_8.png'  %}" alt="">
-                  </a>
-                </div>
+                  
+                {% endfor %}
+                  
+
               </div>
             </div>
           </div>

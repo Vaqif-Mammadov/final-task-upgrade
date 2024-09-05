@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-import random
+import random,json
 from django.utils import timezone
 from ckeditor.fields import RichTextField
 
@@ -70,6 +70,20 @@ class Slickbox(models.Model):
     description=RichTextField(max_length=500,verbose_name="Açıqlama")
 
 
+class Plan(models.Model):
+    name = models.CharField(max_length=100,verbose_name="Adı")
+    price_monthly = models.CharField(max_length=100,verbose_name="Aylıq qiymət",default='')
+    price_yearly = models.CharField(max_length=100,verbose_name="İllik qiymət",default='')
+    description=RichTextField(max_length=500,verbose_name="Açıqlama")
+    my_list = models.CharField(max_length=255, default='[]')
+
+    def get_my_list(self):
+        return json.loads(self.my_list)
+
+    def set_my_list(self, value):
+        self.my_list = json.dumps(value)
+
+
 
 
 # HOME222222222222222222222222222222222222222222222222222222222222222222
@@ -88,3 +102,43 @@ class Consultant(models.Model):
     youtube=models.CharField(max_length=100,verbose_name="Youtube")
     instagram=models.CharField(max_length=100,verbose_name="Instagram")
    
+
+
+
+#    SERVICEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+class Sponsor(models.Model):
+    logo=models.FileField(verbose_name="Sponsor loqosu")
+
+#    SERVICEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+
+
+# CONTACTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+class Contact(models.Model):
+    icon=models.FileField(verbose_name="Şəkil")
+    name = models.CharField(max_length=100,verbose_name="Başlıq", default='[]')
+    tel1 = models.CharField(max_length=100,verbose_name="Telefon1", blank=True, default='[]')
+    tel2 = models.CharField(max_length=100,verbose_name="Telefon2", blank=True, default='[]')
+    mail1 = models.EmailField(verbose_name="E-mail1", blank=True, default='[]')
+    mail2 = models.EmailField(verbose_name="E-mail2", blank=True, default='[]')
+    adress1 = models.CharField(max_length=200,verbose_name="Ünvan1", blank=True, default='[]')
+    adress2 = models.CharField(max_length=200,verbose_name="Ünvan2", blank=True, default='[]')
+
+# CONTACTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+# SINGLE_POST11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+
+
+
+
+
+# SINGLE_POST11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+
+
+
+
+
+# SINGLE_POST22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+
+
+
+# SINGLE_POST22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222

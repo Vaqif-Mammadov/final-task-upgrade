@@ -437,89 +437,36 @@
             <h3 class="section-title">You might also like</h3>
           </div>
           <div class="row">
+            {% for new in news %}
+            <div class="col-lg-4">                 
 
-            <div class="col-lg-4">
-              <article class="entry entry-card">
-                <div class="entry__header">
-                  <a href="single-post-1.html">
-                    <img src="{%  static 'img/blog/masonry/blog_post_1.png'  %}" class="entry__img" alt="">
-                  </a>
-                  <div class="entry__category">
-                    <a href="{% url 'single-p1' %}" class="entry__category-item">Finance</a>
-                  </div>
-                </div>
-                <div class="entry__body">
-                  <h4 class="entry__title">
-                    <a href="{% url 'single-p1' %}">Business Mistakes to Avoid When Starting a Business</a>
-                  </h4>
-                  <div class="entry__meta">
-                    <span class="entry__meta-item entry__meta-author">
-                      <a href="#" class="entry__meta-author-url">
-                        <img src="{%  static 'img/blog/author/Ellipse.svg'  %}" class="entry__meta-author-img" alt="">
-                        <span class="entry__meta-author-name">Alexander Samokhin</span>
-                      </a>
-                    </span>
-                    <span class="entry__meta-item entry__meta-date">July 06, 2019</span>
-                  </div>
-                </div>
-              </article>
-            </div>
-
-            <div class="col-lg-4">
               <article class="entry entry-card">
                 <div class="entry__header">
                   <a href="{% url 'single-p1' %}">
-                    <img src="{%  static 'img/blog/masonry/blog_post_2.png'  %}" class="entry__img" alt="">
+                    <img src="{{new.image.url}}" class="entry__img" alt="">
                   </a>
                   <div class="entry__category">
-                    <a href="{% url 'single-p1' %}" class="entry__category-item">Finance</a>
+                    <a href="{% url 'single-p1' %}" class="entry__category-item">{{new.category}}</a>
                   </div>
                 </div>
                 <div class="entry__body">
                   <h4 class="entry__title">
-                    <a href="{% url 'single-p1' %}">Utilize these nine resources to help you take the stress out of
-                      preparing your taxes</a>
+                    <a href="{% url 'single-p1' %}">{{new.title}}</a>
                   </h4>
                   <div class="entry__meta">
                     <span class="entry__meta-item entry__meta-author">
                       <a href="#" class="entry__meta-author-url">
-                        <img src="{%  static 'img/blog/author/Ellipse.svg'  %}" class="entry__meta-author-img" alt="">
-                        <span class="entry__meta-author-name">Alexander Samokhin</span>
+                        <img src="{{new.icon.url}}" class="entry__meta-author-img" alt="">
+                        <span class="entry__meta-author-name">{{new.name_lastname}}</span>
                       </a>
                     </span>
-                    <span class="entry__meta-item entry__meta-date">July 06, 2019</span>
+                    <span class="entry__meta-item entry__meta-date">{{new.history}}</span>
                   </div>
                 </div>
               </article>
-            </div>
-
-            <div class="col-lg-4">
-              <article class="entry entry-card">
-                <div class="entry__header">
-                  <a href="single-post-1.html">
-                    <img src="{%  static 'img/blog/masonry/blog_post_3.png'  %}" class="entry__img" alt="">
-                  </a>
-                  <div class="entry__category">
-                    <a href="{% url 'single-p1' %}" class="entry__category-item">Finance</a>
-                  </div>
-                </div>
-                <div class="entry__body">
-                  <h4 class="entry__title">
-                    <a href="{% url 'single-p1' %}">Investment Update, Successful people ask better questions</a>
-                  </h4>
-                  <div class="entry__meta">
-                    <span class="entry__meta-item entry__meta-author">
-                      <a href="#" class="entry__meta-author-url">
-                        <img src="{%  static 'img/blog/author/Ellipse.svg'  %}" class="entry__meta-author-img" alt="">
-                        <span class="entry__meta-author-name">Alexander Samokhin</span>
-                      </a>
-                    </span>
-                    <span class="entry__meta-item entry__meta-date">July 06, 2019</span>
-                  </div>
-                </div>
-              </article>
-            </div>
-
+              
+            </div> 
+            {% endfor %}
           </div>
         </div>
       </section> <!-- end related posts -->
