@@ -271,7 +271,9 @@
         <div class="row justify-content-center">
           <div class="col-lg-5">
             <!-- Contact Form -->
-            <form id="contact-form" class="contact-form" method="post" action="#">
+            <form id="contact-form" class="contact-form" method="post">
+              
+              {%csrf_token%}
 
               <div class="form-group">
                 <input name="name" class="form-group__input" id="name" type="text" placeholder="Name *" required>
@@ -298,7 +300,7 @@
               </div>
 
               <input type="submit" class="btn btn--lg btn--color btn--wide btn--button" value="Send Message"
-                id="submit-message">
+                id="submitmessage">
               <div id="msg" class="message"></div>
             </form>
           </div>

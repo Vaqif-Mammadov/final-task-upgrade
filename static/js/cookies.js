@@ -1,5 +1,5 @@
 (function ($) {
-  "use strict";
+  // "use strict";
 
   window.addEventListener("load", function(){
     window.cookieconsent.initialise({

@@ -4771,6 +4771,27 @@ header .flex-parent {
   line-height: normal;
   text-transform: uppercase;
 }
+
+/* Sticky olduqda qara rəng */
+.navbar-black {
+    background-color: #fff !important; /* Naviqasiya çubuğunun rəngi */
+}
+
+.navbar-black h3, 
+.navbar-black h6 {
+    color: #000; /* Sticky olduqda mətni ağ rəngdə göstər */
+}
+
+/* Daha spesifik qaydalar da əlavə edə bilərsən */
+.navbar-black .logo-container h3 {
+    color: #16133e; /* Logo mətni ağ olsun */
+}
+.navbar-black .logo-container h6 {
+    color: #16133e;
+}
+
+
+
 /* Nav Right
 	-------------------------------------------------------*/
 .login-register {
@@ -4958,6 +4979,10 @@ header .flex-parent {
   -webkit-transform: translate3d(0, -100%, 0);
   transform: translate3d(0, -100%, 0);
   transition: all 0.5s cubic-bezier(0.6, 0, 0.15, 1);
+}
+
+.nav__holder nav--sticky sticky offset scrolling{
+  z-index: 500;
 }
 
 .nav--sticky.scrolling {
@@ -5460,7 +5485,7 @@ dd {
 
 #widget-none-border-buy{
 position: absolute;
-z-index: 500;
+z-index: 100;
 left: 100px;
 bottom: 60px;
 left: 50px;
@@ -5477,6 +5502,7 @@ font-family: Barlow;
 font-size: 1rem;
 font-weight: 700;
 line-height: normal;
+
 }
 #widget-none-border-text{
 	position: absolute;
@@ -5485,7 +5511,7 @@ line-height: normal;
 	justify-content: flex-start;
 	align-items: flex-start;
 	flex-direction: column;
-	z-index: 500;
+	z-index: 100;
 	top: 0;
 	
 }

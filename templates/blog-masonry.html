@@ -210,324 +210,45 @@
 
 						<div class="col-lg-12 blog__content mb-34">
 							<div class="row">
-
+								
+								{% for new in news %}
+									
 								<div class="col-lg-4">
 									<article class="entry entry-card">
 										<div class="entry__header">
 											<a href="single-post-1.html">
-												<img src="{%  static 'img/blog/masonry/blog_post_1.png'  %}"
+												<img src="{{new.image.url}}"
 													class="entry__img" alt="">
 											</a>
 											<div class="entry__category">
-												<a href="single-post-1.html" class="entry__category-item">Finance</a>
+												<a href="single-post-1.html" class="entry__category-item">{{new.category}}</a>
+												<a href="single-post-1.html" class="entry__category-item">{{new.category2}}</a>
 											</div>
 										</div>
 										<div class="entry__body">
 											<h4 class="entry__title">
-												<a href="single-post-1.html">Business Mistakes to Avoid When Starting a
-													Business</a>
+												<a href="single-post-1.html">{{new.title}}</a>
 											</h4>
 											<div class="entry__meta">
 												<span class="entry__meta-item entry__meta-author">
 													<a href="#" class="entry__meta-author-url">
-														<img src="{%  static 'img/blog/author/Ellipse.svg'  %}"
+														<img src="{{new.icon.url}}"
 															class="entry__meta-author-img" alt="">
-														<span class="entry__meta-author-name">Alexander Samokhin</span>
+														<span class="entry__meta-author-name">{{new.name_lastname}}</span>
 													</a>
 												</span>
-												<span class="entry__meta-item entry__meta-date">July 06, 2019</span>
+												<span class="entry__meta-item entry__meta-date">{{new.history}}</span>
 											</div>
 											<div class="entry__excerpt">
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-													molestie blandit lobortis. Curabitur feugiat laoreet
-													odio. Quisque ligulas ipsum, euismod atras.</p>
+												<p>{{new.content|safe|truncatewords:25}}</p>
 											</div>
 										</div>
 									</article>
 								</div>
 
-								<div class="col-lg-4">
-									<article class="entry entry-card">
-										<div class="entry__header">
-											<a href="single-post-1.html">
-												<img src="{%  static 'img/blog/masonry/blog_post_2.png'  %}"
-													class="entry__img" alt="">
-											</a>
-											<div class="entry__category">
-												<a href="single-post-1.html" class="entry__category-item">Stock</a>
-												<a href="single-post-1.html" class="entry__category-item">Finance</a>
-											</div>
-										</div>
-										<div class="entry__body">
-											<h4 class="entry__title">
-												<a href="single-post-1.html">Utilize these nine resources to help you
-													take the stress out of preparing your taxes</a>
-											</h4>
-											<div class="entry__meta">
-												<span class="entry__meta-item entry__meta-author">
-													<a href="#" class="entry__meta-author-url">
-														<img src="{%  static 'img/blog/author/Ellipse.svg'  %}"
-															class="entry__meta-author-img" alt="">
-														<span class="entry__meta-author-name">Alexander Samokhin</span>
-													</a>
-												</span>
-												<span class="entry__meta-item entry__meta-date">July 06, 2019</span>
-											</div>
-											<div class="entry__excerpt">
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-													molestie blandit lobortis. Curabitur feugiat laoreet
-													odio. Quisque ligulas ipsum, euismod atras.</p>
-											</div>
-										</div>
-									</article>
-								</div>
+								{% endfor %}
 
-								<div class="col-lg-4">
-									<article class="entry entry-card">
-										<div class="entry__header">
-											<a href="single-post-1.html">
-												<img src="{%  static 'img/blog/masonry/blog_post_3.png'  %}"
-													class="entry__img" alt="">
-											</a>
-											<div class="entry__category">
-												<a href="single-post-1.html" class="entry__category-item">Finance</a>
-											</div>
-										</div>
-										<div class="entry__body">
-											<h4 class="entry__title">
-												<a href="single-post-1.html">Investment Update, Successful people ask
-													better questions</a>
-											</h4>
-											<div class="entry__meta">
-												<span class="entry__meta-item entry__meta-author">
-													<a href="#" class="entry__meta-author-url">
-														<img src="{%  static 'img/blog/author/Ellipse.svg'  %}"
-															class="entry__meta-author-img" alt="">
-														<span class="entry__meta-author-name">Alexander Samokhin</span>
-													</a>
-												</span>
-												<span class="entry__meta-item entry__meta-date">July 06, 2019</span>
-											</div>
-											<div class="entry__excerpt">
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-													molestie blandit lobortis. Curabitur feugiat laoreet
-													odio. Quisque ligulas ipsum, euismod atras.</p>
-											</div>
-										</div>
-									</article>
 								</div>
-
-								<div class="col-lg-4">
-									<article class="entry entry-card">
-										<div class="entry__header">
-											<a href="single-post-1.html">
-												<img src="{%  static 'img/blog/masonry/blog_post_4.png'  %}"
-													class="entry__img" alt="">
-											</a>
-											<div class="entry__category">
-												<a href="single-post-1.html" class="entry__category-item">Finance</a>
-											</div>
-										</div>
-										<div class="entry__body">
-											<h4 class="entry__title">
-												<a href="single-post-1.html">Leadership Qualities and Confidence Make
-													Money</a>
-											</h4>
-											<div class="entry__meta">
-												<span class="entry__meta-item entry__meta-author">
-													<a href="#" class="entry__meta-author-url">
-														<img src="{%  static 'img/blog/author/Ellipse.svg'  %}"
-															class="entry__meta-author-img" alt="">
-														<span class="entry__meta-author-name">Alexander Samokhin</span>
-													</a>
-												</span>
-												<span class="entry__meta-item entry__meta-date">July 06, 2019</span>
-											</div>
-											<div class="entry__excerpt">
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-													molestie blandit lobortis. Curabitur feugiat laoreet
-													odio. Quisque ligulas ipsum, euismod atras.</p>
-											</div>
-										</div>
-									</article>
-								</div>
-
-								<div class="col-lg-4">
-									<article class="entry entry-card">
-										<div class="entry__header">
-											<a href="single-post-1.html">
-												<img src="{%  static 'img/blog/masonry/blog_post_5.png'  %}"
-													class="entry__img" alt="">
-											</a>
-											<div class="entry__category">
-												<a href="single-post-1.html" class="entry__category-item">Stock</a>
-											</div>
-										</div>
-										<div class="entry__body">
-											<h4 class="entry__title">
-												<a href="single-post-1.html">Money Market Rates Finding the Best
-													Accounts in last year 2019</a>
-											</h4>
-											<div class="entry__meta">
-												<span class="entry__meta-item entry__meta-author">
-													<a href="#" class="entry__meta-author-url">
-														<img src="{%  static 'img/blog/author/Ellipse.svg'  %}"
-															class="entry__meta-author-img" alt="">
-														<span class="entry__meta-author-name">Alexander Samokhin</span>
-													</a>
-												</span>
-												<span class="entry__meta-item entry__meta-date">July 06, 2019</span>
-											</div>
-											<div class="entry__excerpt">
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-													molestie blandit lobortis. Curabitur feugiat laoreet
-													odio. Quisque ligulas ipsum, euismod atras.</p>
-											</div>
-										</div>
-									</article>
-								</div>
-
-								<div class="col-lg-4">
-									<article class="entry entry-card">
-										<div class="entry__header">
-											<a href="single-post-1.html">
-												<img src="{%  static 'img/blog/masonry/blog_post_6.png'  %}"
-													class="entry__img" alt="">
-											</a>
-											<div class="entry__category">
-												<a href="single-post-1.html" class="entry__category-item">Finance</a>
-											</div>
-										</div>
-										<div class="entry__body">
-											<h4 class="entry__title">
-												<a href="single-post-1.html">8 Steps to Making Daily Progress in Your
-													Business</a>
-											</h4>
-											<div class="entry__meta">
-												<span class="entry__meta-item entry__meta-author">
-													<a href="#" class="entry__meta-author-url">
-														<img src="{%  static 'img/blog/author/Ellipse.svg'  %}"
-															class="entry__meta-author-img" alt="">
-														<span class="entry__meta-author-name">Alexander Samokhin</span>
-													</a>
-												</span>
-												<span class="entry__meta-item entry__meta-date">July 06, 2019</span>
-											</div>
-											<div class="entry__excerpt">
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-													molestie blandit lobortis. Curabitur feugiat laoreet
-													odio. Quisque ligulas ipsum, euismod atras.</p>
-											</div>
-										</div>
-									</article>
-								</div>
-
-								<div class="col-lg-4">
-									<article class="entry entry-card">
-										<div class="entry__header">
-											<a href="single-post-1.html">
-												<img src="{%  static 'img/blog/masonry/blog_post_7.png'  %}"
-													class="entry__img" alt="">
-											</a>
-											<div class="entry__category">
-												<a href="single-post-1.html" class="entry__category-item">Finance</a>
-											</div>
-										</div>
-										<div class="entry__body">
-											<h4 class="entry__title">
-												<a href="single-post-1.html">Your strategy doesn’t resemble a “strategy”
-													at all</a>
-											</h4>
-											<div class="entry__meta">
-												<span class="entry__meta-item entry__meta-author">
-													<a href="#" class="entry__meta-author-url">
-														<img src="{%  static 'img/blog/author/Ellipse.svg'  %}"
-															class="entry__meta-author-img" alt="">
-														<span class="entry__meta-author-name">Alexander Samokhin</span>
-													</a>
-												</span>
-												<span class="entry__meta-item entry__meta-date">July 06, 2019</span>
-											</div>
-											<div class="entry__excerpt">
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-													molestie blandit lobortis. Curabitur feugiat laoreet
-													odio. Quisque ligulas ipsum, euismod atras.</p>
-											</div>
-										</div>
-									</article>
-								</div>
-
-								<div class="col-lg-4">
-									<article class="entry entry-card">
-										<div class="entry__header">
-											<a href="single-post-1.html">
-												<img src="{%  static 'img/blog/masonry/blog_post_8.png'  %}"
-													class="entry__img" alt="">
-											</a>
-											<div class="entry__category">
-												<a href="single-post-1.html" class="entry__category-item">Stock</a>
-											</div>
-										</div>
-										<div class="entry__body">
-											<h4 class="entry__title">
-												<a href="single-post-1.html">You don’t stand out from the List of the
-													Most Profitable Investment Projects</a>
-											</h4>
-											<div class="entry__meta">
-												<span class="entry__meta-item entry__meta-author">
-													<a href="#" class="entry__meta-author-url">
-														<img src="{%  static 'img/blog/author/Ellipse.svg'  %}"
-															class="entry__meta-author-img" alt="">
-														<span class="entry__meta-author-name">Alexander Samokhin</span>
-													</a>
-												</span>
-												<span class="entry__meta-item entry__meta-date">July 06, 2019</span>
-											</div>
-											<div class="entry__excerpt">
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-													molestie blandit lobortis. Curabitur feugiat laoreet
-													odio. Quisque ligulas ipsum, euismod atras.</p>
-											</div>
-										</div>
-									</article>
-								</div>
-
-								<div class="col-lg-4">
-									<article class="entry entry-card">
-										<div class="entry__header">
-											<a href="single-post-1.html">
-												<img src="{%  static 'img/blog/masonry/blog_post_9.png'  %}"
-													class="entry__img" alt="">
-											</a>
-											<div class="entry__category">
-												<a href="single-post-1.html" class="entry__category-item">Finance</a>
-											</div>
-										</div>
-										<div class="entry__body">
-											<h4 class="entry__title">
-												<a href="single-post-1.html">What Can The Gig Economy Do For Your
-													Company?</a>
-											</h4>
-											<div class="entry__meta">
-												<span class="entry__meta-item entry__meta-author">
-													<a href="#" class="entry__meta-author-url">
-														<img src="{%  static 'img/blog/author/Ellipse.svg'  %}"
-															class="entry__meta-author-img" alt="">
-														<span class="entry__meta-author-name">Alexander Samokhin</span>
-													</a>
-												</span>
-												<span class="entry__meta-item entry__meta-date">July 06, 2019</span>
-											</div>
-											<div class="entry__excerpt">
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-													molestie blandit lobortis. Curabitur feugiat laoreet
-													odio. Quisque ligulas ipsum, euismod atras.</p>
-											</div>
-										</div>
-									</article>
-								</div>
-
-							</div>
 
 							<!-- Pagination -->
 							<nav class="pagination text-center clearfix">

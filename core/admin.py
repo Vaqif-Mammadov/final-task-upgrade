@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Service,Consultant,Serv,Praise,New,Slickbox,Plan,Sponsor,Contact
+from .models import Service,Consultant,Serv,Praise,New,Slickbox,Plan,Sponsor,Contact,Reply,User_contact,FAQQuestion,Answer,NewsletterMessage
 
 # homeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 @admin.register(Serv)
@@ -16,7 +16,7 @@ class PraisesAdmin(admin.ModelAdmin):
 
 @admin.register(New)
 class NewAdmin(admin.ModelAdmin):
-    list_display=('name_lastname','title','category','history')
+    list_display=('name_lastname','title','category','category2','history')
 
 # homeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 
@@ -54,3 +54,43 @@ class ContactAdmin(admin.ModelAdmin):
 
 
 # CONTACTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+
+# BLOGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+@admin.register(NewsletterMessage)
+class NewsletterMessageAdmin(admin.ModelAdmin):
+    list_display=('user','subject','message')
+
+# BLOGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+
+
+# PRICINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+@admin.register(User_contact)
+class User_contactAdmin(admin.ModelAdmin):
+    list_display=('name','phone')
+
+
+@admin.register(FAQQuestion)
+class FAQQuestionAdmin(admin.ModelAdmin):
+    list_display = ('full_name', 'email', 'message','phone', 'count', 'created_at')
+    search_fields = ('name', 'email','phone', 'message')
+    list_filter = ('count',)
+
+@admin.register(Answer)
+class AnswerAdmin(admin.ModelAdmin):
+    list_display = ('question', 'answer_text', 'created_at')
+    search_fields = ('question__name', 'answer_text')
+    list_filter = ('created_at',)
+
+# PRICINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+
+# SİNGLEPOST111111111111111111111111111111111111111111111111111111111111111
+@admin.register(Reply)
+class ReplyAdmin(admin.ModelAdmin):
+    list_display=('user','comment','created_at')
+
+
+
+
+
+# SİNGLEPOST111111111111111111111111111111111111111111111111111111111111111

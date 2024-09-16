@@ -278,26 +278,22 @@ document.querySelectorAll("form").forEach((form) => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("loginForm");
-  form.addEventListener("submit", function (event) {
-    const formData = new FormData(form);
-    const csrfToken = formData.get("csrfmiddlewaretoken");
-    event.preventDefault();
-    fetch("/login/", {
-      method: "POST",
-      body: formData,
-      headers: {
-        "X-CSRFToken": csrfToken,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const messageElement = document.getElementById("responseMessage");
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('loginForm');
+  form.addEventListener('submit', function (event) {
+      const formData = new FormData(form);
+      event.preventDefault();
+      fetch('/login/', {
+          method: 'POST',
+          body: formData,
+          headers: {
+              'X-CSRFToken': csrfToken
+          }
       })
-      .catch((error) => {
-        console.error("error", error);
-      });
+          .then(response => response.json())
+          .catch(error => {
+              console.error('error', error);
+          });
   });
 });
 

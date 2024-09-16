@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from .models import Profile
+from .models import Profile,Comment,Reply,User_contact,NewsletterMessage
 
 class SignupForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput, label='Password')
@@ -28,3 +28,33 @@ class ProfilePictureForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['profile_picture']
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['email', 'url', 'comment']
+
+class ReplyForm(forms.ModelForm):
+    class Meta:
+        model = Reply
+        fields = ['reply_text']
+
+class User_contactForm(forms.ModelForm):
+    class Meta:
+        model = User_contact
+        fields = ['name','phone','note','yourconsent']
+
+class FAQForm(forms.Form):
+    full_name = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'placeholder': 'Full Name'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
+    phone = forms.CharField(max_length=25, widget=forms.TextInput(attrs={'placeholder': 'Phone'}))
+    message = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Write your message...', 'rows': 7}))
+
+
+class NewsletterMessageForm(forms.ModelForm):
+    class Meta:
+        model = NewsletterMessage
+        fields = ['user', 'mail1', 'subject', 'message']
+        widgets = {
+            'message': forms.Textarea(attrs={'rows': 4}),
+        }

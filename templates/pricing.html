@@ -363,8 +363,8 @@
               <div class="contact-form-container">
                 <h3 class="mb-32">Request a free call back</h3>
                 <!-- Contact Form -->
-                <form id="contact-form" class="contact-form" method="post" action="#">
-
+                <form id="contact-form" class="contact-form" method="post">
+                  {%csrf_token%}
                   <div class="form-group">
                     <input name="name" class="form-group__input" id="name" type="text" placeholder="Name *" required>
                   </div>
@@ -379,7 +379,7 @@
 
                   <div class="consent-checkbox">
                     <label>
-                      <input class="consent-checkbox__input" type="checkbox" name="your-consent" required>
+                      <input id="yourconsent" class="consent-checkbox__input" type="checkbox" name="your-consent" required>
                       <span class="consent-checkbox__label">I agree to the <a href="https://policies.google.com/privacy" target="_blank">privacy policy</a>.</span>
                     </label>
                   </div>

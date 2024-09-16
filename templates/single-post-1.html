@@ -197,9 +197,10 @@
       <section class="section-wrap blog-page-title single-post__entry-header bg-dark"
         style="background-image: url('{% static 'img/page_title/Blog-single-Background.png' %}')">
         <div class="container">
+          
           <div class="blog-page-title__holder">
             <div class="entry__category">
-              <a href="{% url 'single-p1' %}" class="entry__category-item">Finance</a>
+              <a href="{% url 'single_posts' 5 %}" class="entry__category-item">Finance</a>
             </div>
             <h1 class="blog-page-title__title">Business Mistakes to Avoid When Starting a Business</h1>
             <div class="entry__meta">
@@ -343,30 +344,15 @@
                           <td><strong>Last Name</strong></td>
                           <td><strong>Profession</strong></td>
                         </tr>
+                        
+                        {% for consultant in consultants %}
                         <tr>
-                          <td>1</td>
-                          <td>Joeby</td>
-                          <td>Smith</td>
-                          <td>Web Designer</td>
+                          <td>{{forloop.counter}}</td>
+                          <td>{{consultant.name}}</td>
+                          <td>{{consultant.last_name}}</td>
+                          <td>{{consultant.occupation}}</td>
                         </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Alex</td>
-                          <td>Samokhin</td>
-                          <td>Developer</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Camille</td>
-                          <td>Kent</td>
-                          <td>Entrepreneur</td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Monica</td>
-                          <td>Green</td>
-                          <td>Writer</td>
-                        </tr>
+                        {% endfor %}
                       </tbody>
                     </table>
 
@@ -478,107 +464,55 @@
             <div class="col-lg-8">
 
               <div id="comments" class="entry__comments">
-                <h5 class="entry__comments-title">3 Comments</h5>
+                <h5 class="entry__comments-title"> There are {{count}} comments</h5>
                 <ul class="comment-list">
+                  {% for comment in comments %}
                   <li class="comment even thread-even depth-1 parent">
                     <article class="comment-body">
                       <div class="comment-avatar vcard">
-                        <img alt="" src="{%  static 'img/blog/single/comment_1.png'  %}" class="avatar avatar-46 photo">
+                        <img alt="" src="{{ profile_image.url }}" class="avatar avatar-46 photo">
                       </div>
                       <div class="comment-text">
-                        <h6 class="comment-author">Joeby Ragpa</h6>
+                        <h6 class="comment-author">{{profile_name}}</h6>
                         <span class="says">says:</span>
                         <div class="comment-metadata">
                           <a href="#" class="comment-date">
-                            <time datetime="2018-06-07T06:11:32+00:00">Apr. 27, 2018 at 12:17 pm</time>
+                            <time datetime="2018-06-07T06:11:32+00:00">{{comment.created_at}}</time>
                           </a>
                         </div>
                         <div class="comment-content">
-                          <p>This template is so awesome. I didn’t expect so many features inside and pages are very
-                            useful. I will rate 5 stars. </p>
-                        </div>
-                        <div class="reply"><a rel="nofollow" class="comment-reply-link" href="#"
-                            aria-label="Reply to DeoThemes">Reply</a></div>
-                      </div>
-                    </article>
-                    <ul class="children">
-                      <li class="comment odd alt depth-2">
-                        <article class="comment-body">
-                          <div class="comment-avatar vcard">
-                            <img alt="" src="{%  static 'img/blog/single/comment_2.png'  %}"
-                              class="avatar avatar-46 photo">
-                          </div>
-                          <div class="comment-text">
-                            <h6 class="comment-author">Alex Samokhin</h6>
-                            <span class="says">says:</span>
-                            <div class="comment-metadata">
-                              <a href="#" class="comment-date">
-                                <time datetime="2018-06-07T06:23:38+00:00">Apr. 27, 2018 at 12:17 pm</time>
-                              </a>
-                            </div>
-                            <div class="comment-content">
-                              <p>This template is so awesome. I didn’t expect so many features inside. All Blog pages
-                                are very useful, you can launch your own blog in a few seconds. I will rate 5 stars.</p>
-                            </div>
-
-                            <div class="reply"><a rel="nofollow" class="comment-reply-link" href="#"
-                                aria-label="Reply to Christopher Robins">Reply</a></div>
-                          </div>
-                        </article>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="comment">
-                    <article class="comment-body">
-                      <div class="comment-avatar vcard">
-                        <img alt="" src="{%  static 'img/blog/single/comment_3.png'  %}" class="avatar avatar-46 photo">
-                      </div>
-                      <div class="comment-text">
-                        <h6 class="comment-author">Camille Alforque</h6>
-                        <span class="says">says:</span>
-                        <div class="comment-metadata">
-                          <a href="#" class="comment-date">
-                            <time datetime="2018-06-07T06:11:32+00:00">Apr. 27, 2018 at 12:17 pm</time>
-                          </a>
-                        </div>
-                        <div class="comment-content">
-                          <p>This template is so awesome. I didn’t expect so many features inside. E-commerce pages are
-                            very useful, you can launch your online store in few seconds. I will rate 5 stars. </p>
+                          <p>{{comment.comment}}</p>
                         </div>
                         <div class="reply"><a rel="nofollow" class="comment-reply-link" href="#"
                             aria-label="Reply to DeoThemes">Reply</a></div>
                       </div>
                     </article>
                   </li>
+                  {% endfor %}
+                 
                 </ul>
 
                 <!-- Comment Form -->
                 <div class="comment-respond">
                   <h5 class="comment-respond__title">Leave your comment</h5>
-                  <form action="#" method="post" id="commentform" class="comment-form" novalidate="">
+                  <form method="post" id="commentform" class="comment-form" novalidate>
+                    {% csrf_token %}
                     <div class="row row-16">
                       <div class="col-lg-4">
-                        <input id="author" name="author" type="text" value="" placeholder="Name" required="required">
-                      </div>
-                      <div class="col-lg-4">
-                        <input id="email" name="email" type="text" value="" placeholder="Email" required="required">
+                        <input id="mail" name="email" type="email" value="" placeholder="Email" required>
                       </div>
                       <div class="col-lg-4">
                         <input id="url" name="url" type="text" value="" placeholder="Website">
                       </div>
                     </div>
-                    <textarea id="comment" class="form-control" name="comment" rows="6" placeholder="Comment"
-                      required="required"></textarea>
+                    <textarea id="comment" class="form-control" name="comment" rows="6" placeholder="Comment" required></textarea>
                     <label class="consent-checkbox" for="wp-comment-cookies-consent">
-                      <input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox"
-                        value="yes">
-                      <span class="consent-checkbox__label">Save my name, email, and website in this browser for the
-                        next time I comment.</span>
+                      <input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes">
+                      <span class="consent-checkbox__label">Save my name, email, and website in this browser for the next time I comment.</span>
                     </label>
                     <p class="form-submit">
-                      <input name="submit" type="submit" id="submit" class="btn btn--lg btn--color btn--button"
-                        value="Post Comment"> <input type="hidden" name="comment_post_ID" value="220"
-                        id="comment_post_ID">
+                      <input name="submit" type="submit" id="submit" class="btn btn--lg btn--color btn--button" value="Post Comment">
+                      <input type="hidden" name="comment_post_ID" value="220" id="comment_post_ID">
                     </p>
                   </form>
                 </div><!-- end comment form -->

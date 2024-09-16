@@ -55,10 +55,16 @@ class Praise(models.Model):
 class New(models.Model):
     image=models.FileField(verbose_name="Şəkil")
     category = models.CharField(max_length=100,verbose_name="Kateqoriya")
+    category2 = models.CharField(max_length=100,verbose_name="İkinci Kateqoriya", default='',blank=True)
     title = models.CharField(max_length=100,verbose_name="Başlıq")
+    content = RichTextField(max_length=3000,verbose_name="Məzmun", default='')
     name_lastname = models.CharField(max_length=100,verbose_name="Ad və soyad")
     icon = models.FileField(verbose_name="Profil şəkli")
     history = models.DateTimeField(auto_now_add=True)
+    topimg= models.FileField(verbose_name="Üst şəkil",blank=True, default='')
+    midimg= models.FileField(verbose_name="Orta şəkil", blank=True, default='')
+    botimg= models.FileField(verbose_name="Alt şəkil",blank=True, default='')
+    
 
 
 # homeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
@@ -101,6 +107,9 @@ class Consultant(models.Model):
     facebook=models.CharField(max_length=100,verbose_name="Facebook")
     youtube=models.CharField(max_length=100,verbose_name="Youtube")
     instagram=models.CharField(max_length=100,verbose_name="Instagram")
+
+    def __str__(self):
+        return f"{self.name} {self.last_name}"
    
 
 
@@ -125,6 +134,55 @@ class Contact(models.Model):
 
 # CONTACTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
+# PRICINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+class User_contact(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    name = models.CharField(max_length=100,verbose_name="Ad")
+    phone = models.CharField(max_length=100,verbose_name="Telefon")
+    note=RichTextField(max_length=1000,verbose_name="Qeyd")  
+    yourconsent=models.BooleanField(default=False)
+
+
+class FAQQuestion(models.Model):
+    full_name = models.CharField(max_length=255)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    message = models.TextField()
+    normalized_message = models.CharField(max_length=255, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    count = models.PositiveIntegerField(default=1)
+    def __str__(self):
+        return self.message[:50]
+    
+class Answer(models.Model):
+    question = models.ForeignKey(FAQQuestion, on_delete=models.CASCADE, related_name='answers')
+    answer_text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.answer_text[:50]    
+
+# PRICINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+
+
+# BLOGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+class NewsletterMessage(models.Model):
+    user=models.ForeignKey(User, on_delete=models.CASCADE,default='1')
+    mail1 = models.EmailField(default='')
+    subject = models.CharField(max_length=255)
+    message = models.TextField()
+    sent_at = models.DateTimeField(auto_now_add=True)
+    ishappy=models.BooleanField(default=False)
+
+    def _str_(self):
+        return self.subject
+
+
+
+
+# BLOGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+
+
 # SINGLE_POST11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
 
 
@@ -132,9 +190,40 @@ class Contact(models.Model):
 
 
 # SINGLE_POST11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+# class Article(models.Model):
+#     category = models.CharField(max_length=100,verbose_name="Kateqoriya")
+#     title=models.CharField(max_length=150,verbose_name="Başlıq")
+#     author=models.ForeignKey('Consultant', on_delete=models.CASCADE,verbose_name="Yazar")
+#     profile = models.ForeignKey('Profile', on_delete=models.CASCADE, verbose_name="Profil", null=True, blank=True)
+#     created_date=models.DateTimeField(auto_now_add=True, verbose_name="Yaradılma tarixi")
+#     content=RichTextField(verbose_name="Məzmun")
+#     mainimage=models.FileField(null=True,blank=True,verbose_name="Əsas şəkil")
+#     topimage=models.FileField(null=True,blank=True,verbose_name="Üst şəkil")
+#     midimage1=models.FileField(null=True,blank=True,verbose_name="Orta şəkil1")
+#     midimage2=models.FileField(null=True,blank=True,verbose_name="Orta şəkil2")
+#     midimage3=models.FileField(null=True,blank=True,verbose_name="Orta şəkil3")
+#     botimage=models.FileField(null=True,blank=True,verbose_name="Son şəkil")
+#     def __str__(self):
+#         return self.title
+    
+class Comment(models.Model):
+    email = models.EmailField()
+    url = models.URLField(blank=True)
+    comment = models.TextField(default="Anonymous")
+    created_at = models.DateTimeField(auto_now_add=True)
+    profile_id=models.ForeignKey('Profile', on_delete=models.CASCADE)
+    new=models.ForeignKey('New', on_delete=models.CASCADE,default='6')
+    def __str__(self):
+        return f"Comment by {self.author} on {self.created_at}"
+    
+class Reply(models.Model):
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='replies')
+    reply_text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  # Reply yazan user
 
-
-
+    def __str__(self):
+        return f"Reply by {self.profile.username} on {self.created_at}"
 
 
 # SINGLE_POST22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222

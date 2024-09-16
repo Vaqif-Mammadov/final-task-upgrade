@@ -16,7 +16,8 @@ from django.contrib.auth.models import User
 from .forms import SignupForm
 from django.contrib.auth.forms import SetPasswordForm
 from django.conf import settings
-from .forms import ProfilePictureForm
+from .forms import ProfilePictureForm,ReplyForm,User_contactForm,FAQForm
+import re
 
 
 def signup_view(request):
@@ -40,7 +41,7 @@ def generate_verification_code():
 def send_verification_email(email, code):
     subject = 'Your Verification Code'
     message = f'Your verification code is {code}.'
-    from_email = 'casumi2024@outlook.com'
+    from_email = 'casumic2024@outlook.com'
     try:
         mail_sent = send_mail(subject, message, from_email, [email])
         return mail_sent > 0
@@ -56,6 +57,7 @@ def email_verification_view(request):
             if email:
                 code = generate_verification_code()
                 request.session['verification_code'] = code
+                print(email,code)
                 if send_verification_email(email, code):
                     return JsonResponse({'status': 'success','message': 'A verification code has been sent to your email.'})
                 else:
@@ -107,6 +109,7 @@ def login_view(request):
     if request.method == 'POST':
         username_global = request.POST.get('username')
         password_global = request.POST.get('password')
+        print(username_global,password_global)
     return render(request,request.path)
 
 def user_auth(request):
@@ -131,6 +134,7 @@ def password_change(request):
             new_password1 = data.get('new_password1')
             new_password2 = data.get('new_password2')
             email = data.get('email')
+            print(email)            
             if new_password1 and new_password2 and new_password1 == new_password2:
                 user = User.objects.filter(email=email).first()
                 if user:
@@ -238,7 +242,7 @@ def pricing_view(request):
 
 
 # CONTACTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-@login_required
+
 def contact_view(request):
     user_auth(request)
     contacts = Contact.objects.all()
@@ -249,20 +253,87 @@ def contact_view(request):
 
 # CONTACTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
-def blog_masonry_view(request):
-    user_auth(request)
-    return render (request, "blog-masonry.html")
-
+# BLOGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
 def blog_view(request):
     user_auth(request)
-    return render (request, "blog.html")
+    news=New.objects.all()
+    context={
+            'news':news,
+             
+             }
+    return render (request, "blog.html",context)
+
+
+
+
+def send_newsletter_message(request):
+    if request.method == 'POST':
+        message_text = request.POST.get('message')
+        if message_text:
+            try:
+                user = request.user
+                profile = Profile.objects.get(user=user)
+                mail1 = profile.email
+
+                message_instance = NewsletterMessage(
+                    user=user,
+                    mail1=mail1,
+                    subject='Newsletter Message',
+                    message=message_text
+                )
+                message_instance.save()
+
+                to_email = Contact.objects.first().mail1
+                from_email = mail1
+                subject = 'Newsletter Message'
+                message = f"From: {from_email}\n\n{message_text}"
+
+                send_mail(subject, message, from_email, [to_email])
+
+                response_data = {'success': True, 'message': 'Your message has been sent successfully!'}
+            except Profile.DoesNotExist:
+                response_data = {'success': False, 'message': 'Profile not found for this user.'}
+            except Contact.DoesNotExist:
+                response_data = {'success': False, 'message': 'Contact email not found.'}
+            except Exception as e:
+                response_data = {'success': False, 'message': str(e)}
+        else:
+            response_data = {'success': False, 'message': 'No message text provided.'}
+
+        return JsonResponse(response_data)
+
+    return JsonResponse({'success': False, 'message': 'Invalid request method.'}, status=400)
+
+# BLOGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+
+# BLOG MASONRYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+def blog_masonry_view(request):
+    user_auth(request)
+    news=New.objects.all()
+    context={
+            'news':news,
+             
+             }
+    return render (request, "blog-masonry.html",context)
+# BLOG MASONRYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+
 
 # BLOG_POST111111111111111111111111111111111111111111111111111111111111
 def single_post_1_view(request):
     user_auth(request)
+    comments=Comment.objects.all()
+    count=len(comments)
+    profile_name=request.user.profile.username
     news=New.objects.all()
-
-    context={'news':news,
+    profile_image=request.user.profile.profile_picture
+    consultants=Consultant.objects.all()
+    context={
+             'news':news,
+             'comments': comments,
+             'profile_name':profile_name,
+             'profile_image':profile_image,
+             'count': count,
+             'consultants': consultants
              
              }
     return render (request, "single-post-1.html", context)
@@ -272,22 +343,147 @@ def single_post_1_view(request):
 # BLOG_POST22222222222222222222222222222222222222222222222222222222222222222222222222222
 def single_post_2_view(request):
     user_auth(request)
+    comments=Comment.objects.all()
+    count=len(comments)
+    profile_name=request.user.profile.username
     news=New.objects.all()
-
+    profile_image=request.user.profile.profile_picture
     context={'news':news,
-             
+             'comments': comments,
+             'profile_name':profile_name,
+             'profile_image':profile_image,
+             'count': count,
              }
 
     return render (request, "single-post-2.html",context)
 
+
 # BLOG_POST22222222222222222222222222222222222222222222222222222222222222222222222222222
+
+
+
+# POSTSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+
+def single_posts_view(request,id):
+    user_auth(request)
+    comments=Comment.objects.all()
+    count=len(comments)
+    profile_name=request.user.profile.username
+    new=get_object_or_404(New, id=id)
+    news=New.objects.all()
+    part1 = new.content[:920]
+    part2 = new.content[920:1900]
+    part3 = new.content[1900:]
+    profile_image=request.user.profile.profile_picture
+    consultants=Consultant.objects.all()
+    context={'new':new,
+             'news':news,
+             'comments': comments,
+             'profile_name':profile_name,
+             'profile_image':profile_image,
+             'count': count,
+             'consultants': consultants,
+             'part1':part1,
+             'part2':part2,
+             'part3':part3,
+            
+             }
+
+    return render (request, "single_posts.html",context)
+
+
+# POSTSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 
 def not_found_404_view(request):
     user_auth(request)
     return render (request, "404.html")
 
 
+def addcomment(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            comment = Comment(
+                profile_id=request.user.profile,
+                email=data.get('email'),
+                url=data.get('url'),
+                comment=data.get('comment'),
+            )
+            comment.save()
+            return JsonResponse({'status': 'success', 'message': 'Comment added successfully'})
+        except json.JSONDecodeError:
+            return JsonResponse({'status': 'error', 'message': 'Invalid JSON'}, status=400)
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+    return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
 
 
-# def detail_view(request,id):
-#     return HttpResponse ("Detail:",+ str (id))
+def add_reply(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        form = ReplyForm(data)
+        if form.is_valid():
+            reply = form.save(commit=False)
+            reply.comment = comment
+            reply.user = request.user  # Daxil olmuş istifadəçini təyin edirik
+            reply.save()
+            return JsonResponse({'status': 'success'})
+        else:
+            return JsonResponse({'status': 'error', 'message': form.errors})
+    return JsonResponse({'status': 'error', 'message': 'Invalid request'})
+
+user = User.objects.first()
+
+
+
+
+def usercontact_view(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        form = User_contactForm(data)
+        if form.is_valid():
+            usercontact = form.save(commit=False)
+            usercontact.user = request.user
+            usercontact.save()
+            return JsonResponse({'status': 'success'})
+        else:
+            return JsonResponse({'status': 'error', 'message': form.errors})
+    return JsonResponse({'status': 'error', 'message': 'Invalid request'})
+
+
+@csrf_exempt 
+def faq_view(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            full_name = data.get('full_name')
+            email = data.get('email')
+            phone= data.get('phone')
+            message = data.get('message')
+            message = message.lower().strip()
+            normalized_message = re.sub(r'\W+', ' ', message)
+            faq, created = FAQQuestion.objects.get_or_create(
+                phone=phone,
+                email=email,
+                normalized_message=normalized_message,
+                defaults={'full_name': full_name}
+            )
+            if not created:
+                faq.count += 1
+                faq.save()
+
+            return JsonResponse({'status': 'success', 'message': 'Your question has been submitted successfully.'})
+        except (ValueError, TypeError, KeyError) as e:
+            return JsonResponse({'status': 'error', 'message': 'Invalid data.'}, status=400)
+    user_auth(request)
+    faqs = FAQQuestion.objects.prefetch_related('answers').all()
+    seen_messages = set()
+    unique_faqs = []
+
+    for faq in faqs:
+        if faq.message not in seen_messages:
+            seen_messages.add(faq.message)
+            unique_faqs.append(faq)
+    
+    return render(request, 'FAQ.html', {'faqs': unique_faqs})
