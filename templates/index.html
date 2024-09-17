@@ -107,8 +107,11 @@
                       <li><a href="{% url 'about' %}">About</a></li>
                       <li><a href="{% url 'services' %}">Services</a></li>
                       <li><a href="{% url 'pricing' %}">Pricing</a></li>
-                      <li><a href="{% url 'contact' %}">Contact</a></li>
-                      <li><a href="{% url '404' %}">404</a></li>
+                      <li><a href="{% url 'contact' %}">Contact</a></li>                      
+                      {% comment %}
+                      <li><a href="{% url '404' %}">404</a></li>                        
+                      {% endcomment %}
+                        
                     </ul>
                   </li>
                   <!-- <li class="nav__dropdown">
@@ -141,7 +144,8 @@
                   <li>
                     <a href="#">Purchase</a>
                   </li>
-                </ul> <!-- end menu -->
+                </ul>
+                 <!-- end menu -->
 
                 <!-- Mobile Phone -->
                 <div class="nav__phone-mobile d-lg-none">
@@ -205,9 +209,11 @@
               </div> <!-- end nav right -->
 
             </div> <!-- end flex-parent -->
+            
           </div> <!-- end container -->
 
         </div>
+        
       </header> <!-- end navigation -->
 
       <!-- WELCOMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE -->
@@ -293,7 +299,7 @@
         <section class="section-wrap promo section-wrap--pt-180">
           <div class="container">
             <div class="row">
-              <div class="col-lg-4 mb-md-72">
+              <div id="promo_all" class="col-lg-4 mb-md-72">
                 <h2 class="promo__title">We bring the right people together</h2>
                 <p class="promo__text lead">As you may already know, there are an infinite number of things you can test
                   on your site to help you increase sales.

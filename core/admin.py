@@ -1,7 +1,11 @@
 from django.contrib import admin
-from .models import Service,Consultant,Serv,Praise,New,Slickbox,Plan,Sponsor,Contact,Reply,User_contact,FAQQuestion,Answer,NewsletterMessage
+from .models import Social,Service,Consultant,Serv,Praise,New,Slickbox,Plan,Sponsor,Contact,Reply,User_contact,FAQQuestion,Answer,NewsletterMessage
 
 # homeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+@admin.register(Social)
+class SocialAdmin(admin.ModelAdmin):
+    list_display=('name','image','link','active')
+
 @admin.register(Serv)
 class ServAdmin(admin.ModelAdmin):
     list_display=('title','description')

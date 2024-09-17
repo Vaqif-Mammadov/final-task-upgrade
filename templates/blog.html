@@ -294,22 +294,27 @@
                 <h4 class="widget-title">Popular Posts</h4>
                 <ul class="widget-popular-posts__list">
                   <li>
+                    
+                    {% for new in news %}
+                      
                     <article class="clearfix">
                       <div class="widget-popular-posts__img-holder">
                         <a href="{% url 'single-p1' %}">
-                          <img src="{%  static 'img/blog/sidebar/popular_post_1.png'  %}" alt="">
+                          <img src="{{new.image_icon.url}}" alt="">
                         </a>
                       </div>
                       <div class="widget-popular-posts__entry">
                         <h3 class="widget-popular-posts__entry-title">
-                          <a href="{% url 'single-p1' %}">Investment Update, Successful people ask better questions</a>
+                          <a href="{% url 'single-p1' %}">{{new.title}}</a>
                         </h3>
                         <div class="entry__meta">
-                          <span class="entry__meta-item entry__meta-date">July 06, 2019</span>
+                          <span class="entry__meta-item entry__meta-date">{{new.history}}</span>
                         </div>
                       </div>
                     </article>
+                    {% endfor %}
                   </li>
+                  
                   <li>
                     <article class="clearfix">
                       <div class="widget-popular-posts__img-holder">

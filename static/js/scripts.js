@@ -394,6 +394,7 @@ function addcommentfunction(event) {
   event.preventDefault();
   form.querySelector('input[type="submit"]').disabled = true;
   const formData = {
+    name: document.querySelector("#name").value,
     email: document.querySelector("#mail").value,
     url: document.getElementById("url").value,
     comment: document.getElementById("comment").value,
@@ -566,52 +567,57 @@ if (faqform) {
 
 // BLOGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
 
-document.getElementById('newslettersend').addEventListener('submit', function (event) {
-  if (!isLoggedIn) {
-      login()
-      return;
-  }
-  else {
-      event.preventDefault();
-      const form = document.getElementById("newslettersend")
-      const formData = new FormData(form);
+document.addEventListener('DOMContentLoaded', function () {
+  const newsletterForm = document.getElementById('newslettersend');
+  
+  if (newsletterForm) {
+      newsletterForm.addEventListener('submit', function (event) {
+          if (!isLoggedIn) {
+              login();
+              return;
+          } else {
+              event.preventDefault();
+              const form = document.getElementById("newslettersend");
+              const formData = new FormData(form);
 
-      fetch('/send-newsletter/', {
-          method: 'POST',
-          body: formData,
-          headers: {
-              'X-CSRFToken': csrfToken
-          },
-      })
-          .then(response => response.json())
-          .then(data => {
-              if (data.success) {
-                  Swal.fire({
-                      icon: 'success',
-                      title: 'Success!',
-                      text: data.message,
-                      confirmButtonText: 'OK',
-                  }).then(() => {
-                      form.reset();
-                  });
-              } else {
+              fetch('/send-newsletter/', {
+                  method: 'POST',
+                  body: formData,
+                  headers: {
+                      'X-CSRFToken': csrfToken
+                  },
+              })
+              .then(response => response.json())
+              .then(data => {
+                  if (data.success) {
+                      Swal.fire({
+                          icon: 'success',
+                          title: 'Success!',
+                          text: data.message,
+                          confirmButtonText: 'OK',
+                      }).then(() => {
+                          form.reset();
+                      });
+                  } else {
+                      Swal.fire({
+                          icon: 'error',
+                          title: 'Error!',
+                          text: data.message,
+                          confirmButtonText: 'OK',
+                      });
+                  }
+              })
+              .catch(error => {
+                  console.error('Error:', error);
                   Swal.fire({
                       icon: 'error',
                       title: 'Error!',
-                      text: data.message,
+                      text: 'An unexpected error occurred.',
                       confirmButtonText: 'OK',
                   });
-              }
-          })
-          .catch(error => {
-              console.error('Error:', error);
-              Swal.fire({
-                  icon: 'error',
-                  title: 'Error!',
-                  text: 'An unexpected error occurred.',
-                  confirmButtonText: 'OK',
               });
-          });
+          }
+      });
   }
 });
 

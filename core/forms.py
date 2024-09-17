@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from .models import Profile,Comment,Reply,User_contact,NewsletterMessage
+from .models import Profile,Social,Comment,Reply,User_contact,NewsletterMessage
 
 class SignupForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput, label='Password')
@@ -28,6 +28,11 @@ class ProfilePictureForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['profile_picture']
+
+class SocialForm(forms.ModelForm):
+    class Meta:
+        model = Social
+        fields = ['image','name','link','active']
 
 class CommentForm(forms.ModelForm):
     class Meta:

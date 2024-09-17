@@ -54,6 +54,7 @@ class Praise(models.Model):
     
 class New(models.Model):
     image=models.FileField(verbose_name="Şəkil")
+    image_icon=models.FileField(verbose_name="Şəkil ikon formasında", default='')
     category = models.CharField(max_length=100,verbose_name="Kateqoriya")
     category2 = models.CharField(max_length=100,verbose_name="İkinci Kateqoriya", default='',blank=True)
     title = models.CharField(max_length=100,verbose_name="Başlıq")
@@ -89,6 +90,24 @@ class Plan(models.Model):
     def set_my_list(self, value):
         self.my_list = json.dumps(value)
 
+
+class Social(models.Model):
+    image = models.FileField(verbose_name="Şəkil")
+    name = models.CharField(max_length=100, blank=True, verbose_name="Adı")
+    link = models.CharField(max_length=300, blank=True, verbose_name="Linki")
+    active = models.BooleanField(default=True, verbose_name="Aktivdir?")
+
+    def get_icon_class(self):
+        icon_map = {
+            'twitter': 'fa-brands fa-x-twitter',
+            'facebook': 'fa-brands fa-facebook-f',
+            'google plus': 'fa-brands fa-google-plus-g',
+            'instagram': 'fa-brands fa-instagram',
+            'pinterest': 'fa-brands fa-pinterest',
+            'linkedin': 'fa-brands fa-linkedin',
+            
+        }
+        return icon_map.get(self.name.lower(), 'fa-brands fa-question-circle')
 
 
 

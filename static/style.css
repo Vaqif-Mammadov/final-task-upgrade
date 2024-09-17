@@ -17,8 +17,12 @@
 /*-------------------------------------------------------*/
 html {
   font-size: 100%;
+  /* font-family: "Merriweather", serif !important; */
 }
 
+/* body{
+  font-family: "Merriweather", serif !important;
+} */
 /* /---------------------------------------------Overlays-----------------------------------------------------/ */
 /* /---------------------------------------------Signup-------------------------------------------------------/ */
 .signupcontainer {
@@ -1114,13 +1118,18 @@ html {
   }
 }
 
+@media only screen and (max-width: 1199px) {
+.profiles{
+  right:50px !important;
+}
+  }
 
 
 
 
 .profiles {
   position: absolute;
-  right: 20px;
+  right: 78px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -1798,7 +1807,7 @@ address {
 input,
 select,
 textarea {
-  height: 56px;
+  height: 45px;
   border-radius: 3px;
   border: 1px solid #e8eced;
   background-color: #fff;
@@ -1808,10 +1817,16 @@ textarea {
   transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
+.email{
+  border-radius: 3px !important;
+
+}
+
 textarea {
   height: auto;
   display: block;
   padding: 8px 16px;
+  resize: none;
 }
 
 button,
@@ -3301,6 +3316,10 @@ table thead tr th {
     max-width: 700px;
   }
 }
+#section-title{
+  width: 500px;
+}
+
 .testimonial .section-title {
   color: #fff;
   margin-bottom: 56px;
@@ -3359,6 +3378,17 @@ table thead tr th {
 .promo__title {
   font-size: 2.25rem;
 }
+#promo_all h2{
+  width: 400px !important;
+}
+#promo_all p{
+  width: 400px !important;
+}
+
+#promo_all .contactus{
+  margin-top: 30px;
+}
+
 .promo__title--boxed {
   max-width: 470px;
 }
@@ -4396,6 +4426,8 @@ figcaption {
 .comment {
   list-style: none;
 }
+
+
 @media only screen and (min-width: 576px) {
   .comment .children {
     padding-left: 8%;
@@ -4883,7 +4915,7 @@ header .flex-parent {
 .nav__search-trigger i {
   position: relative;
   top: 2px;
-  right: 3px;
+  right: 10px;
 }
 
 .nav__search-form {

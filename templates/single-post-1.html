@@ -497,7 +497,10 @@
                   <h5 class="comment-respond__title">Leave your comment</h5>
                   <form method="post" id="commentform" class="comment-form" novalidate>
                     {% csrf_token %}
-                    <div class="row row-16">
+                    <div id="col-mail-website" class="row row-16">
+                      <div class="col-lg-4">
+                        <input id="name" name="name" type="text" value="" placeholder="Name" required>
+                      </div>
                       <div class="col-lg-4">
                         <input id="mail" name="email" type="email" value="" placeholder="Email" required>
                       </div>
