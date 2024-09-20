@@ -62,12 +62,12 @@
 
 						<div class="nav__header">
 							<!-- Logo -->
-						   <div class="navbar_left_white">
-							 <a href="{% url 'index' %}" class="logo-container">
-							   <h3>Casumi</h3>
-							   <h6>Consultancy_</h6>
-							 </a>
-						   </div>
+							<div class="navbar_left_white">
+								<a href="{% url 'index' %}" class="logo-container">
+									<h3>Casumi</h3>
+									<h6>Consultancy_</h6>
+								</a>
+							</div>
 
 							<!-- Mobile toggle -->
 							<button type="button" class="nav__icon-toggle" id="nav__icon-toggle" data-toggle="collapse"
@@ -82,29 +82,32 @@
 						<!-- Navbar -->
 						<nav id="navbar-collapse" class="nav__wrap collapse navbar-collapse nav--align-right">
 							<ul class="nav__menu">
-							  <li class="nav__dropdown active">
-								<a href="#" aria-haspopup="true">Home</a>
-								<i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
-								  aria-expanded="false"></i>
-								<ul class="nav__dropdown-menu">
-								  <li><a href="{% url 'index' %}">Home 1</a></li>
-								  <li><a href="{% url 'home2' %}">Home 2</a></li>
-			
-								</ul>
-							  </li>
-							  <li class="nav__dropdown">
-								<a href="#" aria-haspopup="true">Pages</a>
-								<i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
-								  aria-expanded="false"></i>
-								<ul class="nav__dropdown-menu">
-								  <li><a href="{% url 'about' %}">About</a></li>
-								  <li><a href="{% url 'services' %}">Services</a></li>
-								  <li><a href="{% url 'pricing' %}">Pricing</a></li>
-								  <li><a href="{% url 'contact' %}">Contact</a></li>
-								  <li><a href="{% url '404' %}">404</a></li>
-								</ul>
-							  </li>
-							  <!-- <li class="nav__dropdown">
+								<li class="nav__dropdown active">
+									<a href="#" aria-haspopup="true">Home</a>
+									<i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button"
+										aria-haspopup="true" aria-expanded="false"></i>
+									<ul class="nav__dropdown-menu">
+										<li><a href="{% url 'index' %}">Home 1</a></li>
+										<li><a href="{% url 'home2' %}">Home 2</a></li>
+
+									</ul>
+								</li>
+								<li class="nav__dropdown">
+									<a href="#" aria-haspopup="true">Pages</a>
+									<i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button"
+										aria-haspopup="true" aria-expanded="false"></i>
+									<ul class="nav__dropdown-menu">
+										<li><a href="{% url 'about' %}">About</a></li>
+										<li><a href="{% url 'services' %}">Services</a></li>
+										<li><a href="{% url 'pricing' %}">Pricing</a></li>
+										<li><a href="{% url 'contact' %}">Contact</a></li>
+										{% comment %}
+										<li><a href="{% url '404' %}">404</a></li>
+										{% endcomment %}
+
+									</ul>
+								</li>
+								<!-- <li class="nav__dropdown">
 								<a href="blog.html" aria-haspopup="true">Features</a>
 								<i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
 								  aria-expanded="false"></i>
@@ -113,55 +116,58 @@
 								  <li><a href="elements.html">Elements</a></li>
 								</ul>
 							  </li> -->
-							  <li class="nav__dropdown">
-								<a href="#" aria-haspopup="true">Blog</a>
-								<i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
-								  aria-expanded="false"></i>
-								<ul class="nav__dropdown-menu">
-								  <li><a href="{% url 'blog' %}">Blog Standard</a></li>
-								  <li><a href="{% url 'blog-m' %}">Blog Masonry</a></li>
-								  <li class="nav__dropdown">
-									<a href="#" aria-haspopup="true">Single Post</a>
-									<i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
-									  aria-expanded="false"></i>
+								<li class="nav__dropdown">
+									<a href="#" aria-haspopup="true">Blog</a>
+									<i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button"
+										aria-haspopup="true" aria-expanded="false"></i>
 									<ul class="nav__dropdown-menu">
-										<li><a href="{% url 'single-p1' %}">Single post 1</a></li>
-										<li><a href="{% url 'single-p2' %}">Single post 2</a></li>
+										<li><a href="{% url 'blog' %}">Blog Standard</a></li>
+										<li><a href="{% url 'blog-m' %}">Blog Masonry</a></li>
+										{% comment %}
+										<li class="nav__dropdown">
+											<a href="#" aria-haspopup="true">Single Post</a>
+											<i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button"
+												aria-haspopup="true" aria-expanded="false"></i>
+											<ul class="nav__dropdown-menu">
+												<li><a href="{% url 'single-p1' %}">Single post 1</a></li>
+												<li><a href="{% url 'single-p2' %}">Single post 2</a></li>
+											</ul>
+										</li>
+										{% endcomment %}
 									</ul>
-								  </li>
-								</ul>
-							  </li>
-							  <li>
-								<a href="#">Purchase</a>
-							  </li>
+								</li>
+								<li>
+									<a href="#">Purchase</a>
+								</li>
 							</ul> <!-- end menu -->
-			
+
 							<!-- Mobile Phone -->
 							<div class="nav__phone-mobile d-lg-none">
-							  <a href="https://wa.me/+63-995-3959" target="_blank" class="nav__phone-number">+63-995-3959</a>
+								<a href="https://wa.me/+63-995-3959" target="_blank"
+									class="nav__phone-number">+63-995-3959</a>
 							</div>
-			
-			
+
+
 							<!-- Mobile Search -->
 							<div class="nav__search-mobile d-lg-none">
-							  <form role="search" method="get" class="search-form relative">
-								<input type="search" class="search-input" placeholder="Search" />
-								<button type="submit" class="search-button" aria-label="search button">
-								  <i class="fa-solid fa-magnifying-glass"></i></button>
-							  </form>
-							</div>
-			
-						  </nav> <!-- end nav-wrap -->
-
-						     <!-- Nav Right -->
-							 <div class="login-register">
-								<form id="form" method="post">
-								  {% csrf_token %}
-								  <button class="loginButton" id="login" type="submit" name="login">Login</button>
-								  <button class="signupButton" id="signup" type="submit" name="signup">Signup</button>
+								<form role="search" method="get" class="search-form relative">
+									<input type="search" class="search-input" placeholder="Search" />
+									<button type="submit" class="search-button" aria-label="search button">
+										<i class="fa-solid fa-magnifying-glass"></i></button>
 								</form>
-							  </div>
-							  
+							</div>
+
+						</nav> <!-- end nav-wrap -->
+
+						<!-- Nav Right -->
+						<div class="login-register">
+							<form id="form" method="post">
+								{% csrf_token %}
+								<button class="loginButton" id="login" type="submit" name="login">Login</button>
+								<button class="signupButton" id="signup" type="submit" name="signup">Signup</button>
+							</form>
+						</div>
+
 						<div class="nav__right d-none d-lg-flex">
 							<div class="nav__right-item">
 								<a href="tel:+63-995-3959" class="nav__phone-number">+63-995-3959</a>
@@ -175,11 +181,11 @@
 							</div>
 							{% if user.is_authenticated %}
 							<div class="profiles">
-							  {% if user.profile.profile_picture %}
-							  <img id="profilepictureimage" src="{{ user.profile.profile_picture.url }}" alt="">
-							  {% else %}
-							  <img id="profilepictureimage" src="{% static '/img/empty.jpg'%}" alt="">
-							  {% endif %}
+								{% if user.profile.profile_picture %}
+								<img id="profilepictureimage" src="{{ user.profile.profile_picture.url }}" alt="">
+								{% else %}
+								<img id="profilepictureimage" src="{% static '/img/empty.jpg'%}" alt="">
+								{% endif %}
 							</div>
 							{% endif %}
 						</div> <!-- end nav right -->
@@ -207,62 +213,71 @@
 			<section class="section-wrap bottom-divider">
 				<div class="container">
 					<div class="row">
-
 						<div class="col-lg-12 blog__content mb-34">
 							<div class="row">
-								
-								{% for new in news %}
-									
+								{% for new in page_obj %}
 								<div class="col-lg-4">
 									<article class="entry entry-card">
 										<div class="entry__header">
-											<a href="single-post-1.html">
-												<img src="{{new.image.url}}"
-													class="entry__img" alt="">
+											<a href="{% url 'single_posts' new.id %}">
+												<img src="{{ new.image.url }}" class="entry__img" alt="">
 											</a>
 											<div class="entry__category">
-												<a href="single-post-1.html" class="entry__category-item">{{new.category}}</a>
-												<a href="single-post-1.html" class="entry__category-item">{{new.category2}}</a>
+												<a href="{% url 'single_posts' new.id %}"
+													class="entry__category-item">{{ new.category }}</a>
+												<a href="{% url 'single_posts' new.id %}"
+													class="entry__category-item">{{ new.category2 }}</a>
 											</div>
 										</div>
 										<div class="entry__body">
 											<h4 class="entry__title">
-												<a href="single-post-1.html">{{new.title}}</a>
+												<a href="{% url 'single_posts' new.id %}">{{ new.title }}</a>
 											</h4>
 											<div class="entry__meta">
 												<span class="entry__meta-item entry__meta-author">
-													<a href="#" class="entry__meta-author-url">
-														<img src="{{new.icon.url}}"
-															class="entry__meta-author-img" alt="">
-														<span class="entry__meta-author-name">{{new.name_lastname}}</span>
+													<a href="{% url 'single_posts' new.id %}"
+														class="entry__meta-author-url">
+														<img src="{{ new.icon.url }}" class="entry__meta-author-img"
+															alt="">
+														<span class="entry__meta-author-name">{{ new.name_lastname }}</span>
 													</a>
 												</span>
-												<span class="entry__meta-item entry__meta-date">{{new.history}}</span>
+												<span class="entry__meta-item entry__meta-date">{{ new.history }}</span>
 											</div>
 											<div class="entry__excerpt">
-												<p>{{new.content|safe|truncatewords:25}}</p>
+												<p>{{ new.content|safe|truncatewords:25 }}</p>
 											</div>
 										</div>
 									</article>
 								</div>
-
 								{% endfor %}
-
-								</div>
+							</div>
 
 							<!-- Pagination -->
 							<nav class="pagination text-center clearfix">
-								<span aria-current="page" class="page-numbers current">1</span>
-								<a href="#" class="page-numbers">2</a>
-								<a href="#" class="page-numbers">3</a>
-								<a href="#" class="page-numbers">4</a>
-								<a href="#" class="next page-numbers"><i class="fa-solid fa-angle-right"></i></a>
+								{% if page_obj.has_previous %}
+								<a href="?page={{ page_obj.previous_page_number }}" class="page-numbers"><i
+										class="fa-solid fa-angle-left"></i></a>
+								{% endif %}
+
+								{% for num in page_obj.paginator.page_range %}
+								{% if page_obj.number == num %}
+								<span aria-current="page" class="page-numbers current">{{ num }}</span>
+								{% else %}
+								<a href="?page={{ num }}" class="page-numbers">{{ num }}</a>
+								{% endif %}
+								{% endfor %}
+
+								{% if page_obj.has_next %}
+								<a href="?page={{ page_obj.next_page_number }}" class="next page-numbers"><i
+										class="fa-solid fa-angle-right"></i></a>
+								{% endif %}
 							</nav>
 						</div>
-
 					</div>
 				</div>
-			</section> <!-- end blog -->
+			</section>
+
 
 
 			<!-- Footer -->
@@ -281,13 +296,19 @@
 										</a>
 									</div>
 									<div class="socials mt-32">
-										<a href="https://x.com/i/flow/login?redirect_after_login=%2Fconsultancy_uk" class="social social-twitter" aria-label="twitter" title="twitter" target="_blank">
-										  <i class="fa-brands fa-x-twitter"></i></a>
-										<a href="https://www.facebook.com/groups/managementconsultingforum/" class="social social-facebook" aria-label="facebook" title="facebook" target="_blank">
-										  <i class="fa-brands fa-facebook-f"></i></a>
-										<a href="https://support.google.com/business/answer/6300665?hl=en" class="social social-google-plus" aria-label="google plus" title="google plus"
-										  target="_blank"><i class="fa-brands fa-google-plus-g"></i></a>
-									  </div>
+										<a href="https://x.com/i/flow/login?redirect_after_login=%2Fconsultancy_uk"
+											class="social social-twitter" aria-label="twitter" title="twitter"
+											target="_blank">
+											<i class="fa-brands fa-x-twitter"></i></a>
+										<a href="https://www.facebook.com/groups/managementconsultingforum/"
+											class="social social-facebook" aria-label="facebook" title="facebook"
+											target="_blank">
+											<i class="fa-brands fa-facebook-f"></i></a>
+										<a href="https://support.google.com/business/answer/6300665?hl=en"
+											class="social social-google-plus" aria-label="google plus"
+											title="google plus" target="_blank"><i
+												class="fa-brands fa-google-plus-g"></i></a>
+									</div>
 								</div>
 							</div> <!-- end about us -->
 
@@ -301,7 +322,7 @@
 										<li><a href="{% url 'contact' %}">SMM</a></li>
 										<li><a href="{% url 'contact' %}">SEO</a></li>
 										<li><a href="{% url 'contact' %}">Google AdWords</a></li>
-									  </ul>
+									</ul>
 								</div>
 							</div>
 
@@ -334,13 +355,13 @@
 						<div class="row">
 							<div class="col-lg-6">
 								<div class="widget widget_nav_menu">
-								    <ul>
+									<ul>
 										<li><a href="{% url 'about' %}">About</a></li>
 										<li><a href="{% url 'services' %}">Services</a></li>
 										<li><a href="{% url 'pricing' %}">Pricing</a></li>
 										<li><a href="{% url 'blog' %}">Blog</a></li>
 										<li><a href="{% url 'contact' %}">Contact</a></li>
-									  </ul>
+									</ul>
 								</div>
 							</div>
 							<div class="col-lg-6 text-right text-md-center">
@@ -360,7 +381,7 @@
 		</div> <!-- end content wrapper -->
 	</main> <!-- end main wrapper -->
 
-    <script src="{% static 'js/overlay.js' %}"></script>
+	<script src="{% static 'js/overlay.js' %}"></script>
 	<script src="{% static 'js/jquery.min.js' %}"></script>
 	<script src="{% static 'js/bootstrap.min.js' %}"></script>
 	<script src="{% static 'js/plugins.js' %}"></script>

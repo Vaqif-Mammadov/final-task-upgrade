@@ -66,7 +66,10 @@
                   <li><a href="{% url 'services' %}">Services</a></li>
                   <li><a href="{% url 'pricing' %}">Pricing</a></li>
                   <li><a href="{% url 'contact' %}">Contact</a></li>
-                  <li><a href="{% url '404' %}">404</a></li>
+                  {% comment %}
+                  <li><a href="{% url '404' %}">404</a></li>                        
+                  {% endcomment %}
+                    
                 </ul>
               </li>
               <!-- <li class="nav__dropdown">
@@ -85,15 +88,17 @@
                 <ul class="nav__dropdown-menu">
                   <li><a href="{% url 'blog' %}">Blog Standard</a></li>
                   <li><a href="{% url 'blog-m' %}">Blog Masonry</a></li>
+                  {% comment %}
                   <li class="nav__dropdown">
                     <a href="#" aria-haspopup="true">Single Post</a>
                     <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
                       aria-expanded="false"></i>
-                    <ul class="nav__dropdown-menu">
-                      <li><a href="{% url 'single-p1' %}">Single post 1</a></li>
-                      <li><a href="{% url 'single-p2' %}">Single post 2</a></li>
-                    </ul>
-                  </li>
+                      <ul class="nav__dropdown-menu">
+                        <li><a href="{% url 'single-p1' %}">Single post 1</a></li>
+                        <li><a href="{% url 'single-p2' %}">Single post 2</a></li>
+                      </ul>
+                    </li>
+                    {% endcomment %}
                 </ul>
               </li>
               <li>

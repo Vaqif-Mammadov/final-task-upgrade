@@ -130,15 +130,17 @@
                     <ul class="nav__dropdown-menu">
                       <li><a href="{% url 'blog' %}">Blog Standard</a></li>
                       <li><a href="{% url 'blog-m' %}">Blog Masonry</a></li>
+                      {% comment %}
                       <li class="nav__dropdown">
                         <a href="#" aria-haspopup="true">Single Post</a>
                         <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
                           aria-expanded="false"></i>
-                        <ul class="nav__dropdown-menu">
-                          <li><a href="{% url 'single-p1' %}">Single post 1</a></li>
-                          <li><a href="{% url 'single-p2' %}">Single post 2</a></li>
-                        </ul>
-                      </li>
+                          <ul class="nav__dropdown-menu">
+                            <li><a href="{% url 'single-p1' %}">Single post 1</a></li>
+                            <li><a href="{% url 'single-p2' %}">Single post 2</a></li>
+                          </ul>
+                        </li>
+                        {% endcomment %}
                     </ul>
                   </li>
                   <li>
@@ -359,24 +361,24 @@
             </div>
             <div class="row">
               {% for new in news %}
+              {%  if forloop.counter <= 3 %}
               <div class="col-lg-4">                 
-
                 <article class="entry entry-card">
                   <div class="entry__header">
-                    <a href="{% url 'single-p1' %}">
+                    <a href="{% url 'single_posts' new.id %}">
                       <img src="{{new.image.url}}" class="entry__img" alt="">
                     </a>
                     <div class="entry__category">
-                      <a href="{% url 'single-p1' %}" class="entry__category-item">{{new.category}}</a>
+                      <a href="{% url 'single_posts' new.id %}" class="entry__category-item">{{new.category}}</a>
                     </div>
                   </div>
                   <div class="entry__body">
                     <h4 class="entry__title">
-                      <a href="{% url 'single-p1' %}">{{new.title}}</a>
+                      <a href="{% url 'single_posts' new.id %}">{{new.title}}</a>
                     </h4>
                     <div class="entry__meta">
                       <span class="entry__meta-item entry__meta-author">
-                        <a href="#" class="entry__meta-author-url">
+                        <a href="{% url 'single_posts' new.id %}" class="entry__meta-author-url">
                           <img src="{{new.icon.url}}" class="entry__meta-author-img" alt="">
                           <span class="entry__meta-author-name">{{new.name_lastname}}</span>
                         </a>
@@ -385,8 +387,8 @@
                     </div>
                   </div>
                 </article>
-                
               </div> 
+              {% endif%}
               {% endfor %}
             </div>
           </div>

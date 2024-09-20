@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 import random,json
 from django.utils import timezone
 from ckeditor.fields import RichTextField
+import os
+from django.utils.timezone import now
 
 
 class Profile(models.Model):
@@ -51,21 +53,24 @@ class Praise(models.Model):
     description=RichTextField(max_length=500,verbose_name="Açıqlama")
     name_lastname = models.CharField(max_length=100,verbose_name="Ad və soyad")
     company = models.CharField(max_length=100,verbose_name="Şirkət")
-    
+
+def get_upload_to(instance, filename):
+    base, ext = os.path.splitext(filename)
+    return f'uploads/{base}{ext}'  
+
 class New(models.Model):
-    image=models.FileField(verbose_name="Şəkil")
-    image_icon=models.FileField(verbose_name="Şəkil ikon formasında", default='')
+    image=models.FileField(upload_to = get_upload_to,verbose_name="Şəkil")
+    image_icon=models.FileField(upload_to = get_upload_to, verbose_name="Şəkil ikon formasında", default='')
     category = models.CharField(max_length=100,verbose_name="Kateqoriya")
     category2 = models.CharField(max_length=100,verbose_name="İkinci Kateqoriya", default='',blank=True)
     title = models.CharField(max_length=100,verbose_name="Başlıq")
     content = RichTextField(max_length=3000,verbose_name="Məzmun", default='')
     name_lastname = models.CharField(max_length=100,verbose_name="Ad və soyad")
-    icon = models.FileField(verbose_name="Profil şəkli")
+    icon = models.FileField(upload_to = get_upload_to, verbose_name="Profil şəkli")
     history = models.DateTimeField(auto_now_add=True)
-    topimg= models.FileField(verbose_name="Üst şəkil",blank=True, default='')
-    midimg= models.FileField(verbose_name="Orta şəkil", blank=True, default='')
-    botimg= models.FileField(verbose_name="Alt şəkil",blank=True, default='')
-    
+    topimg= models.FileField(upload_to = get_upload_to,verbose_name="Üst şəkil",default='')
+    midimg= models.FileField(upload_to = get_upload_to, verbose_name="Orta şəkil", default='')
+    botimg= models.FileField(upload_to = get_upload_to, verbose_name="Alt şəkil", default='')
 
 
 # homeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee

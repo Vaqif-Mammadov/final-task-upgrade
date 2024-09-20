@@ -101,7 +101,10 @@
                     <li><a href="{% url 'services' %}">Services</a></li>
                     <li><a href="{% url 'pricing' %}">Pricing</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
+                    {% comment %}
                     <li><a href="{% url '404' %}">404</a></li>
+                    {% endcomment %}
+
                   </ul>
                 </li>
                 <!-- <li class="nav__dropdown">
@@ -120,15 +123,17 @@
                   <ul class="nav__dropdown-menu">
                     <li><a href="{% url 'blog' %}">Blog Standard</a></li>
                     <li><a href="{% url 'blog-m' %}">Blog Masonry</a></li>
+                    {% comment %}
                     <li class="nav__dropdown">
                       <a href="#" aria-haspopup="true">Single Post</a>
                       <i class=" fa-solid fa-angle-down nav__dropdown-trigger " role="button" aria-haspopup="true"
                         aria-expanded="false"></i>
-                      <ul class="nav__dropdown-menu">
-                        <li><a href="{% url 'single-p1' %}">Single post 1</a></li>
-                        <li><a href="{% url 'single-p2' %}">Single post 2</a></li>
-                      </ul>
-                    </li>
+                        <ul class="nav__dropdown-menu">
+                          <li><a href="{% url 'single-p1' %}">Single post 1</a></li>
+                          <li><a href="{% url 'single-p2' %}">Single post 2</a></li>
+                        </ul>
+                      </li>
+                      {% endcomment %}
                   </ul>
                 </li>
                 <li>
@@ -203,7 +208,7 @@
 
                 <div class="single-post__entry-header">
                   <div class="entry__category">
-                    <a href="{% url 'single-p1' %}" class="entry__category-item">{{new.category}}</a>
+                    <a href="{% url 'single_posts' new.id %}" class="entry__category-item">{{new.category}}</a>
                   </div>
                   <h1>{{new.title}}</h1>
                   <div class="entry__meta">
@@ -327,82 +332,28 @@
               <div class="widget widget-popular-posts">
                 <h4 class="widget-title">Popular Posts</h4>
                 <ul class="widget-popular-posts__list">
-                  <li>
-                    <article class="clearfix">
-                      <div class="widget-popular-posts__img-holder">
-                        <a href="{% url 'single-p1' %}">
-                          <img src="{%  static 'img/blog/sidebar/popular_post_1.png'  %}" alt="">
-                        </a>
-                      </div>
-                      <div class="widget-popular-posts__entry">
-                        <h3 class="widget-popular-posts__entry-title">
-                          <a href="{% url 'single-p1' %}">Investment Update, Successful people ask better questions</a>
-                        </h3>
-                        <div class="entry__meta">
-                          <span class="entry__meta-item entry__meta-date">July 06, 2019</span>
-                        </div>
-                      </div>
-                    </article>
-                  </li>
-                  <li>
-                    <article class="clearfix">
-                      <div class="widget-popular-posts__img-holder">
-                        <a href="{% url 'single-p1' %}">
-                          <img src="{%  static 'img/blog/sidebar/popular_post_2.png'  %}" alt="">
-                        </a>
-                      </div>
-                      <div class="widget-popular-posts__entry">
-                        <h3 class="widget-popular-posts__entry-title">
-                          <a href="{% url 'single-p1' %}">Utilize these nine resources to help you take the stress out
-                            of
-                            preparing your taxes</a>
-                        </h3>
-                        <div class="entry__meta">
-                          <span class="entry__meta-item entry__meta-date">July 06, 2019</span>
-                        </div>
-                      </div>
-                    </article>
-                  </li>
+                  {% for new in news %}
+
                   <li>
                     <article class="clearfix">
                       <div class="widget-popular-posts__img-holder">
                         <div class="thumb-container">
-                          <a href="{% url 'single-p1' %}">
-                            <img src="{%  static 'img/blog/sidebar/popular_post_3.png'  %}" alt="">
+                          <a href="{% url 'single_posts' new.id %}">
+                            <img src="{{new.icon.url}}" alt="">
                           </a>
                         </div>
                       </div>
                       <div class="widget-popular-posts__entry">
                         <h3 class="widget-popular-posts__entry-title">
-                          <a href="{% url 'single-p1' %}">Money Market Rates Finding the Best Accounts in last year
-                            2017</a>
+                          <a href="{% url 'single_posts' new.id %}">{{ new.title }}</a>
                         </h3>
                         <div class="entry__meta">
-                          <span class="entry__meta-item entry__meta-date">July 06, 2019</span>
+                          <span class="entry__meta-item entry__meta-date">{{new.history}}</span>
                         </div>
                       </div>
                     </article>
                   </li>
-                  <li>
-                    <article class="clearfix">
-                      <div class="widget-popular-posts__img-holder">
-                        <div class="thumb-container">
-                          <a href="{% url 'single-p1' %}">
-                            <img src="{%  static 'img/blog/sidebar/popular_post_4.png'  %}" alt="">
-                          </a>
-                        </div>
-                      </div>
-                      <div class="widget-popular-posts__entry">
-                        <h3 class="widget-popular-posts__entry-title">
-                          <a href="{% url 'single-p1' %}">You don’t stand out from the List of the Most Profitable
-                            Investment Projects</a>
-                        </h3>
-                        <div class="entry__meta">
-                          <span class="entry__meta-item entry__meta-date">July 06, 2019</span>
-                        </div>
-                      </div>
-                    </article>
-                  </li>
+                  {% endfor %}
                 </ul>
               </div> <!-- end widget popular posts -->
 
@@ -496,20 +447,20 @@
 
               <article class="entry entry-card">
                 <div class="entry__header">
-                  <a href="{% url 'single-p1' %}">
+                  <a href="{% url 'single_posts' new.id %}">
                     <img src="{{new.image.url}}" class="entry__img" alt="">
                   </a>
                   <div class="entry__category">
-                    <a href="{% url 'single-p1' %}" class="entry__category-item">{{new.category}}</a>
+                    <a href="{% url 'single_posts' new.id %}" class="entry__category-item">{{new.category}}</a>
                   </div>
                 </div>
                 <div class="entry__body">
                   <h4 class="entry__title">
-                    <a href="{% url 'single-p1' %}">{{new.title}}</a>
+                    <a href="{% url 'single_posts' new.id %}">{{new.title}}</a>
                   </h4>
                   <div class="entry__meta">
                     <span class="entry__meta-item entry__meta-author">
-                      <a href="#" class="entry__meta-author-url">
+                      <a href="{% url 'single_posts' new.id %}" class="entry__meta-author-url">
                         <img src="{{new.icon.url}}" class="entry__meta-author-img" alt="">
                         <span class="entry__meta-author-name">{{new.name_lastname}}</span>
                       </a>
@@ -542,7 +493,7 @@
                       </div>
                       <div class="comment-text">
                         <h6 class="comment-author">{{ user.username }}</h6>
-                          <p>{{ reply.reply_text }}</p>
+                        <p>{{ reply.reply_text }}</p>
                         <span class="says">says:</span>
                         <div class="comment-metadata">
                           <time datetime="{{ comment.created_at }}">{{ comment.created_at }}</time>
@@ -551,13 +502,13 @@
                           <p>{{ comment.comment }}</p>
                         </div>
                         <div class="reply">
-                          <a href="#" class="comment-reply-link" onclick="showReplyForm({{ comment.id }})">Reply</a>
+                          <a class="comment-reply-link" onclick="showReplyForm({{ comment.id }})">Reply</a>
                         </div>
 
                         <form id="reply-form-{{ comment.id }}" method="POST" style="display: none;">
                           {% csrf_token %}
                           <textarea id="reply-text-{{ comment.id }}" placeholder="Your reply"></textarea>
-                          <button type="submit" onclick="addReplyFunction(event, {{ comment.id }})">Reply</button>
+                          <button id="reply_comment" type="submit" onclick="addReplyFunction(event, {{ comment.id }})">Reply</button>
                         </form>
 
                       </div>
@@ -569,7 +520,8 @@
                       <li class="comment">
                         <article class="comment-body">
                           <div class="comment-avatar vcard">
-                            <img alt="" src="{{ reply.user.profile.profile_picture.url}}" class="avatar avatar-46 photo">
+                            <img alt="" src="{{ reply.user.profile.profile_picture.url}}"
+                              class="avatar avatar-46 photo">
                           </div>
                           <div class="comment-text">
                             <h6 class="comment-author">{{ reply.user.username }}</h6>

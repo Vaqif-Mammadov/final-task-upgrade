@@ -18,6 +18,9 @@ from django.contrib.auth.forms import SetPasswordForm
 from django.conf import settings
 from .forms import ProfilePictureForm, ReplyForm, User_contactForm, FAQForm
 import re
+from django.core import serializers
+from django.core.paginator import Paginator
+
 
 
 def signup_view(request):
@@ -247,6 +250,7 @@ def home_view(request):
         "socials": socials,
         "socials_three": socials_three,
         "socials_seven": socials_six,
+        'news_length': len(news)
     }
     return render(request, "index.html", context)
 
@@ -356,8 +360,16 @@ def blog_view(request):
     context = {
         "news": news,
         "socials": socials,
+        'news_length':len(news)
     }
     return render(request, "blog.html", context)
+
+
+
+def blog_view_for_js(request):
+    news = New.objects.all()
+    news_list = list(news.values('id','image','image_icon', 'category', 'category2','title','content','name_lastname','icon','history','topimg','midimg','botimg'))  
+    return JsonResponse({"news": news_list})  
 
 
 def send_newsletter_message(request):
@@ -417,9 +429,14 @@ def send_newsletter_message(request):
 def blog_masonry_view(request):
     user_auth(request)
     news = New.objects.all()
+    news_list = New.objects.all()
+    paginator = Paginator(news_list, 6) 
+    page_number = request.GET.get('page') 
+    page_obj = paginator.get_page(page_number)
     socials=Social.objects.all()
     context = {
         "news": news,
+        "page_obj": page_obj,
         "socials":socials,
     }
     return render(request, "blog-masonry.html", context)
@@ -429,49 +446,49 @@ def blog_masonry_view(request):
 
 
 # BLOG_POST111111111111111111111111111111111111111111111111111111111111
-def single_post_1_view(request):
-    user_auth(request)
-    comments = Comment.objects.all()
-    count = len(comments)
-    profile_name = request.user.profile.username
-    news = New.objects.all()
-    profile_image = request.user.profile.profile_picture
-    consultants = Consultant.objects.all()
-    socials=Social.objects.all()
-    context = {
-        "news": news,
-        "comments": comments,
-        "profile_name": profile_name,
-        "profile_image": profile_image,
-        "count": count,
-        "consultants": consultants,
-        "socials":socials,
-    }
-    return render(request, "single-post-1.html", context)
+# def single_post_1_view(request):
+#     user_auth(request)
+#     comments = Comment.objects.all()
+#     count = len(comments)
+#     profile_name = request.user.profile.username
+#     news = New.objects.all()
+#     profile_image = request.user.profile.profile_picture
+#     consultants = Consultant.objects.all()
+#     socials=Social.objects.all()
+#     context = {
+#         "news": news,
+#         "comments": comments,
+#         "profile_name": profile_name,
+#         "profile_image": profile_image,
+#         "count": count,
+#         "consultants": consultants,
+#         "socials":socials,
+#     }
+#     return render(request, "single-post-1.html", context)
 
 
 # BLOG_POST111111111111111111111111111111111111111111111111111111111111
 
 
 # BLOG_POST22222222222222222222222222222222222222222222222222222222222222222222222222222
-def single_post_2_view(request):
-    user_auth(request)
-    comments = Comment.objects.all()
-    count = len(comments)
-    profile_name = request.user.profile.username
-    news = New.objects.all()
-    profile_image = request.user.profile.profile_picture
-    socials=Social.objects.all()
-    context = {
-        "news": news,
-        "comments": comments,
-        "profile_name": profile_name,
-        "profile_image": profile_image,
-        "count": count,
-        "socials":socials,
-    }
+# def single_post_2_view(request):
+#     user_auth(request)
+#     comments = Comment.objects.all()
+#     count = len(comments)
+#     profile_name = request.user.profile.username
+#     news = New.objects.all()
+#     profile_image = request.user.profile.profile_picture
+#     socials=Social.objects.all()
+#     context = {
+#         "news": news,
+#         "comments": comments,
+#         "profile_name": profile_name,
+#         "profile_image": profile_image,
+#         "count": count,
+#         "socials":socials,
+#     }
 
-    return render(request, "single-post-2.html", context)
+#     return render(request, "single-post-2.html", context)
 
 
 # BLOG_POST22222222222222222222222222222222222222222222222222222222222222222222222222222
@@ -484,21 +501,21 @@ def single_posts_view(request, id):
     user_auth(request)
     comments = Comment.objects.all()
     count = len(comments)
-    profile_name = request.user.profile.username
+    # profile_name = request.user.profile.username
     new = get_object_or_404(New, id=id)
     news = New.objects.all()
     part1 = new.content[:920]
     part2 = new.content[920:1900]
     part3 = new.content[1900:]
-    profile_image = request.user.profile.profile_picture
+    # profile_image = request.user.profile.profile_picture
     consultants = Consultant.objects.all()
     socials=Social.objects.all()
     context = {
         "new": new,
         "news": news,
         "comments": comments,
-        "profile_name": profile_name,
-        "profile_image": profile_image,
+        # "profile_name": profile_name,
+        # "profile_image": profile_image,
         "count": count,
         "consultants": consultants,
         "part1": part1,
@@ -621,3 +638,5 @@ def faq_view(request):
             unique_faqs.append(faq)
 
     return render(request, "FAQ.html", {"faqs": unique_faqs})
+
+

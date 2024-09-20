@@ -132,27 +132,26 @@ const csrfToken = document.querySelector("[name=csrfmiddlewaretoken]").value;
     },
     stickyNavbar: function () {
       var $navSticky = $(".nav--sticky");
-  
+
       if ($window.scrollTop() > 190) {
-          $navSticky.addClass("sticky navbar-black");  // Qara fon və ağ mətn üçün sinif əlavə olundu
+        $navSticky.addClass("sticky navbar-black"); // Qara fon və ağ mətn üçün sinif əlavə olundu
       } else {
-          $navSticky.removeClass("sticky navbar-black");  // Sticky sinif çıxarıldı
+        $navSticky.removeClass("sticky navbar-black"); // Sticky sinif çıxarıldı
       }
-  
+
       if ($window.scrollTop() > 200) {
-          $navSticky.addClass("offset");
+        $navSticky.addClass("offset");
       } else {
-          $navSticky.removeClass("offset");
+        $navSticky.removeClass("offset");
       }
-  
+
       if ($window.scrollTop() > 500) {
-          $navSticky.addClass("scrolling");
+        $navSticky.addClass("scrolling");
       } else {
-          $navSticky.removeClass("scrolling");
+        $navSticky.removeClass("scrolling");
       }
-  },
-  
-  
+    },
+
     navbarSearch: function () {
       var $navSearchForm = $(".nav__search-form"),
         $navSearchTrigger = $("#nav__search-trigger"),
@@ -390,64 +389,66 @@ if (submitbutton) {
 }
 
 function addcommentfunction(event) {
-  const form = document.getElementById("commentform");
-  event.preventDefault();
-  form.querySelector('input[type="submit"]').disabled = true;
-  const formData = {
-    name: document.querySelector("#name").value,
-    email: document.querySelector("#mail").value,
-    url: document.getElementById("url").value,
-    comment: document.getElementById("comment").value,
-    wp_comment_cookies_consent: document.getElementById(
-      "wp-comment-cookies-consent"
-    ).checked,
-    comment_post_ID: document.getElementById("comment_post_ID").value,
-  };
-  console.log(formData)
-  fetch("/addcomment/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
-    },
-    body: JSON.stringify(formData),
-	
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.status === "success") {
-        Swal.fire({
-          title: "Info",
-          text: "Comment added successfully",
-          icon: "info",
-          confirmButtonText: "Ok",
-        });
-		window.location.reload()
-        form.reset();
-      } else {
-        Swal.fire({
-          title: "Error",
-          text: data.message || "There was an error",
-          icon: "error",
-          confirmButtonText: "Ok",
-        });
-      }
+  // if (!isLoggedIn) {
+  //   login();
+  //   return;
+  // } else {
+    const form = document.getElementById("commentform");
+    event.preventDefault();
+    form.querySelector('input[type="submit"]').disabled = true;
+    const formData = {
+      name: document.querySelector("#name").value,
+      email: document.querySelector("#mail").value,
+      url: document.getElementById("url").value,
+      comment: document.getElementById("comment").value,
+      wp_comment_cookies_consent: document.getElementById(
+        "wp-comment-cookies-consent"
+      ).checked,
+      comment_post_ID: document.getElementById("comment_post_ID").value,
+    };
+    console.log(formData);
+    fetch("/addcomment/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]")
+          .value,
+      },
+      body: JSON.stringify(formData),
     })
-    .catch((error) => {
-      console.error("Error:", error);
-    })
-    .finally(() => {
-      form.querySelector('input[type="submit"]').disabled = false;
-    });
-}
-
-
-
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "success") {
+          Swal.fire({
+            title: "Info",
+            text: "Comment added successfully",
+            icon: "info",
+            confirmButtonText: "Ok",
+          });
+          window.location.reload();
+          form.reset();
+        } else {
+          Swal.fire({
+            title: "Error",
+            text: data.message || "There was an error",
+            icon: "error",
+            confirmButtonText: "Ok",
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      })
+      .finally(() => {
+        form.querySelector('input[type="submit"]').disabled = false;
+      });
+  }
+// }
 
 function addReplyFunction(event, comment_id) {
   event.preventDefault();
   const formData = {
-    reply_text: document.querySelector(`#reply-text-${comment_id}`).value,  // Yalnız reply_text sahəsini yığırıq
+    reply_text: document.querySelector(`#reply-text-${comment_id}`).value, // Yalnız reply_text sahəsini yığırıq
   };
 
   fetch(`/add_reply/${comment_id}/`, {
@@ -463,7 +464,7 @@ function addReplyFunction(event, comment_id) {
       if (data.status === "success") {
         window.location.reload();
       } else {
-        console.log(data.message || 'Error adding reply');
+        console.log(data.message || "Error adding reply");
       }
     })
     .catch((error) => {
@@ -471,12 +472,10 @@ function addReplyFunction(event, comment_id) {
     });
 }
 
-
-let submitmessage=document.querySelector('#submit-message')
-if (submitmessage)  {
-  submitmessage.addEventListener('click',usercontactFunction)
+let submitmessage = document.querySelector("#submit-message");
+if (submitmessage) {
+  submitmessage.addEventListener("click", usercontactFunction);
 }
-
 
 function usercontactFunction(event) {
   event.preventDefault();
@@ -491,7 +490,7 @@ function usercontactFunction(event) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-CSRFToken": csrfToken
+      "X-CSRFToken": csrfToken,
     },
     body: JSON.stringify(formData),
   })
@@ -503,12 +502,11 @@ function usercontactFunction(event) {
           text: "Note added successfully",
           icon: "success",
           confirmButtonText: "Ok",
-        })
-        .then((result) => {
-        window.location.reload();
+        }).then((result) => {
+          window.location.reload();
         });
       } else {
-        console.log(data.message || 'Error adding note');
+        console.log(data.message || "Error adding note");
       }
     })
     .catch((error) => {
@@ -516,110 +514,273 @@ function usercontactFunction(event) {
     });
 }
 
-
-
-
 // FAQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQq
-let faqform =document.getElementById('contact-form');
-
+let faqform = document.getElementById("contact-form");
 
 if (faqform) {
-  faqform.addEventListener('submit', function (event) {
-      event.preventDefault();
+  faqform.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-      const data = {
-          full_name: this.querySelector('[name="name"]').value,
-          email: this.querySelector('[name="email"]').value,
-          phone: this.querySelector('[name="phone"]').value,
-          message: this.querySelector('[name="message"]').value,
-          form_id: this.id
-      };
-      fetch('/faq/', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json', 
-              'X-Requested-With': 'XMLHttpRequest',
-              'X-CSRFToken': csrfToken
-          },
-          body: JSON.stringify(data)
+    const data = {
+      full_name: this.querySelector('[name="name"]').value,
+      email: this.querySelector('[name="email"]').value,
+      phone: this.querySelector('[name="phone"]').value,
+      message: this.querySelector('[name="message"]').value,
+      form_id: this.id,
+    };
+    fetch("/faq/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Requested-With": "XMLHttpRequest",
+        "X-CSRFToken": csrfToken,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        Swal.fire({
+          icon: data.status === "success" ? "success" : "error",
+          title: data.status === "success" ? "Success" : "Error",
+          text: data.message,
+        });
       })
-      .then(response => response.json())
-      .then(data => {
-          Swal.fire({
-              icon: data.status === 'success' ? 'success' : 'error',
-              title: data.status === 'success' ? 'Success' : 'Error',
-              text: data.message,
-          });
-      })
-      .catch(error => {
-          console.error('Error:', error);
-          Swal.fire({
-              icon: 'error',
-              title: 'Error',
-              text: 'Something went wrong!',
-          });
+      .catch((error) => {
+        console.error("Error:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Something went wrong!",
+        });
       });
   });
 }
 
 // FAQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
 
-
 // BLOGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
 
-document.addEventListener('DOMContentLoaded', function () {
-  const newsletterForm = document.getElementById('newslettersend');
-  
-  if (newsletterForm) {
-      newsletterForm.addEventListener('submit', function (event) {
-          if (!isLoggedIn) {
-              login();
-              return;
-          } else {
-              event.preventDefault();
-              const form = document.getElementById("newslettersend");
-              const formData = new FormData(form);
+document.addEventListener("DOMContentLoaded", function () {
+  const newsletterForm = document.getElementById("newslettersend");
 
-              fetch('/send-newsletter/', {
-                  method: 'POST',
-                  body: formData,
-                  headers: {
-                      'X-CSRFToken': csrfToken
-                  },
-              })
-              .then(response => response.json())
-              .then(data => {
-                  if (data.success) {
-                      Swal.fire({
-                          icon: 'success',
-                          title: 'Success!',
-                          text: data.message,
-                          confirmButtonText: 'OK',
-                      }).then(() => {
-                          form.reset();
-                      });
-                  } else {
-                      Swal.fire({
-                          icon: 'error',
-                          title: 'Error!',
-                          text: data.message,
-                          confirmButtonText: 'OK',
-                      });
-                  }
-              })
-              .catch(error => {
-                  console.error('Error:', error);
-                  Swal.fire({
-                      icon: 'error',
-                      title: 'Error!',
-                      text: 'An unexpected error occurred.',
-                      confirmButtonText: 'OK',
-                  });
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", function (event) {
+      if (!isLoggedIn) {
+        login();
+        return;
+      } else {
+        event.preventDefault();
+        const form = document.getElementById("newslettersend");
+        const formData = new FormData(form);
+
+        fetch("/send-newsletter/", {
+          method: "POST",
+          body: formData,
+          headers: {
+            "X-CSRFToken": csrfToken,
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              Swal.fire({
+                icon: "success",
+                title: "Success!",
+                text: data.message,
+                confirmButtonText: "OK",
+              }).then(() => {
+                form.reset();
               });
-          }
-      });
+            } else {
+              Swal.fire({
+                icon: "error",
+                title: "Error!",
+                text: data.message,
+                confirmButtonText: "OK",
+              });
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            Swal.fire({
+              icon: "error",
+              title: "Error!",
+              text: "An unexpected error occurred.",
+              confirmButtonText: "OK",
+            });
+          });
+      }
+    });
   }
 });
 
+let newslist = [];
+let news_length = document.querySelector("#list-length");
 
-  // BLOGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+if (news_length) {
+  let news_length_int = parseInt(news_length.textContent);
+  let pagination = document.querySelector("#pagination");
+
+  // Hər səhifəyə 5 məqalə bölmək üçün pagination yarat
+  let totalPages = Math.ceil(news_length_int / 5); // 5 məqalə bir səhifədə olacaq
+
+  for (let i = 2; i <= totalPages; i++) {
+    if (i <= 5) {
+      const li = document.createElement("a");
+      li.classList.add("page-numbers");
+      li.textContent = i;
+      li.addEventListener("click", function () {
+        sendstartcount(i); // Səhifə nömrəsini funksiyaya ötür
+      });
+      pagination.appendChild(li);
+    }
+  }
+
+  // Sağ istiqaməti (next arrow) əlavə et
+  const next = document.createElement("a");
+  const nextIcon = document.createElement("i");
+  next.addEventListener("click", decrease);
+  nextIcon.classList.add("fa-solid", "fa-angle-right");
+  next.classList.add("next", "page-numbers");
+  next.appendChild(nextIcon);
+  pagination.appendChild(next);
+}
+
+let basepath = "/media/";
+let sibling;
+let elements = [];
+let pageNumber;
+let pagenumberdecreaser = document.querySelector("#pagenumberdecreaser");
+
+if (pagenumberdecreaser) {
+  pagenumberdecreaser.addEventListener("click", decrease);
+}
+
+function decrease() {
+  pageNumber = 1;
+  pageNumber++;
+  sendstartcount(pageNumber);
+}
+
+function sendstartcount(pageNumber) {
+  pageNumber = pageNumber;
+  elements = [];
+  let pagination = document.querySelector("#pagination");
+  sibling = pagination.childNodes;
+  let startcount = (pageNumber - 1) * 5 + 1; // Hər səhifədə 5 məqalə var
+  newinstaller(startcount, pageNumber);
+  sibling.forEach((element) => {
+    if (element.nodeType === 1) {
+      elements.push(element);
+    }
+  });
+
+  elements.forEach((element, index) => {
+    if (pageNumber !== index + 1) {
+      if (element.nodeType === 1) {
+        element.classList.remove("current");
+      }
+    } else {
+      if (element.nodeType === 1) {
+        element.classList.add("current");
+      }
+    }
+  });
+}
+
+function newinstaller(startcount, pageNumber) {
+  const token = "bvmVNBMBMHB24512vbnmmm45vbgfhvn53VGBHJbjghj275fgcgv";
+
+  fetch("/blogjs/", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (data.news && Array.isArray(data.news)) {
+        newslist = data.news; // Data yenidən əldə edilir
+        console.log(newslist);
+        let newsDiv = document.querySelector("#news");
+        newsDiv.innerHTML = "";
+
+        let endcount = startcount + 4; // Hər səhifədə 5 məqalə
+        if (endcount > newslist.length) {
+          endcount = newslist.length;
+        }
+
+        let single = "/single_posts/";
+        let cat = "";
+
+        for (let i = startcount - 1; i < endcount; i++) {
+          let category2 = newslist[i].category2;
+          if (category2) {
+            cat = `<a href="${
+              single + newslist[i].id
+            }" id="entry__category_2" class="entry__category-item">${category2}</a>`;
+          }
+          newsDiv.innerHTML +=
+            `
+            <article>
+              <div class="entry__header">
+                <a href="${single + newslist[i].id}">
+                  <img src="${basepath}${
+              newslist[i].image
+            }" class="entry__img" alt="">
+                </a>
+                <div class="entry__category">
+                  <a href="${
+                    single + newslist[i].id
+                  }" id="entry__category_1" class="entry__category-item">${
+              newslist[i].category
+            }</a>
+                  ` +
+            cat +
+            `
+                </div>
+              </div>
+              <div class="entry__body">
+                <h4 class="entry__title">
+                  <a href="${single + newslist[i].id}">${newslist[i].title}</a>
+                </h4>
+                <div class="entry__meta">
+                  <span class="entry__meta-item entry__meta-author">
+                    <a href="${
+                      single + newslist[i].id
+                    }"class="entry__meta-author-url">
+                      <img src="${basepath}${
+              newslist[i].icon
+            }" class="entry__meta-author-img" alt="">
+                      <span class="entry__meta-author-name">${
+                        newslist[i].name_lastname
+                      }</span>
+                    </a>
+                  </span>
+                  <span class="entry__meta-item entry__meta-date">${
+                    newslist[i].history
+                  }</span>
+                </div>
+                <div class="entry__excerpt">
+                  <p>${newslist[i].content.slice(0, 340)}...</p>
+                </div>
+              </div>
+            </article>`;
+        }
+      } else {
+        console.error("Veri bir dizi değil veya boş", data);
+      }
+    })
+    .catch((error) => console.error("Error", error));
+}
+
+// İlk səhifəni yüklə
+sendstartcount(1);
+
+// BLOGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
